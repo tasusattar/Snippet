@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "GearSet20.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "GearSet48.png",
+      "filename" : "Back48.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "GearSet64.png",
+      "filename" : "Back64.png",
       "scale" : "3x"
     }
   ],

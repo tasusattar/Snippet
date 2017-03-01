@@ -1,37 +1,24 @@
 //
-//  OptionsViewController.swift
+//  SettingsViewController.swift
 //  Snippet
 //
-//  Created by Paul on 2017-02-28.
+//  Created by Paul on 2017-03-01.
 //  Copyright © 2017 Refinery. All rights reserved.
 //
 
 import UIKit
 
-class OptionsViewController: UIViewController {
-
-    @IBOutlet weak var SortList: UIView!
-    @IBOutlet var OptionsView: UIView!
+class SettingsViewController: UIViewController {
     
-
-    @IBAction func optionsButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "SettingsScreen", sender: self)
+    @IBAction func backButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoBack", sender: self)
     }
 
-    @IBAction func sortPressed(_ sender: Any) {
-        self.view = SortList
-    }
-    
-    func returnView(){
-        self.view = OptionsView
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
 
     override func didReceiveMemoryWarning() {
