@@ -10,10 +10,55 @@ import UIKit
 
 class OptionsViewController: UIViewController {
 
+//    @IBOutlet weak var personalButton: UIImageView!
+//    @IBOutlet weak var settingsButton: UIImageView!
+//    @IBOutlet weak var themesButton: UIImageView!
+//    @IBOutlet weak var notesButton: UIImageView!
+//    @IBOutlet weak var addButton: UIImageView!
+//    @IBOutlet weak var sortButton: UIImageView!
+    
+
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "SettingsScreen", sender: self)
+    }
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        // create tap gesture recognizer
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OptionsViewController.imageTapped(gesture:)))
+//        
+//        // add it to the image view;
+//        personalButton.addGestureRecognizer(tapGesture)
+//        settingsButton.addGestureRecognizer(tapGesture)
+//        themesButton.addGestureRecognizer(tapGesture)
+//        notesButton.addGestureRecognizer(tapGesture)
+//        addButton.addGestureRecognizer(tapGesture)
+//        sortButton.addGestureRecognizer(tapGesture)
+//        
+//        
+//        // make sure imageView can be interacted with by user
+//        personalButton.isUserInteractionEnabled = true
+//        settingsButton.isUserInteractionEnabled = true
+//        themesButton.isUserInteractionEnabled = true
+//        notesButton.isUserInteractionEnabled = true
+//        addButton.isUserInteractionEnabled = true
+//        sortButton.isUserInteractionEnabled = true
+//    }
+//    
+//    func imageTapped(gesture: UIGestureRecognizer) {
+//        // if the tapped view is a UIImageView then set it to imageview
+//        if (gesture.view as? UIImageView) != nil {
+//            //Here you can initiate your new ViewController
+//            if gesture.view == sortButton {
+//                performSegue(withIdentifier: "SettingsScreen", sender: self)
+//            }
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
