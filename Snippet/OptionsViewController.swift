@@ -22,6 +22,17 @@ class OptionsViewController: UIViewController {
         self.view = SortList
     }
     
+    @IBAction func addPressed(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+        let collectionNav = storyBoard.instantiateViewController(withIdentifier: "CollectionNav") as! UINavigationController
+        let cv = collectionNav.viewControllers.first as! CollectionViewController
+        
+        self.present(collectionNav, animated: false, completion: cv.addBooksBlur)
+
+    }
+    
+    
     func returnView(){
         self.view = OptionsView
     }
@@ -40,14 +51,20 @@ class OptionsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//    
+//        if segue.identifier == "AddBooksSegue"{
+//            let vc = segue.destination.parent as! CollectionViewController!
+//            vc?.addBooksBlur()
+//            
+//        }
+//    }
+    
 
 }

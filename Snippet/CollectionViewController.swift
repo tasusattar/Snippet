@@ -11,14 +11,15 @@ import UIKit
 private let reuseIdentifier = "BookCell"
 
 class CollectionViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate {
+    
+    @IBOutlet var AddBooksView: UIView!
+    @IBOutlet weak var BlurVisual: UIVisualEffectView!
+    
+    var effect: UIVisualEffect!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // make the edges of the optionsView rounded
-//        optionsView.layer.cornerRadius = 4
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,6 +27,10 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        // disable blur visual effects
+        effect = BlurVisual.effect
+        BlurVisual.effect = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +44,9 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         
     }
     
+    @IBAction func closeAddWindow(_ sender: Any) {
+        addCancelBlur()
+    }
     
     // MARK: - Navigation
 
@@ -47,9 +55,11 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "OptionsSegue"{
-            var vc = segue.destination
+            let vc = segue.destination
             
-            var controller = vc.popoverPresentationController
+            let controller = vc.popoverPresentationController
+            
+            // this makes it a popoverPresentation for all devices, not just iPad
             
             if controller != nil{
                 controller?.delegate = self
@@ -117,5 +127,33 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
     
     }
     */
+    
+    
+    
+    /* 
+     animates in AddBooksView and activates the BlurVisual
+    */
+    func addBooksBlur(){
+        self.view.addSubview(AddBooksView)
+        AddBooksView.center = self.view.center
+        AddBooksView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        
+        UIView.animate(withDuration: 0.4){
+            self.BlurVisual.effect = self.effect
+            
+            self.AddBooksView.alpha = 1
+            self.AddBooksView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func addCancelBlur(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.AddBooksView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.AddBooksView.alpha = 0
+            self.BlurVisual.effect = nil
+        }){(success: Bool) in
+            self.AddBooksView.removeFromSuperview()
+        }
+    }
     
 }
