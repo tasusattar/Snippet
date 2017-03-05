@@ -8,7 +8,15 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITabBarDelegate, UINavigationBarDelegate {
+    
+    @IBOutlet var SettingsTabBar: UITabBar!
+    @IBOutlet var titleBar: UINavigationItem!
+    @IBOutlet var settingsViewContainer: UIView!
+    
+    var tabIndex: Int = 0
+    let indexToName = ["Account", "Settings", "Views", "Note Book"]
+    weak var containerView: UIViewController?
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "GoBack", sender: self)
@@ -16,9 +24,25 @@ class SettingsViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        containerView = self.storyboard?.instantiateViewController(withIdentifier: indexToName[tabIndex])
+        self.addChildViewController(self.containerView!)
+        self.settingsViewContainer.addSubview(self.containerView!.view)
+        
+        SettingsTabBar.selectedItem = SettingsTabBar.items![tabIndex] as UITabBarItem
+        titleBar.title = indexToName[tabIndex]
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        SettingsTabBar.selectedItem = SettingsTabBar.items![tabIndex] as UITabBarItem
+//        titleBar.title = indexToName[tabIndex]
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        titleBar.title = indexToName[tabIndex]
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,5 +60,10 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabIndex = tabBar.items!.index(of: item)!
+//        titleBar.title = indexToName[itemIndex]
+    }
+    
 }

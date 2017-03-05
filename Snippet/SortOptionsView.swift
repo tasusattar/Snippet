@@ -13,7 +13,7 @@ class SortOptionsView: UIView {
     @IBOutlet weak var OptionsView: OptionsViewController!
     
     @IBAction func backPressed(_ sender: Any) {
-        OptionsView.returnView()
+        OptionsView.closeSort()
         
     }
     

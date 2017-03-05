@@ -13,7 +13,7 @@ private let reuseIdentifier = "BookCell"
 class CollectionViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var AddBooksView: UIView!
-    @IBOutlet weak var BlurVisual: UIVisualEffectView!
+//    @IBOutlet weak var BlurVisual: UIVisualEffectView!
     
     var effect: UIVisualEffect!
 
@@ -29,8 +29,10 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         // Do any additional setup after loading the view.
         
         // disable blur visual effects
-        effect = BlurVisual.effect
-        BlurVisual.effect = nil
+//        effect = BlurVisual.effect
+//        BlurVisual.effect = nil
+        
+        AddBooksView.layer.cornerRadius = 5 // make the AddBooksView rounded at edges
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,7 +141,7 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         AddBooksView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         
         UIView.animate(withDuration: 0.4){
-            self.BlurVisual.effect = self.effect
+//            self.BlurVisual.effect = self.effect
             
             self.AddBooksView.alpha = 1
             self.AddBooksView.transform = CGAffineTransform.identity
@@ -150,7 +152,7 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
         UIView.animate(withDuration: 0.3, animations: {
             self.AddBooksView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.AddBooksView.alpha = 0
-            self.BlurVisual.effect = nil
+//            self.BlurVisual.effect = nil
         }){(success: Bool) in
             self.AddBooksView.removeFromSuperview()
         }
