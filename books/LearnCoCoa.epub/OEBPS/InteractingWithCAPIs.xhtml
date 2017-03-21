@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH8">&#x200c;</a><a id="TP40014216-CH8-ID17">&#x200c;</a>
+    <h2 class="chapter-name">Interacting with C APIs</h2>
+      
+      	<section class="section">
+      		<p class="para">As part of its interoperability with Objective-C, Swift maintains compatibility with a number of C language types and features. Swift also provides a way of working with common C constructs and patterns, in case your code requires it.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH8-ID19">&#x200c;</a>
+  <h3 class="section-name">Primitive Types</h3>
+  <p class="para">Swift provides equivalents of C primitive integer types—for example, <code class="code-voice">char</code>, <code class="code-voice">int</code>, <code class="code-voice">float</code>, and <code class="code-voice">double</code>. However, there is no implicit conversion between these types and core Swift integer types, such as <code class="code-voice">Int</code>. Therefore, use these types if your code specifically requires them, but use <code class="code-voice">Int</code> wherever possible otherwise.</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">C Type</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Swift Type</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para"><code class="code-voice">bool</code></p></td>
+            <td><p class="para"><code class="code-voice">CBool</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">char</code>, <code class="code-voice">signed char</code></p></td>
+            <td><p class="para"><code class="code-voice">CChar</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">unsigned char</code></p></td>
+            <td><p class="para"><code class="code-voice">CUnsignedChar</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">short</code></p></td>
+            <td><p class="para"><code class="code-voice">CShort</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">unsigned short</code></p></td>
+            <td><p class="para"><code class="code-voice">CUnsignedShort</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">int</code></p></td>
+            <td><p class="para"><code class="code-voice">CInt</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">unsigned int</code></p></td>
+            <td><p class="para"><code class="code-voice">CUnsignedInt</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">long</code></p></td>
+            <td><p class="para"><code class="code-voice">CLong</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">unsigned long</code></p></td>
+            <td><p class="para"><code class="code-voice">CUnsignedLong</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">long long</code></p></td>
+            <td><p class="para"><code class="code-voice">CLongLong</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">unsigned long long</code></p></td>
+            <td><p class="para"><code class="code-voice">CUnsignedLongLong</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">wchar_t</code></p></td>
+            <td><p class="para"><code class="code-voice">CWideChar</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">char16_t</code></p></td>
+            <td><p class="para"><code class="code-voice">CChar16</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">char32_t</code></p></td>
+            <td><p class="para"><code class="code-voice">CChar32</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">float</code></p></td>
+            <td><p class="para"><code class="code-voice">CFloat</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">double</code></p></td>
+            <td><p class="para"><code class="code-voice">CDouble</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID21">&#x200c;</a>
+  <h3 class="section-name">Enumerations</h3>
+  <p class="para">Swift imports any C enumeration marked with the <code class="code-voice">NS_ENUM</code> macro as a Swift enumeration with an <code class="code-voice">Int</code> raw value type. The prefixes to C enumeration case names are removed when they are imported into Swift, whether they’re defined in system frameworks or in custom code.</p><p class="para">For example, the C enumeration below is declared using the <code class="code-voice">NS_ENUM</code> macro.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">UITableViewCellStyle</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">UITableViewCellStyleDefault</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">UITableViewCellStyleValue1</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">UITableViewCellStyleValue2</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">UITableViewCellStyleSubtitle</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">};</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, it’s imported like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">enum</code> <code class="vc">UITableViewCellStyle</code>: <code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Default</code></code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Value1</code></code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Value2</code></code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Subtitle</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">When you refer to an enumeration value, use the value name with a leading dot (<code class="code-voice">.</code>).</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">cellStyle</code>: <code class="n"><!-- a href="" logicalPath="" -->UITableViewCellStyle<!-- /a --></code> = .<code class="vc">Default</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">A C enumeration that is not marked with the <code class="code-voice">NS_ENUM</code> or <code class="code-voice">NS_OPTIONS</code> macro is imported as a Swift structure. Each member of the C enumeration is imported as a global read-only computed property of the structure’s type—not as a member of the Swift structure itself.</p><p class="para">For example, the C enumeration below is not declared using the <code class="code-voice">NS_ENUM</code> macro.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">typedef</span> <span class="k">enum</span> <span class="n">Error</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">ErrorNone</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">ErrorFileNotFound</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">ErrorInvalidFormat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">};</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, it’s imported like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">struct</code> <code class="vc">Error</code>: <code class="n"><!-- a href="" logicalPath="" -->RawRepresentable<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->Equatable<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">ErrorNone</code>: <code class="n"><!-- a href="" logicalPath="" -->Error<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">ErrorFileNotFound</code>: <code class="n"><!-- a href="" logicalPath="" -->Error<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">ErrorInvalidFormat</code>: <code class="n"><!-- a href="" logicalPath="" -->Error<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Swift automatically synthesizes conformance to the <code class="code-voice">Equatable</code> protocol for imported C enumeration types.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID169">&#x200c;</a>
+  <h3 class="section-name">Option Sets</h3>
+  <p class="para">Swift also imports C enumerations marked with the <code class="code-voice">NS_OPTIONS</code> macro as a Swift option set. Option sets behave similarly to imported enumerations by truncating their prefixes to option value names.</p><p class="para">For example, see this Objective-C options declaration:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">typedef</span> <span class="nf">NS_OPTIONS</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">,</span> <span class="n">NSJSONReadingOptions</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">NSJSONReadingMutableContainers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1UL</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">),</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">NSJSONReadingMutableLeaves</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1UL</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">),</span>
+</code></li>
+            <li><code class="code-voice">   <span class="n">NSJSONReadingAllowFragments</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1UL</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">};</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, it’s imported like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">struct</code> <code class="vc">NSJSONReadingOptions</code> : <code class="n"><!-- a href="" logicalPath="" -->OptionSetType<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">init</code>(<code class="vc">rawValue</code>: <code class="n"><!-- a href="" logicalPath="" -->UInt<!-- /a --></code>)</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">var</code> <code class="vc">MutableContainers</code>: <code class="n"><!-- a href="" logicalPath="" -->NSJSONReadingOptions<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">var</code> <code class="vc">MutableLeaves</code>: <code class="n"><!-- a href="" logicalPath="" -->NSJSONReadingOptions<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">var</code> <code class="vc">AllowFragments</code>: <code class="n"><!-- a href="" logicalPath="" -->NSJSONReadingOptions<!-- /a --></code> { <code class="vc">get</code> }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Objective-C, an option set is a bit mask of integer values. You use the bitwise OR operator (<code class="code-voice">|</code>) to combine option values, and the bitwise AND operator (<code class="code-voice">&amp;</code>) to check for option values. You create a new option set from a constant value or expression, An empty option set is represented by the constant zero (<code class="code-voice">0</code>).</p><p class="para">In Swift, option sets are represented by structures conforming to the <code class="code-voice">OptionSetType</code> protocol, with static variables for each option value. Option sets behave like Swift’s <code class="code-voice">Set</code> collection type. You use the <code class="code-voice">insert(_:)</code> or <code class="code-voice">unionInPlace(_:)</code> methods to add option values, the <code class="code-voice">remove(_:)</code> or <code class="code-voice">subtractInPlace(_:)</code> methods to remove option values, and the <code class="code-voice">contains(_:)</code> method to check for an option value. You create a new option set value using an array literal, accessing option values with a leading dot (<code class="code-voice">.</code>) similar to an enumeration. An empty option set can be created from an empty array literal (<code class="code-voice">[]</code>) or by calling its default initializer.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">options</code>: <code class="n"><!-- a href="" logicalPath="" -->NSDataBase64EncodingOptions<!-- /a --></code> = [</code></li>
+            <li><code class="code-voice">    .<code class="vc">Encoding76CharacterLineLength</code>,</code></li>
+            <li><code class="code-voice">    .<code class="vc">EncodingEndLineWithLineFeed</code></code></li>
+            <li><code class="code-voice">]</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">string</code> = <code class="vc">data</code>.<code class="vc">base64EncodedStringWithOptions</code>(<code class="vc">options</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID170">&#x200c;</a>
+  <h3 class="section-name">Unions</h3>
+  <p class="para">Swift has only partial support of C <code class="code-voice">union</code> types. When importing C aggregates containing unions, Swift cannot access unsupported fields. However, C and Objective-C APIs that have arguments of those types or return values of those types can be used in Swift.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID191">&#x200c;</a>
+  <h3 class="section-name">Bit Fields</h3>
+  <p class="para">Swift imports bit fields in structures, such those found in Foundation’s <code class="code-voice">NSDecimal</code> type, as computed properties. When accessing a computed property corresponding to a bit field, Swift automatically converts the value to and from compatible Swift types.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID23">&#x200c;</a>
+  <h3 class="section-name">Pointers</h3>
+  <p class="para">Whenever possible, Swift avoids giving you direct access to pointers. There are, however, various pointer types available for your use when you need direct access to memory. The following tables use <code class="code-voice">Type</code> as a placeholder type name to indicate syntax for the mappings.</p><p class="para">For return types, variables, and arguments, the following mappings apply:</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">C Syntax</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Swift Syntax</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para"><code class="code-voice">const Type *</code></p></td>
+            <td><p class="para"><code class="code-voice">UnsafePointer&lt;Type&gt;</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">Type *</code></p></td>
+            <td><p class="para"><code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div><p class="para">For class types, the following mappings apply:</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">C Syntax</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Swift Syntax</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para"><code class="code-voice">Type * const *</code></p></td>
+            <td><p class="para"><code class="code-voice">UnsafePointer&lt;Type&gt;</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">Type * __strong *</code></p></td>
+            <td><p class="para"><code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">Type **</code></p></td>
+            <td><p class="para"><code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;Type&gt;</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+  <section class="section">
+	<a id="TP40014216-CH8-ID146">&#x200c;</a>
+  <h3 class="section-name">Constant Pointers</h3>
+  <p class="para">When a function is declared as taking a <code class="code-voice">UnsafePointer&lt;Type&gt;</code> argument, it can accept any of the following:</p><ul class="list-bullet">
+  <li class="item"><p class="para"><code class="code-voice">nil</code>, which is passed as a null pointer.</p></li><li class="item"><p class="para">An <code class="code-voice">UnsafePointer&lt;Type&gt;</code>, <code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code>, or <code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;Type&gt;</code> value, which is converted to <code class="code-voice">UnsafePointer&lt;Type&gt;</code> if necessary.</p></li><li class="item"><p class="para">A <code class="code-voice">String</code> value, if <code class="code-voice">Type</code> is <code class="code-voice">Int8</code> or <code class="code-voice">UInt8</code>. The string will automatically be converted to UTF8 in a buffer that lasts for the duration of the call.</p></li><li class="item"><p class="para">An <code class="code-voice">inout</code> expression whose left-hand side operand is of type <code class="code-voice">Type</code>, which is passed as the address of the left-hand side identifier.</p></li><li class="item"><p class="para">A <code class="code-voice">[Type]</code> value, which is passed as a pointer to the start of the array, and lifetime-extended for the duration of the call.</p></li>
+</ul><p class="para">If you have declared a function like this one:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">takesAPointer</code>(<code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt;) {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can call it in any of the following ways:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt; = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="vc">takesAPointer</code>(<code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAPointer</code>(<code class="vc">p</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAPointer</code>(&amp;<code class="vc">x</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAPointer</code>([<code class="m">1.0</code>, <code class="m">2.0</code>, <code class="m">3.0</code>])</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">When a function is declared as taking a <code class="code-voice">UnsafePointer&lt;Void&gt;</code> argument, it can accept the same operands as <code class="code-voice">UnsafePointer&lt;Type&gt;</code> for any type <code class="code-voice">Type</code>.</p><p class="para">If you have declared a function like this one:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">takesAVoidPointer</code>(<code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Void<!-- /a --></code>&gt;)  {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can call it in any of the following ways:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code> = <code class="m">0.0</code>, <code class="vc">y</code>: <code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code> = <code class="m">0</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt; = <code class="kt">nil</code>, <code class="vc">q</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code>&gt; = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(<code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(<code class="vc">p</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(<code class="vc">q</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(&amp;<code class="vc">x</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(&amp;<code class="vc">y</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>([<code class="m">1.0</code>, <code class="m">2.0</code>, <code class="m">3.0</code>] <code class="kt">as</code> [<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>])</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">intArray</code> = [<code class="m">1</code>, <code class="m">2</code>, <code class="m">3</code>]</code></li>
+            <li><code class="code-voice"><code class="vc">takesAVoidPointer</code>(<code class="vc">intArray</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID25">&#x200c;</a>
+  <h3 class="section-name">Mutable Pointers</h3>
+  <p class="para">When a function is declared as taking an <code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code> argument, it can accept any of the following:</p><ul class="list-bullet">
+  <li class="item"><p class="para"><code class="code-voice">nil</code>, which is passed as a null pointer</p></li><li class="item"><p class="para">An <code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code> value</p></li><li class="item"><p class="para">An <code class="code-voice">inout</code> expression whose operand is a stored lvalue of type <code class="code-voice">Type</code>, which is passed as the address of the lvalue</p></li><li class="item"><p class="para">An <code class="code-voice">inout</code> <code class="code-voice">[Type]</code> value, which is passed as a pointer to the start of the array, and lifetime-extended for the duration of the call</p></li>
+</ul><p class="para">If you have declared a function like this one:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">takesAMutablePointer</code>(<code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt;) {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can call it in any of the following ways:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt; = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">a</code>: [<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>] = [<code class="m">1.0</code>, <code class="m">2.0</code>, <code class="m">3.0</code>]</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutablePointer</code>(<code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutablePointer</code>(<code class="vc">p</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutablePointer</code>(&amp;<code class="vc">x</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutablePointer</code>(&amp;<code class="vc">a</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">When a function is declared as taking an <code class="code-voice">UnsafeMutablePointer&lt;Void&gt;</code> argument, it can accept the same operands as <code class="code-voice">UnsafeMutablePointer&lt;Type&gt;</code> for any type <code class="code-voice">Type</code>.</p><p class="para">If you have declared a function like this one:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">takesAMutableVoidPointer</code>(<code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Void<!-- /a --></code>&gt;)  {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can call it in any of the following ways:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code> = <code class="m">0.0</code>, <code class="vc">y</code>: <code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code> = <code class="m">0</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>&gt; = <code class="kt">nil</code>, <code class="vc">q</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code>&gt; = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">a</code>: [<code class="n"><!-- a href="" logicalPath="" -->Float<!-- /a --></code>] = [<code class="m">1.0</code>, <code class="m">2.0</code>, <code class="m">3.0</code>], <code class="vc">b</code>: [<code class="n"><!-- a href="" logicalPath="" -->Int<!-- /a --></code>] = [<code class="m">1</code>, <code class="m">2</code>, <code class="m">3</code>]</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(<code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(<code class="vc">p</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(<code class="vc">q</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(&amp;<code class="vc">x</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(&amp;<code class="vc">y</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(&amp;<code class="vc">a</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAMutableVoidPointer</code>(&amp;<code class="vc">b</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID147">&#x200c;</a>
+  <h3 class="section-name">Autoreleasing Pointers</h3>
+  <p class="para">When a function is declared as taking an <code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;Type&gt;</code>, it can accept any of the following:</p><ul class="list-bullet">
+  <li class="item"><p class="para"><code class="code-voice">nil</code>, which is passed as a null pointer</p></li><li class="item"><p class="para">An <code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;Type&gt;</code> value</p></li><li class="item"><p class="para">An <code class="code-voice">inout</code> expression, whose operand is primitive-copied to a temporary nonowning buffer. The address of that buffer is passed to the callee, and on return, the value in the buffer is loaded, retained, and reassigned into the operand.</p></li>
+</ul><p class="para">Note that this list does not include arrays.</p><p class="para">If you have declared a function like this one:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">takesAnAutoreleasingPointer</code>(<code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->AutoreleasingUnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->NSDate<!-- /a --></code>?&gt;) {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can call it in any of the following ways:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">x</code>: <code class="n"><!-- a href="" logicalPath="" -->NSDate<!-- /a --></code>? = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->AutoreleasingUnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->NSDate<!-- /a --></code>?&gt; = <code class="kt">nil</code></code></li>
+            <li><code class="code-voice"><code class="vc">takesAnAutoreleasingPointer</code>(<code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAnAutoreleasingPointer</code>(<code class="vc">p</code>)</code></li>
+            <li><code class="code-voice"><code class="vc">takesAnAutoreleasingPointer</code>(&amp;<code class="vc">x</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Types that are pointed to are not bridged. For example, <code class="code-voice">NSString **</code> comes over to Swift as <code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;NSString?&gt;</code>, not <code class="code-voice">AutoreleasingUnsafeMutablePointer&lt;String?&gt;</code>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID148">&#x200c;</a>
+  <h3 class="section-name">Function Pointers</h3>
+  <p class="para">C function pointers are imported into Swift as closures with C function pointer calling convention, denoted by the <code class="code-voice">@convention(c)</code> attribute. For example, a function pointer that has the type <code class="code-voice">int (*)(void)</code> in C is imported into Swift as <code class="code-voice">@convention(c) () -&gt; Int32</code>.</p><p class="para">When calling a function that takes a function pointer argument, you can pass a top-level Swift function, a closure literal, or <code class="code-voice">nil</code>. For example, consider Core Foundation’s <code class="code-voice">CFArrayCreateMutable(_:_:_:)</code> function. The <code class="code-voice">CFArrayCreateMutable(_:_:_:)</code> function takes a <code class="code-voice">CFArrayCallBacks</code> structure, which is initialized with function pointer callbacks:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">customCopyDescription</code>(<code class="vc">p</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Void<!-- /a --></code>&gt;) -&gt; <code class="n"><!-- a href="" logicalPath="" -->Unmanaged<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->CFString<!-- /a --></code>&gt;! {</code></li>
+            <li><code class="code-voice">    <code class="c">// return an Unmanaged&lt;CFString&gt;! value</code></code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">callbacks</code> = <code class="vc">CFArrayCallBacks</code>(</code></li>
+            <li><code class="code-voice">    <code class="vc">version</code>: <code class="m">0</code>,</code></li>
+            <li><code class="code-voice">    <code class="vc">retain</code>: <code class="kt">nil</code>,</code></li>
+            <li><code class="code-voice">    <code class="vc">release</code>: <code class="kt">nil</code>,</code></li>
+            <li><code class="code-voice">    <code class="vc">copyDescription</code>: <code class="vc">customCopyDescription</code>,</code></li>
+            <li><code class="code-voice">    <code class="vc">equal</code>: { (<code class="vc">p1</code>, <code class="vc">p2</code>) -&gt; <code class="n"><!-- a href="" logicalPath="" -->DarwinBoolean<!-- /a --></code> <code class="kt">in</code></code></li>
+            <li><code class="code-voice">        <code class="c">// return Bool value</code></code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">)</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">mutableArray</code> = <code class="vc">CFArrayCreateMutable</code>(<code class="kt">nil</code>, <code class="m">0</code>, &amp;<code class="vc">callbacks</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In the example above, the <code class="code-voice">CFArrayCallBacks</code> initializer uses <code class="code-voice">nil</code> values as arguments for the <code class="code-voice">retain</code> and <code class="code-voice">release</code> parameters, the <code class="code-voice">customCopyDescription</code> function as the argument for the <code class="code-voice">customCopyDescription</code> parameter, and a closure literal as the argument for the <code class="code-voice">equal</code> parameter.</p>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID185">&#x200c;</a>
+  <h3 class="section-name">Data Type Size Calculation</h3>
+  <p class="para">In C, the <code class="code-voice">sizeof</code> operator returns the size of any variable or data type. In Swift, you use the <code class="code-voice">sizeof</code> function to get the size of a given type, or the <code class="code-voice">sizeofValue</code> function to get the size of the type of a given value. However, unlike the C <code class="code-voice">sizeof</code> operator, the Swift <code class="code-voice">sizeof</code> and <code class="code-voice">sizeofValue</code> functions do not include any padding necessary for memory alignment. For example, the <code class="code-voice">timeval</code> structure in Darwin is reported to have a size of 16 bytes in C, but 12 bytes in Swift:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="vc">print</code>(<code class="vc">sizeof</code>(<code class="vc">timeval</code>))</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;12&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can use the <code class="code-voice">strideof</code> or <code class="code-voice">strideofValue</code> functions instead, to calculate the aligned memory size of a data type in a way that’s consistent with the output of the <code class="code-voice">sizeof</code> operator in C:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="vc">print</code>(<code class="vc">strideof</code>(<code class="vc">timeval</code>))</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;16&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For example, the <code class="code-voice">setsockopt</code> function can specify a <code class="code-voice">timeval</code> value as a receive timeout option (<code class="code-voice">SO_RCVTIMEO</code>) for a socket by passing a pointer to that value and the length of that value, which is calculated by <code class="code-voice">strideof</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">sockfd</code> = <code class="vc">socket</code>(<code class="vc">AF_INET</code>, <code class="vc">SOCK_STREAM</code>, <code class="m">0</code>)</code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">optval</code> = <code class="vc">timeval</code>(<code class="vc">tv_sec</code>: <code class="m">30</code>, <code class="vc">tv_usec</code>: <code class="m">0</code>)</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">optlen</code> = <code class="vc">socklen_t</code>(<code class="vc">strideof</code>(<code class="vc">timeval</code>))</code></li>
+            <li><code class="code-voice"><code class="kt">if</code> <code class="vc">setsockopt</code>(<code class="vc">sockfd</code>, <code class="vc">SOL_SOCKET</code>, <code class="vc">SO_RCVTIMEO</code>, &amp;<code class="vc">optval</code>, <code class="vc">optlen</code>) == <code class="m">0</code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Only Swift function types with C function reference calling convention may be used for function pointer arguments. Like a C function pointer, a Swift function type with the <code class="code-voice">@convention(c)</code> attribute does not capture the context of its surrounding scope.
+    	</p>
+    <p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH35-ID350" target="_self" -->Type Attributes<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  </aside>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID29">&#x200c;</a>
+  <h3 class="section-name">Global Constants</h3>
+  <p class="para">Global constants defined in C and Objective-C source files are automatically imported by the Swift compiler as Swift global constants.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID31">&#x200c;</a>
+  <h3 class="section-name">Preprocessor Directives</h3>
+  <p class="para">The Swift compiler does not include a preprocessor. Instead, it takes advantage of compile-time attributes, build configurations, and language features to accomplish the same functionality. For this reason, preprocessor directives are not imported in Swift.</p>
+  <section class="section">
+	<a id="TP40014216-CH8-ID149">&#x200c;</a>
+  <h3 class="section-name">Simple Macros</h3>
+  <p class="para">Where you typically used the <code class="code-voice">#define</code> directive to define a primitive constant in C and Objective-C, in Swift you use a global constant instead. For example, the constant definition <code class="code-voice">#define FADE_ANIMATION_DURATION 0.35</code> can be better expressed in Swift with <code class="code-voice">let FADE_ANIMATION_DURATION = 0.35</code>. Because simple constant-like macros map directly to Swift global variables, the compiler automatically imports simple macros defined in C and Objective-C source files.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID150">&#x200c;</a>
+  <h3 class="section-name">Complex Macros</h3>
+  <p class="para">Complex macros are used in C and Objective-C but have no counterpart in Swift. Complex macros are macros that do not define constants, including parenthesized, function-like macros. You use complex macros in C and Objective-C to avoid type-checking constraints or to avoid retyping large amounts of boilerplate code. However, macros can make debugging and refactoring difficult. In Swift, you can use functions and generics to achieve the same results without any compromises. Therefore, the complex macros that are in C and Objective-C source files are not made available to your Swift code.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH8-ID34">&#x200c;</a>
+  <h3 class="section-name">Build Configurations</h3>
+  <p class="para">Swift code and Objective-C code are conditionally compiled in different ways. Swift code can be conditionally compiled based on the evaluation of <em>build configurations</em>. Build configurations include the literal <code class="code-voice">true</code> and <code class="code-voice">false</code> values, command line flags, and the platform-testing functions listed in the table below. You can specify command line flags using <code class="code-voice">-D &lt;#flag#&gt;</code>.</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Function</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Valid arguments</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para"><code class="code-voice">os()</code></p></td>
+            <td><p class="para"><code class="code-voice">OSX</code>, <code class="code-voice">iOS</code>, <code class="code-voice">watchOS</code>, <code class="code-voice">tvOS</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para"><code class="code-voice">arch()</code></p></td>
+            <td><p class="para"><code class="code-voice">x86_64</code>, <code class="code-voice">arm</code>, <code class="code-voice">arm64</code>, <code class="code-voice">i386</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">The <code class="code-voice">arch(arm)</code> build configuration does not return <code class="code-voice">true</code> for ARM 64 devices. The <code class="code-voice">arch(i386)</code> build configuration returns <code class="code-voice">true</code> when code is compiled for the 32–bit iOS simulator.
+    	</p>
+    
+  </aside>
+</div><p class="para">A simple conditional compilation statement takes the following form:</p><span class="caption"></span>
+<div class="code-outline">
+  <ul class="code-outline-lines code-voice">
+    <li><pre class="code-voice"><code class="kt">#if</code> <em class="variable-text">build configuration</em></pre></li><li><pre class="code-voice"><em class="variable-text">statements</em></pre></li><li><pre class="code-voice"><code class="kt">#else</code></pre></li><li><pre class="code-voice"><em class="variable-text">statements</em></pre></li><li><pre class="code-voice"><code class="kt">#endif</code></pre></li>
+  </ul>
+</div><p class="para">The <em>statements</em> consist of zero or more valid Swift statements, which can include expressions, statements, and control flow statements. You can add additional build configuration requirements to a conditional compilation statement with the <code class="code-voice">&amp;&amp;</code> and <code class="code-voice">||</code> operators, negate build configurations with the <code class="code-voice">!</code> operator, and add condition blocks with <code class="code-voice">#elseif</code>:</p><span class="caption"></span>
+<div class="code-outline">
+  <ul class="code-outline-lines code-voice">
+    <li><pre class="code-voice"><code class="kt">#if</code> <em class="variable-text">build configuration</em> &amp;&amp; !<em class="variable-text">build configuration</em></pre></li><li><pre class="code-voice"><em class="variable-text">statements</em></pre></li><li><pre class="code-voice"><code class="kt">#elseif</code> <em class="variable-text">build configuration</em></pre></li><li><pre class="code-voice"><em class="variable-text">statements</em></pre></li><li><pre class="code-voice"><code class="kt">#else</code></pre></li><li><pre class="code-voice"><em class="variable-text">statements</em></pre></li><li><pre class="code-voice"><code class="kt">#endif</code></pre></li>
+  </ul>
+</div><p class="para">In contrast with condition compilation statements in the C preprocessor, conditional compilation statements in Swift must completely surround blocks of code that are self-contained and syntactically valid. This is because all Swift code is syntax checked, even when it is not compiled.</p>
+  
+</section>
+
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

@@ -25,21 +25,11 @@ class SettingsViewController: UIViewController, UINavigationBarDelegate, UITabBa
 
     
     override func viewDidLoad() {
-        
-//        containerView = self.storyboard?.instantiateViewController(withIdentifier: indexToName[tabIndex])
-//        self.addChildViewController(self.containerView!)
-//        self.settingsViewContainer.addSubview(self.containerView!.view)
-//        
-//        SettingsTabBar.selectedItem = SettingsTabBar.items![tabIndex] as UITabBarItem
-//        titleBar.title = indexToName[tabIndex]
-        
         super.viewDidLoad()
         
         SettingsTabBar.delegate = self
 
         // Do any additional setup after loading the view.
-//        SettingsTabBar.selectedItem = SettingsTabBar.items![tabIndex] as UITabBarItem
-//        titleBar.title = indexToName[tabIndex]
         
     }
     
@@ -71,6 +61,11 @@ class SettingsViewController: UIViewController, UINavigationBarDelegate, UITabBa
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         tabIndex = tabBar.items!.index(of: item)!
+        
+        for view in self.settingsViewContainer.subviews {
+            view.removeFromSuperview()
+        }
+        
         containerView?.removeFromParentViewController()
         
         changeViewUpdates()

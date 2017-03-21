@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="eng">
+  <head>
+    <meta content="ef3d9a23-1c7c-4c09-803d-ae23516db015" name="dtb:uid"/>
+    <meta content="3" name="dtb:depth"/>
+    <meta content="calibre (1.47.0)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Code of Conduct</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="u3ced3667-ca61-4354-aaab-d349f22252af" playOrder="1">
+      <navLabel>
+        <text>Title Page</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_000.html"/>
+    </navPoint>
+    <navPoint id="uc832d46d-68a4-46b4-a522-267095b6c911" playOrder="2">
+      <navLabel>
+        <text>EPIGRAPH</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_001.html"/>
+      <navPoint id="u8e0b853b-b337-4d32-a3d7-43d6ee4ec588" playOrder="3">
+        <navLabel>
+          <text>Chapter 1</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_002.html"/>
+      </navPoint>
+      <navPoint id="u80958e82-edc4-4505-b658-1d23c3389944" playOrder="4">
+        <navLabel>
+          <text>Chapter 2</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_003.html"/>
+      </navPoint>
+      <navPoint id="u936c129d-b1f7-42ed-aab0-63e463629d63" playOrder="5">
+        <navLabel>
+          <text>Chapter 3</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_004.html"/>
+      </navPoint>
+      <navPoint id="ucfc198c0-6b27-440c-8334-7e42101ecc44" playOrder="6">
+        <navLabel>
+          <text>Chapter 4</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_005.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="u29561fde-06a6-4f75-a01b-a159550c6ccf" playOrder="7">
+      <navLabel>
+        <text>THE FIRST DAY</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_007.html"/>
+      <navPoint id="u8e559379-8bcb-4137-b39a-b8aaebe9db2b" playOrder="8">
+        <navLabel>
+          <text>Chapter 5</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_008.html"/>
+      </navPoint>
+      <navPoint id="u378d56d5-1a97-4175-b7f9-7b5f3c70b396" playOrder="9">
+        <navLabel>
+          <text>Chapter 6</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_009.html"/>
+      </navPoint>
+      <navPoint id="ubc66cab6-25ce-435a-9e48-4b5a31397a61" playOrder="10">
+        <navLabel>
+          <text>Chapter 7</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_010.html"/>
+      </navPoint>
+      <navPoint id="u240474e6-3606-4879-b538-5e4a972a21b7" playOrder="11">
+        <navLabel>
+          <text>Chapter 8</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_011.html"/>
+      </navPoint>
+      <navPoint id="u47f54aa3-9eaa-4716-b834-6c52a8007889" playOrder="12">
+        <navLabel>
+          <text>Chapter 9</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_012.html"/>
+      </navPoint>
+      <navPoint id="u7b541234-c6ab-4431-8402-225de4559994" playOrder="13">
+        <navLabel>
+          <text>Chapter 10</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_013.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="u012ec288-41c2-41f8-86d2-97a61896bc4c" playOrder="14">
+      <navLabel>
+        <text>THE SECOND DAY</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_014.html"/>
+      <navPoint id="u06282e9a-b70d-442f-ab2e-2caa5b73d443" playOrder="15">
+        <navLabel>
+          <text>Chapter 11</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_015.html"/>
+      </navPoint>
+      <navPoint id="u52042a7a-8dc0-4bf1-9b14-88f0c7f81380" playOrder="16">
+        <navLabel>
+          <text>Chapter 12</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_016.html"/>
+      </navPoint>
+      <navPoint id="u569617d8-4d12-438b-ba0e-faba25734213" playOrder="17">
+        <navLabel>
+          <text>Chapter 13</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_017.html"/>
+      </navPoint>
+      <navPoint id="uc4a3b973-f372-4aee-b420-274262d33052" playOrder="18">
+        <navLabel>
+          <text>Chapter 14</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_018.html"/>
+      </navPoint>
+      <navPoint id="u42ad9c58-4112-45ce-ad55-da64f0860b53" playOrder="19">
+        <navLabel>
+          <text>Chapter 15</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_019.html"/>
+      </navPoint>
+      <navPoint id="u088d608b-96f3-4736-9fef-b9a66bb46895" playOrder="20">
+        <navLabel>
+          <text>Chapter 16</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_020.html"/>
+      </navPoint>
+      <navPoint id="u76376331-9472-4c27-8dab-a6b2d4955488" playOrder="21">
+        <navLabel>
+          <text>Chapter 17</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_021.html"/>
+      </navPoint>
+      <navPoint id="u244b67f2-be0c-4a6a-9de4-ba1bad9e276c" playOrder="22">
+        <navLabel>
+          <text>Chapter 18</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_022.html"/>
+      </navPoint>
+      <navPoint id="udf6a6724-902c-4e25-8c00-6f39e8edae65" playOrder="23">
+        <navLabel>
+          <text>Chapter 19</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_023.html"/>
+      </navPoint>
+      <navPoint id="ua0853231-1d26-440c-8e24-ea486c784c48" playOrder="24">
+        <navLabel>
+          <text>Chapter 20</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_024.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="u41d78229-2e40-472f-abe4-3104ce2d0e64" playOrder="25">
+      <navLabel>
+        <text>THE THIRD DAY</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_025.html"/>
+      <navPoint id="u6549832f-092f-47f1-9079-49b5700e9c03" playOrder="26">
+        <navLabel>
+          <text>Chapter 21</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_026.html"/>
+      </navPoint>
+      <navPoint id="ue6dedd4c-0b60-4726-9f16-b1996b0ec6c3" playOrder="27">
+        <navLabel>
+          <text>Chapter 22</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_027.html"/>
+      </navPoint>
+      <navPoint id="ud0a17e12-975c-4572-98c6-6540f46c0f88" playOrder="28">
+        <navLabel>
+          <text>Chapter 23</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_028.html"/>
+      </navPoint>
+      <navPoint id="u6f8c6c63-77ed-45ba-aa17-a17d1c461484" playOrder="29">
+        <navLabel>
+          <text>Chapter 24</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_029.html"/>
+      </navPoint>
+      <navPoint id="ud4ffcc60-7dc7-41ba-807f-e0b8b73e86e1" playOrder="30">
+        <navLabel>
+          <text>Chapter 25</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_030.html"/>
+      </navPoint>
+      <navPoint id="u4eab6251-6951-43af-96a8-dc80d35b7265" playOrder="31">
+        <navLabel>
+          <text>Chapter 26</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_031.html"/>
+      </navPoint>
+      <navPoint id="u77c3cb63-fba9-4159-a1e2-6bcec877bf87" playOrder="32">
+        <navLabel>
+          <text>Chapter 27</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_032.html"/>
+      </navPoint>
+      <navPoint id="ua0fbf5fb-fa3b-4ad8-87e9-66492aa79c26" playOrder="33">
+        <navLabel>
+          <text>Chapter 28</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_033.html"/>
+      </navPoint>
+      <navPoint id="ucc87d2b3-ef72-4f08-af56-511b187cb0ca" playOrder="34">
+        <navLabel>
+          <text>Chapter 29</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_034.html"/>
+      </navPoint>
+      <navPoint id="u974bc3b1-35f8-423f-a8db-f59282c79208" playOrder="35">
+        <navLabel>
+          <text>Chapter 30</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_035.html"/>
+      </navPoint>
+      <navPoint id="u8bf9a4cd-cb83-430a-beee-3cdaba608fac" playOrder="36">
+        <navLabel>
+          <text>Chapter 31</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_036.html"/>
+      </navPoint>
+      <navPoint id="u01671165-9a0a-4386-a934-028adf1febc5" playOrder="37">
+        <navLabel>
+          <text>Chapter 32</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_037.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="ubf85f5bd-047b-4ac1-ba13-8ae483943f45" playOrder="38">
+      <navLabel>
+        <text>AFTERMATH</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_039.html"/>
+      <navPoint id="u8a89d0ac-7277-403b-a24f-09ca0bb19786" playOrder="39">
+        <navLabel>
+          <text>Chapter 33</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_040.html"/>
+      </navPoint>
+      <navPoint id="uee7b049f-0c5d-4cb1-bba7-8cae55fd1648" playOrder="40">
+        <navLabel>
+          <text>Chapter 34</text>
+        </navLabel>
+        <content src="SmithKristine-CodeOfConduct_split_041.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="u8ff80ebd-d168-497d-ac8b-0ac533d3f648" playOrder="41">
+      <navLabel>
+        <text>EPILOGUE</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_042.html"/>
+    </navPoint>
+    <navPoint id="u715b8274-76ce-46cb-9b79-9f18a2cf0217" playOrder="42">
+      <navLabel>
+        <text>Copyright &amp; Credits</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_043.html"/>
+    </navPoint>
+    <navPoint id="ufb251ab6-61be-4c1c-9dea-d165fd393898" playOrder="43">
+      <navLabel>
+        <text>Acknowledgments</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_044.html"/>
+    </navPoint>
+    <navPoint id="u7b63fcf6-5b94-4250-8ae6-72dfcb655800" playOrder="44">
+      <navLabel>
+        <text>Books by Kristine Smith</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_045.html"/>
+    </navPoint>
+    <navPoint id="ub96b7fd1-6978-4ec6-ab62-d317203c2fe9" playOrder="45">
+      <navLabel>
+        <text>About the Author</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_046.html"/>
+    </navPoint>
+    <navPoint id="u03609cc0-c8cc-4402-aada-4fb57909ab99" playOrder="46">
+      <navLabel>
+        <text>About Book View Café</text>
+      </navLabel>
+      <content src="SmithKristine-CodeOfConduct_split_047.html"/>
+    </navPoint>
+  </navMap>
+</ncx>

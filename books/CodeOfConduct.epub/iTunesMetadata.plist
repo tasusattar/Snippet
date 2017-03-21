@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apple-id</key>
+	<string>tasawarsattar22@gmail.com</string>
+	<key>artistId</key>
+	<integer>364512440</integer>
+	<key>artistName</key>
+	<string>Kristine Smith</string>
+	<key>asset-info</key>
+	<dict>
+		<key>file-size</key>
+		<integer>845212</integer>
+		<key>flavor</key>
+		<string>pluspub</string>
+	</dict>
+	<key>book-info</key>
+	<dict>
+		<key>PageProgression</key>
+		<string>default</string>
+		<key>asset-info</key>
+		<dict>
+			<key>file-size</key>
+			<integer>845212</integer>
+			<key>flavor</key>
+			<string>pluspub</string>
+		</dict>
+		<key>publication-version</key>
+		<integer>161038719</integer>
+	</dict>
+	<key>cover-writing-mode</key>
+	<string>horizontal</string>
+	<key>desktopSupportLevel</key>
+	<string>supported</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>explicit</key>
+	<integer>2</integer>
+	<key>fileExtension</key>
+	<string>epub</string>
+	<key>genre</key>
+	<string>Adventure</string>
+	<key>genreId</key>
+	<integer>11006</integer>
+	<key>isbn</key>
+	<string>9781611385588</string>
+	<key>itemId</key>
+	<integer>1060935662</integer>
+	<key>itemName</key>
+	<string>Code of Conduct</string>
+	<key>kind</key>
+	<string>ebook</string>
+	<key>longDescription</key>
+	<string>Captain Jani Kilian’s life should have ended in front of a firing squad. Instead, she evaded battlefield justice by dying in a transport crash. End of story, according to official Commonwealth Service records.&amp;#xa0;&lt;br /&gt;&lt;br /&gt;
+But doctors repaired her in secret, using the most advanced Service Medical technologies available, or so they assured her. In the last days of the idomeni civil war, she escaped their homeworld of Shèrá, and spent the next 18 years on the run.&lt;br /&gt;&lt;br /&gt;
+But someone like Jani leaves a trail no matter how hard they try to hide it, and she soon learns the Service hunt for her never ended. When Interior Minister Evan van Reuter, her former lover, tracks her down and begs her help in finding his wife’s killer, she has no choice but to agree.&amp;#xa0;&lt;br /&gt;&lt;br /&gt;
+The search takes her to the Commonwealth capital of Chicago, a hotbed of political intrigue as dangerous as any warzone. As the danger mounts, so do Jani’s struggles. Her rebuilt body is breaking down, and memories long suppressed are flooding back. Of one horrible night 18 years ago, and the gut-wrenching decision that changed her life forever.</string>
+	<key>obeyPageBreaks</key>
+	<integer>1</integer>
+	<key>pageCount</key>
+	<integer>448</integer>
+	<key>primaryLanguage</key>
+	<string>en</string>
+	<key>publisher</key>
+	<string>BookView Cafe</string>
+	<key>purchaseDate</key>
+	<string>2017-03-17T06:03:45Z</string>
+	<key>releaseDate</key>
+	<string>2015-12-01T08:00:00Z</string>
+	<key>s</key>
+	<integer>143455</integer>
+	<key>scroll-axis</key>
+	<string>default</string>
+	<key>shouldDisableOptimizeSpeed</key>
+	<true/>
+	<key>shouldDisableTouchEmulation</key>
+	<true/>
+	<key>sort-artist</key>
+	<string>Smith, Kristine</string>
+	<key>sort-name</key>
+	<string>Code of Conduct</string>
+	<key>vendorId</key>
+	<integer>118042206</integer>
+	<key>versionRestrictions</key>
+	<integer>16843008</integer>
+	<key>year</key>
+	<integer>2015</integer>
+</dict>
+</plist>

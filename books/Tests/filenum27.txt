@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Code of Conduct</title>
+    <meta content="Kristine Smith" name="Author"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="ToC" id="calibre_toc_35">Chapter 22</h2>
+
+
+<p class="NormalFirst">
+Angevin’s office, at the opposite end of the wing from
+Durian Ridgeway’s, at first looked like a smaller version of her boss’s grey
+aerie.
+</p>
+<p class="Normal">
+It was only upon closer inspection that the differences
+became obvious. Instead of Durian’s great art, Angevin had hung holos of family
+and friends on her walls. From a well-lit place overlooking the sitting area,
+Hansen Wyle’s face, young enough for the uninformed to think him Angevin’s twin
+brother, smiled down.
+</p>
+<p class="Normal">
+<i class="calibre4">She’s doing ok</i>, Jani thought at the portrait. <i class="calibre4">She’s
+got your mouth and your temper, and your knack for sussing people out. It’s
+going to take some effort for her to shake off Ridgeway, but she’s got a colony
+boy to help her. You’d like him, I think. Too bad you’re not here to wipe the
+Earth glitter from his eyes</i>.
+</p>
+<p class="Normal">
+“Tell me what you’re looking for.” Angevin sat down at her
+desk and activated her workstation. “I’ve got top-level clearance—I can find
+you anything you need.”
+</p>
+<p class="Normal">
+“Can you get into Cabinet Court evidence files?” Jani
+dragged a chair around to Angevin’s side of the desk.
+</p>
+<p class="Normal">
+“Oh, you don’t ask for much, do you?” Angevin fingered her
+way through one color-coded screen after another. “This is going to be a
+one-shot, you know. As soon as systems sense me in there, they’ll shut down and
+trace back.”
+</p>
+<p class="Normal">
+Jani dug into her duffel for Lucien’s jig. “This should
+help,” she said as she attached the device to Angevin’s workstation. “I’ve got
+passwords, too.”
+</p>
+<p class="Normal">
+Angevin accepted the piece of wrapping paper with held
+breath. “That goddamn toy soldier,” she said as she read the list of words. “I
+am not going to ask—I do not want to know.” She uttered the first few
+passwords, then paused. “Where are we going?”
+</p>
+<p class="Normal">
+“Rauta Shèràa,” Jani said. “Both Base and Consulate. SRS-1
+designates.”
+</p>
+<p class="Normal">
+“This is what you were doing in the Library, wasn’t it?”
+</p>
+<p class="Normal">
+“Yes. I had to quit before I could finish.”
+</p>
+<p class="Normal">
+“What do you think you’ll find there?” Angevin looked
+directly at her display, uttered a few passwords in Hortensian German, then
+turned back to Jani as she waited for the codes to clear. “A signed letter from
+Acton van Reuter confessing to everything?”
+</p>
+<p class="Normal">
+Jani rubbed her face, then looked around for a source of
+something cold to drink. “A few communication logs with the right dates and
+names could serve the same function.” She couldn’t spot any ewers or coolers
+and made do with a trip to the bathroom sink. “I know when his Excellency was
+putting in his time at the Consulate, his father checked up on him on a fairly
+regular basis.” <i class="calibre4">Boy, did I know</i>. She filled a large dispo from the tap,
+drained it, and filled it again. “Acton must have had a source or two there. It
+was a well-known fact he didn’t approve of his son working so far from home.”
+</p>
+<p class="Normal">
+Angevin nodded. “Yeah, I heard he was a real stick. Durian
+calls him The Old Hawk. Like he was some kind of god.”
+</p>
+<p class="Normal">
+“If you were an Earth-firster who believed in keeping the
+colonies on a short leash, he was.” Jani returned to her seat, dispo in hand.
+“Prime Minister Cao was a disciple of his, whether she’ll admit it now or not.
+Her first major seat was on Acton’s Back Door Cabinet—that interim election he
+won after Nawar was forced to resign, right after the idomeni kicked us out.
+Cao served as Deputy Finance Minister, I think.”
+</p>
+<p class="Normal">
+Angevin toyed with her touchboard. “Maybe she just played up
+to him to get her foot in the big door. Wouldn’t be the first time an old
+blowhard got sucked down his own pipe.”
+</p>
+<p class="Normal">
+Jani pretended not to hear Angevin’s tacit admission with
+regard to Durian Ridgeway. “Cao tries to sound more moderate now,” she
+continued, “but she’s coming down pretty hard on Ulanova’s efforts to expand
+the concept of colonial semiautonomy. Not that I think the Exterior Minister’s
+motives are pure.”
+</p>
+<p class="Normal">
+Angevin folded her arms, her eyes fixed on her flickering
+screen. “Durian thinks she wants to be some kind of empress. Of course, he’s
+just repeating His Excellency’s opinion. If he had to choose between Empress
+Ulanova and political oblivion, though, he’d crown her himself.”
+</p>
+<p class="Normal">
+Jani hid her grin at Angevin’s assessment of her superior. <i class="calibre4">What
+does Nema think when he looks at you? Does he look for a copy of Hansen and
+come away disappointed</i>? He never grasped how different it could be for
+humanish, especially a pretty humanish female laboring under her legendary
+father’s shadow. But Hansen the iconoclast appreciated the rebel. Would he have
+understood that his daughter was being as daring in her way as he had been in
+his?
+</p>
+<p class="Normal">
+<i class="calibre4">But you know how she really feels—she’s got your face on
+her wall where she can see it at all times</i>.
+</p>
+<p class="Normal">
+“We’re in the index.” Angevin’s fingers drummed against the
+arms of her chair. “There are executive staff comlogs and junior up-and-comer
+comlogs. Affiliated Service staff. Security.” Her eyes widened. “There was even
+a kitchen comlog. Had to be, I guess. We must have had a hell of a time
+shipping food into Rauta Shèràa.”
+</p>
+<p class="Normal">
+<i class="calibre4">Doe, you just said a mouthful and a half</i>. Jani had
+been involved in negotiating the supply shipments. That was due in part to her
+training and education, but also to the fact that the Laumrau had seemed afraid
+of her even then.
+</p>
+<p class="Normal">
+<i class="calibre4">I was Nema’s, and the first skirmishes had already taken
+place in the Vynshà strongholds in the south</i>. The Laumrau felt sure the
+chief propitiator’s Eyes and Ears would deliberately botch a shipment schedule,
+sending the wrong type of humanish food into Rauta Shèràa at the wrong time.
+That would have brought severe dishonor upon their blessed dominant city,
+providing the Vynshà with a compelling reason to force the Laumrau to
+relinquish their power. <i class="calibre4">Maybe I should have screwed up. I could have saved
+us all a great deal of trouble</i>.
+</p>
+<p class="Normal">
+“Try the executive staff logs first,” she said to Angevin.
+“The Old Hawk was status-conscious, even when it came to snitches.”
+</p>
+<p class="Normal">
+“Strong words, Risa. Almost as though you speak from
+personal experience.” Angevin keyed in Jani’s directive, then tossed her an
+inquisitive look. “Durian said you’ve spent your entire career ‘working out.’
+Did you ever cross paths with our minister’s late daddy?”
+</p>
+<p class="Normal">
+<i class="calibre4">Paths, words, swords</i>. Jani weighed her words. “The
+occasional order trickled down. I was pretty low-level back then. Didn’t suffer
+many direct hits.”
+</p>
+<p class="Normal">
+“Were you ever on Shèrá? My dad spent eight years there,
+with school and his work as Laumrau liaison. That’s why it surprises me that
+Durian admires him so much. He and Acton van Reuter were constantly at each
+other’s throats. It wasn’t until I was at university that my mom finally told
+me about some of the battles they’d had. Maybe she thought it would scare me,
+keep me from studying paper. She told me van Reuter actually threatened my dad
+with a treason charge if he didn’t cease and desist in his efforts to improve
+idomeni-human relations.”
+</p>
+<p class="Normal">
+Jani dredged her memories, trying to separate the things she
+could have heard through the intelligence grapevine from those only a deep
+insider could know. It wasn’t easy—like trying to cleave a single person and
+keep both halves alive.
+</p>
+<p class="Normal">
+“Acton had Laumrau support in that, actually,” she finally
+said. “Everyone at the top of the tree gets scared when the ground beneath
+starts shaking. Parallels what’s going on now. The Vynshàrau are having a hell
+of a time bringing the Haárin to heel, even though Haárin have been Vynshàrau
+hounds for the past several generations. And of course, we have the colonial
+problem.”
+</p>
+<p class="Normal">
+“On the macro and micro level.” Angevin made a wry face as
+she entered a series of rapid keyings. “This isn’t working.”
+</p>
+<p class="Normal">
+Jani strained for a better view of the display. “What’s
+wrong?”
+</p>
+<p class="Normal">
+“Don’t look at it!” Angevin gave Jani a one-armed shove that
+propelled her back into her chair. “My retinal lock’s activated. If the display
+senses you looking at it, it’ll shut my workstation down, and I’ll need to get
+Ginny Doyle here in person to get it back up.” She exhaled with a shudder.
+“Ginny gets very ‘Colonel-ly’ when she’s rousted out of bed at three in the
+morning.” She barked a few more commands at her screen, then slumped back in
+defeat. “It won’t let me in. I’m using all the words you gave me, and it won’t
+let me in.”
+</p>
+<p class="Normal">
+Jani edged forward as much as she dared. “What’s the reason
+code?”
+</p>
+<p class="Normal">
+“PM-seven eighty.”
+</p>
+<p class="Normal">
+“Lock-down by the Prime Minister?”
+</p>
+<p class="Normal">
+“More than that. An examiner’s lien. They’re not even
+letting the members of the Court look at it now.” Angevin’s voice dropped to a
+whisper. “They know we’re here.”
+</p>
+<p class="Normal">
+“Not if that jig’s working like it’s supposed to.” Unless
+Lucien had set her up. Jani took another gulp of water. What she had consumed
+so far sloshed in her stomach like an internal sea, whitecaps, undertow, and
+all. “I’ve got Ulanova’s passwords. She’s driving the Court—if she can’t get
+in, nobody can. Back out and try again.” She watched Angevin work. As the
+minutes passed, she grew conscious of a distinctive aroma. “I think we have
+company,” she whispered.
+</p>
+<p class="Normal">
+“What?” Angevin scowled as she picked up the scent. “That
+jerk.” She turned toward her door. It was just barely ajar, the crack scarcely
+visible.
+</p>
+<p class="Normal">
+“Don’t you arm a proximity alarm when you work late?” Jani
+asked.
+</p>
+<p class="Normal">
+“Why bother? Who the hell can get up here?” Angevin punched
+her touchboard, activating too many pads at once and eliciting a squeal from
+the helpless electronic array. Then, faint as the clove scent in the air, a
+smile of triumph flicked to life. “You may as well come in, Steve,” she called
+out. “We know you’re there.”
+</p>
+<p class="Normal">
+The seconds ticked by. Then the door eased open and Steve
+stepped inside. He still wore the clothes he’d had on when Jani had last seen
+him, but the overall effect had now degraded to
+distinctly-rumpled-and-needs-a-shave-to-boot. Portrait of a young man who had
+bought dinner from a machine and slept in his office.
+</p>
+<p class="Normal">
+“I were just walking by,” he began lamely, the telltale
+nicstick smoking weakly in his hand. “Saw lights. Wondered what were up.” His
+eyes chilled as he looked at Angevin. “My my, aren’t we dressed fancy for the
+office.” He sneered. “Oh. Right. Stupid of me. You had a <i class="calibre4">dinner</i>
+tonight.”
+</p>
+<p class="Normal">
+“It was canceled.”
+</p>
+<p class="Normal">
+“Oh. That’s too bad.” He smiled too brightly at Jani. “Well,
+Risa, you’re looking well!”
+</p>
+<p class="Normal">
+Jani eyed Angevin, who looked quite pinched around the
+mouth. “Thanks, but I don’t see how that’s possible. Angevin found me on my
+bathroom floor. Too much to drink at dinner.” She fingered the tender bruise on
+her forehead. “I doubt I look any better than you do.” Steve winced at that,
+while Angevin stiffened. <i class="calibre4">Good—piss them both off</i>.
+</p>
+<p class="Normal">
+Silence filled every available space. Angevin sat with her
+arms crossed, eyes fixed on her bare desktop. Steve rocked slowly from one foot
+to the other.
+</p>
+<p class="Normal">
+“She told me.” Angevin jerked her chin toward Jani. “I had
+to hear it from a stranger. You couldn’t tell me.”
+</p>
+<p class="Normal">
+Steve stepped toward the desk, one foot in front of the
+other, like a man on a balance beam. “Didn’t want it to rub off on you.” He
+flicked the nicstick into the trashzap. “Didn’t want you to go through what the
+others did during the purge.”
+</p>
+<p class="Normal">
+“So you hooked up with <i class="calibre4">her</i>? Talked about it all with <i class="calibre4">her</i>?
+And left me to wonder what the hell happened?”
+</p>
+<p class="Normal">
+“Betha needs a friend.” Steve toed the carpet. “Needs
+support. You’re different. You’re a <i class="calibre4">Wyle</i>. You don’t need anybody.”
+</p>
+<p class="Normal">
+Angevin closed her eyes and covered her mouth with her hand.
+</p>
+<p class="Normal">
+“Well, we both need you now,” Jani said. “We’re trying to
+code into Court of Inquiry evidence files and systems won’t let us in.”
+</p>
+<p class="Normal">
+“Oh, <i class="calibre4">phfft</i>, you’re not getting any of that,” Steve
+said, “it all got seven-eightied about an hour ago. Expectin’ an examiner’s
+lien from Cao’s head dex any minute now. They’re shuttin’ us down.”
+</p>
+<p class="Normal">
+Angevin spun her chair to face him. “How do you know!”
+</p>
+<p class="Normal">
+He shrugged. “Everyone’s talking about it down the hall.
+Third shift’s in a tizz. Figured it would happen, though. Cao never were happy
+with all that House paper we shipped her last month. She claimed we were
+withholding from an Official Inquiry. Her complaint got bumped to your boss for
+reply.” He eyed Angevin suspiciously. “Airn’t heard nothing of it since. Till
+tonight.”
+</p>
+<p class="Normal">
+“This is the first I’ve heard of any of this.” Angevin
+glared at Steve. “Just one more thing you couldn’t tell me!”
+</p>
+<p class="Normal">
+“Don’t look at me like that. We were <i class="calibre4">sworn</i>!” Steve
+pulled at his pockets and freed a fresh ’stick. “Doyle stood at the door while
+we got all the paper together, watched us like a bloody vulture. Ever see her
+when she’s on? All she needs are spurs and a whip.” He dragged a chair in the
+vicinity of the desk, closer to Jani than to Angevin, and sat down with a heavy
+sigh. “I saw her in my sleep for a week after, bald head shinin’.”
+</p>
+<p class="Normal">
+“That’s exactly the paper I asked you to look for.” Jani
+looked at Steve until he began leaning in Angevin’s direction. “I would have
+appreciated it if you’d have told me you couldn’t get it.”
+</p>
+<p class="Normal">
+Steve cracked the ’stick’s ignition tip. “Didn’t say that,
+did I? All I said were you wouldn’t be able to access the fiche through Ange’s
+station.” He studied Jani through his smoky veil. “I can get the originals.”
+</p>
+<p class="Normal">
+“You held back Consulate paper from a Court of Inquiry,
+too!” Jani’s temples started to throb.
+</p>
+<p class="Normal">
+“I’m sure he had a good—I’m sure he had a reason.” Angevin’s
+eyes were now as stormy as Jani’s stomach. “Which he will explain to us now.”
+</p>
+<p class="Normal">
+Steve scooted his chair away from the desk. “The originals
+we’ve got here were from His Excellency’s private library. Willed to him by his
+father. Justice is supposed to decide soon whether private papers can be
+claimed by the PM under a blanket subpoena. Cao wouldn’t tell us why exactly
+she wanted them, so van Reuter told her to blow. Betha and me split ’em up—the
+Lady had given them to her for safekeeping.”
+</p>
+<p class="Normal">
+“Lyssa?” Jani nodded. That made sense. A great deal
+concerning old Acton must reside in those papers. “I want both sets. Where’s
+Betha?” She stood up. “Home?”
+</p>
+<p class="Normal">
+Steve shook his head. “Vacant office down the hall. I saw her
+a few hours ago. She told me she’d probably be here most of the night, but that
+she’d have her papers in the morning. I’d bring mine from where I stashed them
+in my flat. We’d give them to you together.” He blinked. “Teamwork, you know.”
+</p>
+<p class="Normal">
+Angevin growled. “Teamwork, my ass! I’ll show her teamwork.”
+She swatted her workstation into standby, then ran from the room. Steve and
+Jani looked at one another, then pelted after her.
+</p>
+<p class="Normal">
+The vacant office was dark. Its trashzap had been recharged.
+</p>
+<p class="Normal">
+“What time do the cleaners come through?” Jani asked an
+extremely subdued Steve.
+</p>
+<p class="Normal">
+“Eleven,” he replied. “She said she’d be here till morning.”
+He pulled open a drawer, pushed it closed. “She wouldn’t have run out on me.”
+He leaned against the desk. “She wouldn’t have left me behind.” He pushed a
+hand through his hair, his eyes wide and lost. Angevin reached out to him,
+hesitated, then muttered, “Screw this,” and threw herself into his arms.
+</p>
+<p class="Normal">
+“She probably went home,” Jani said after a time. “I’ll try
+to get in touch with her from here. You two try her place, then get some sleep.
+We’ll meet in Angevin’s office at oh-eight. Don’t forget your half of the docs.
+Steve?” She waited in the doorway for some response from the enmeshed pair,
+finally detecting a hint of a nod from Steve. “Oh-eight,” she repeated, closing
+the door softly.
+</p>
+<p class="Normal">
+The grumble in her stomach sounded animal. She stopped at a
+vend cooler in Doc Control’s deserted cafeteria and bought juice and a
+sandwich. Then she dragged a chair over to the Houseline array in the corner of
+the room. In between mouthfuls, she made calls. House Security, the desk clerk
+at the Interior employee hostel, every third-shift manager she could find. The
+Doc pool. The parts bins. The Library. Every cafeteria in the complex. No one
+recalled seeing Betha, although the parts-bins clerk remembered her afternoon
+visit.
+</p>
+<p class="Normal">
+Jani dropped by Personnel and asked for Beth’a homecode.
+They refused. When she dropped Evan’s name, they told her she needed Ridgeway’s
+sign-off to get the number.
+</p>
+<p class="Normal">
+She left the cafeteria and roamed the Doc Control halls,
+checking every vacant office and conference room. The rest rooms, men’s and
+women’s. The alternate breakroom. Janitor’s closets, storage rooms, stairwells.
+She stopped short of pushing up ceiling tiles and checking crawl spaces. Harder
+to cram a body in a space like that. Messier. She didn’t want to risk
+destroying evidence.
+</p>
+<p class="Normal">
+<i class="calibre4">You’ve got death on the brain. Betha’s home in bed. Take
+the hint</i>. Jani trudged to the elevators and rode down to the
+restricted-access charge lots. On her way to the Main-Private tunnel, a
+Security guard tried to stop her, but when he looked her in the face he
+hesitated. Then he stepped aside and let her pass.
+</p>
+
+</body></html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH2">&#x200c;</a><a id="TP40014216-CH2-ID0">&#x200c;</a>
+    <h2 class="chapter-name">Basic Setup</h2>
+      
+      	<section class="section">
+      		<p class="para">Swift is designed to provide seamless compatibility with Cocoa and Objective-C. You can use Objective-C APIs in Swift, and you can use Swift APIs in Objective-C. This makes Swift an easy, convenient, and powerful tool to integrate into your development workflow.</p><p class="para">This guide covers three important aspects of Swift and Objective-C compatibility that you can use to your advantage when developing Cocoa apps:</p><ul class="list-bullet">
+  <li class="item"><p class="para"><strong>Interoperability</strong> lets you interface between Swift and Objective-C code, allowing you to use Swift classes in Objective-C and to take advantage of familiar Cocoa classes, patterns, and practices when writing Swift code.</p></li><li class="item"><p class="para"><strong>Mix and match</strong> allows you to create mixed-language apps containing both Swift and Objective-C files that can communicate with each other.</p></li><li class="item"><p class="para"><strong>Migration</strong> from existing Objective-C code to Swift is made easy with interoperability and mix and match, making it possible to replace parts of your Objective-C apps with the latest Swift features.</p></li>
+</ul>
+<p class="para">Before you get started learning about these features, you need a basic understanding of how to set up a Swift environment in which you can access Cocoa system frameworks.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH2-ID2">&#x200c;</a>
+  <h3 class="section-name">Setting Up Your Swift Environment</h3>
+  <p class="para">To start experimenting with Cocoa app development using Swift, create a new Swift project from one of the provided Xcode templates.</p><p class="para"><strong>To create a Swift project in Xcode</strong></p><ol class="list-number">
+  <li class="item"><p class="para">Choose File &gt; New &gt; Project &gt; (iOS, watchOS, tvOS, <em>or</em> OS X) &gt; Application &gt; <em>your template of choice</em>.</p></li><li class="item"><p class="para">Click the Language pop-up menu and choose Swift.</p></li>
+</ol><div class="figure">
+	<span class="caption"></span>
+	<img src="Art/newproject_2x.png" alt="image: ../Art/newproject_2x.png" width="764" height="552" />
+</div><p class="para">A Swift project’s structure is nearly identical to an Objective-C project, with one important distinction: Swift has no header files. There is no explicit delineation between the implementation and the interface—all of the information about a class, function, or constant resides in a single <code class="code-voice">.swift</code> file. This is discussed in more detail in <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID122" href="MixandMatch.xhtml">Swift and Objective-C in the Same Project</a>.</p><p class="para">From here, you can start experimenting by writing Swift code in the app delegate or a new Swift file you create by choosing File &gt; New &gt; File &gt; (iOS, watchOS, tvOS, <em>or</em> OS X) &gt; Source &gt; Swift.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Executables built from the command line expect to find the Swift libraries in their <code class="code-voice">@rpath</code>. If you plan to ship a Swift executable built from the command line, you’ll need to ship the Swift dynamic libraries as well. Swift executables built from within Xcode have the runtime statically linked.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH2-ID4">&#x200c;</a>
+  <h3 class="section-name">Understanding the Swift Import Process</h3>
+  <p class="para">After you have your Xcode project set up, you can import any framework from Cocoa or Cocoa Touch to start working with Objective-C from Swift.</p><p class="para">Any Objective-C framework or C library that supports <em>modules</em> can be imported directly into Swift. This includes all of the Objective-C system frameworks—such as Foundation, UIKit, and SpriteKit—as well as common C libraries supplied with the system. For example, to use Foundation APIs from a Swift file, add the following import statement to the top of the file:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">Foundation</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">With this import statement, that Swift file can now access all of Foundation’s classes, protocols, methods, properties, and constants.</p><p class="para">The import process is straightforward. Objective-C frameworks vend APIs in header files. In Swift, those header files are compiled down to Objective-C modules, which are then imported into Swift as Swift APIs. The importing process determines how functions, classes, methods, and types declared in Objective-C code appear in Swift. For functions and methods, this process affects the types of their arguments and return values. For types, the process of importing can have the following effects:</p><ul class="list-bullet">
+  <li class="item"><p class="para">Remap certain Objective-C types to their equivalents in Swift, like <code class="code-voice">id</code> to <code class="code-voice">AnyObject</code></p></li><li class="item"><p class="para">Remap certain Objective-C core types to their alternatives in Swift, like <code class="code-voice">NSString</code> to <code class="code-voice">String</code></p></li><li class="item"><p class="para">Remap certain Objective-C concepts to matching concepts in Swift, like pointers to optionals</p></li>
+</ul><p class="para">For more information on using Objective-C in Swift, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID35" href="InteractingWithObjective-CAPIs.xhtml">Interacting with Objective-C APIs</a>.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">You cannot import C++ code directly into Swift. Instead, create an Objective-C or C wrapper for C++ code.
+    	</p>
+    
+  </aside>
+</div><p class="para">The model for importing Swift into Objective-C is similar to the one used for importing Objective-C into Swift. Swift vends its APIs—such as from a framework—as Swift modules. Alongside these Swift modules are generated Objective-C headers. These headers vend the APIs that can be mapped back to Objective-C. Some Swift APIs do not map back to Objective-C because they leverage language features that are not available in Objective-C.</p><p class="para">For more information on using Swift in Objective-C, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID122" href="MixandMatch.xhtml">Swift and Objective-C in the Same Project</a>.</p>
+  
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

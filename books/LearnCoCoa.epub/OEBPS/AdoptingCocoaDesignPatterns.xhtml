@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH7">&#x200c;</a><a id="TP40014216-CH7-ID6">&#x200c;</a>
+    <h2 class="chapter-name">Adopting Cocoa Design Patterns</h2>
+      
+      	<section class="section">
+      		<p class="para">One aid in writing well-designed, resilient apps is to use Cocoa’s established design patterns. Many of these patterns rely on classes defined in Objective-C. Because of Swift’s interoperability with Objective-C, you can take advantage of these common patterns in your Swift code. In many cases, you can use Swift language features to extend or simplify existing Cocoa patterns, making them more powerful and easier to use.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH7-ID8">&#x200c;</a>
+  <h3 class="section-name">Delegation</h3>
+  <p class="para">In both Swift and Objective-C, delegation is often expressed with a protocol that defines the interaction and a conforming delegate property. Just as in Objective-C, before you send a message that a delegate may not respond to, you ask the delegate whether it responds to the selector. In Swift, you can use optional chaining to invoke an optional protocol method on a possibly <code class="code-voice">nil</code> object and unwrap the possible result using <code class="code-voice">if–let</code> syntax. The code listing below illustrates the following process:</p><ol class="list-number">
+  <li class="item"><p class="para">Check that <code class="code-voice">myDelegate</code> is not <code class="code-voice">nil</code>.</p></li><li class="item"><p class="para">Check that <code class="code-voice">myDelegate</code> implements the method <code class="code-voice">window:willUseFullScreenContentSize:</code>.</p></li><li class="item"><p class="para">If 1 and 2 hold true, invoke the method and assign the result of the method to the value named <code class="code-voice">fullScreenSize</code>.</p></li><li class="item"><p class="para">Print the return value of the method.</p></li>
+</ol><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MyDelegate</code>: <code class="n"><!-- a href="" logicalPath="" -->NSObject<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->NSWindowDelegate<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">func</code> <code class="vc">window</code>(<code class="vc">window</code>: <code class="n"><!-- a href="" logicalPath="" -->NSWindow<!-- /a --></code>, <code class="vc">willUseFullScreenContentSize</code> <code class="vc">proposedSize</code>: <code class="n"><!-- a href="" logicalPath="" -->NSSize<!-- /a --></code>) -&gt; <code class="n"><!-- a href="" logicalPath="" -->NSSize<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">return</code> <code class="vc">proposedSize</code></code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">myDelegate</code>: <code class="n"><!-- a href="" logicalPath="" -->NSWindowDelegate<!-- /a --></code>? = <code class="vc">MyDelegate</code>()</code></li>
+            <li><code class="code-voice"><code class="kt">if</code> <code class="kt">let</code> <code class="vc">fullScreenSize</code> = <code class="vc">myDelegate</code>?.<code class="vc">window</code>?(<code class="vc">myWindow</code>, <code class="vc">willUseFullScreenContentSize</code>: <code class="vc">mySize</code>) {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="vc">NSStringFromSize</code>(<code class="vc">fullScreenSize</code>))</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID179">&#x200c;</a>
+  <h3 class="section-name">Lazy Initialization</h3>
+  <p class="para">A <em>lazy property</em> is a property whose underlying value is only initialized when the property is first accessed. Lazy properties are useful when the initial value for a property either requires complex or computationally expensive setup, or cannot be determined until after an instance’s initialization is complete.</p><p class="para">In Objective-C, a property may override its synthesized getter method such that the underlying instance variable is conditionally initialized if its value is <code class="code-voice">nil</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">@property</span> <span class="n">NSXMLDocument</span> <span class="o">*</span><span class="n">XMLDocument</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">-</span> <span class="p">(</span><span class="n">NSXMLDocument</span> <span class="o">*</span><span class="p">)</span><span class="nf">XMLDocument</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">    <span class="k">if</span> <span class="p">(</span><span class="n">_XMLDocument</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">        <span class="n">_XMLDocument</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSXMLDocument</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithContentsOfURL</span><span class="o">:</span><span class="p">[[</span><span class="n">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="n">URLForResource</span><span class="o">:</span><span class="s">@&quot;/path/to/resource&quot;</span> <span class="n">withExtension</span><span class="o">:</span><span class="s">@&quot;xml&quot;</span><span class="p">]</span> <span class="n">options</span><span class="o">:</span><span class="mi">0</span> <span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice">    <span class="p">}</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice">    <span class="k">return</span> <span class="n">_XMLDocument</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, a stored property with an initial value can be declared with the <code class="code-voice">lazy</code> modifier to have the expression calculating the initial value only evaluated when the property is first accessed:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">lazy</code> <code class="kt">var</code> <code class="vc">XMLDocument</code>: <code class="n"><!-- a href="" logicalPath="" -->NSXMLDocument<!-- /a --></code> = <code class="kt">try</code>! <code class="vc">NSXMLDocument</code>(<code class="vc">contentsOfURL</code>: <code class="vc">NSBundle</code>.<code class="vc">mainBundle</code>().<code class="vc">URLForResource</code>(<code class="s">&quot;document&quot;</code>, <code class="vc">withExtension</code>: <code class="s">&quot;xml&quot;</code>)!, <code class="vc">options</code>: <code class="m">0</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Because a lazy property is only computed when accessed for a fully-initialized instance it may access constant or variable properties in its default value initialization expression:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">pattern</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code></code></li>
+            <li><code class="code-voice"><code class="kt">lazy</code> <code class="kt">var</code> <code class="vc">regex</code>: <code class="n"><!-- a href="" logicalPath="" -->NSRegularExpression<!-- /a --></code> = <code class="kt">try</code>! <code class="vc">NSRegularExpression</code>(<code class="vc">pattern</code>: <code class="kt">self</code>.<code class="vc">pattern</code>, <code class="vc">options</code>: [])</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For values that require additional setup beyond initialization, you can assign the default value of the property to a self-evaluating closure that returns a fully-initialized value:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">lazy</code> <code class="kt">var</code> <code class="vc">ISO8601DateFormatter</code>: <code class="n"><!-- a href="" logicalPath="" -->NSDateFormatter<!-- /a --></code> = {</code></li>
+            <li><code class="code-voice">    <code class="kt">let</code> <code class="vc">formatter</code> = <code class="vc">NSDateFormatter</code>()</code></li>
+            <li><code class="code-voice">    <code class="vc">formatter</code>.<code class="vc">locale</code> = <code class="vc">NSLocale</code>(<code class="vc">localeIdentifier</code>: <code class="s">&quot;en_US_POSIX&quot;</code>)</code></li>
+            <li><code class="code-voice">    <code class="vc">formatter</code>.<code class="vc">dateFormat</code> = <code class="s">&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZZZZZ&quot;</code></code></li>
+            <li><code class="code-voice">    <code class="kt">return</code> <code class="vc">formatter</code></code></li>
+            <li><code class="code-voice">}()</code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">If a lazy property has not yet been initialized and is accessed by more than one thread at the same time, there is no guarantee that the property will be initialized only once.
+    	</p>
+    
+  </aside>
+</div><p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH14" target="_self" -->Lazy Stored Properties<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID10">&#x200c;</a>
+  <h3 class="section-name">Error Handling</h3>
+  <p class="para">In Cocoa, methods that produce errors take an <code class="code-voice">NSError</code> pointer parameter as their last parameter, which populates its argument with an <code class="code-voice">NSError</code> object if an error occurs. Swift automatically translates Objective-C methods that produce errors into methods that throw an error according to Swift’s native error handling functionality.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Methods that <em>consume</em> errors, such as delegate methods or methods that take a completion handler with an <code class="code-voice">NSError</code> object argument, do not become methods that throw when imported by Swift.
+    	</p>
+    
+  </aside>
+</div><p class="para">For example, consider the following Objective-C method from <code class="code-voice">NSFileManager</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">removeItemAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">URL</span>
+</code></li>
+            <li><code class="code-voice">                  <span class="nl">error:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, it’s imported like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">removeItemAtURL</code>(<code class="vc">URL</code>: <code class="n"><!-- a href="" logicalPath="" -->NSURL<!-- /a --></code>) <code class="kt">throws</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Notice that the <code class="code-voice">removeItemAtURL(_:)</code> method is imported by Swift with a <code class="code-voice">Void</code> return type, no <code class="code-voice">error</code> parameter, and a <code class="code-voice">throws</code> declaration.</p><p class="para">If the last non-block parameter of an Objective-C method is of type <code class="code-voice">NSError **</code>, Swift replaces it with the <code class="code-voice">throws</code> keyword, to indicate that the method can throw an error. If the Objective-C method’s error parameter is also its first parameter, Swift attempts to simplify the method name further, by removing the “WithError” or “AndReturnError” suffix, if present, from the first part of the selector. If another method is declared with the resulting selector, the method name is not changed.</p><p class="para">If an error producing Objective-C method returns a <code class="code-voice">BOOL</code> value to indicate the success or failure of a method call, Swift changes the return type of the function to <code class="code-voice">Void</code>. Similarly, if an error producing Objective-C method returns a <code class="code-voice">nil</code> value to indicate the failure of a method call, Swift changes the return type of the function to a non-optional type.</p><p class="para">Otherwise, if no convention can be inferred, the method is left intact.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Use the <code class="code-voice">NS_SWIFT_NOTHROW</code> macro on an Objective-C method declaration that produces an <code class="code-voice">NSError</code> to prevent it from being imported by Swift as a method that throws.
+    	</p>
+    
+  </aside>
+</div>
+  <section class="section">
+	<a id="TP40014216-CH7-ID174">&#x200c;</a>
+  <h3 class="section-name">Catching and Handling an Error</h3>
+  <p class="para">In Objective-C, error handling is opt-in, meaning that errors produced by calling a method are ignored unless an error pointer is provided. In Swift, calling a method that throws requires explicit error handling.</p><p class="para">Here’s an example of how to handle an error when calling a method in Objective-C:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="n">NSFileManager</span> <span class="o">*</span><span class="n">fileManager</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFileManager</span> <span class="n">defaultManager</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="n">NSURL</span> <span class="o">*</span><span class="n">fromURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="n">fileURLWithPath</span><span class="o">:</span><span class="s">@&quot;/path/to/old&quot;</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="n">NSURL</span> <span class="o">*</span><span class="n">toURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="n">fileURLWithPath</span><span class="o">:</span><span class="s">@&quot;/path/to/new&quot;</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"><span class="kt">BOOL</span> <span class="n">success</span> <span class="o">=</span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">moveItemAtURL</span><span class="o">:</span><span class="n">URL</span> <span class="n">toURL</span><span class="o">:</span><span class="n">toURL</span> <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">domain</span><span class="p">);</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">And here’s the equivalent code in Swift:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">fileManager</code> = <code class="vc">NSFileManager</code>.<code class="vc">defaultManager</code>()</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">fromURL</code> = <code class="vc">NSURL</code>(<code class="vc">fileURLWithPath</code>: <code class="s">&quot;/path/to/old&quot;</code>)</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">toURL</code> = <code class="vc">NSURL</code>(<code class="vc">fileURLWithPath</code>: <code class="s">&quot;/path/to/new&quot;</code>)</code></li>
+            <li><code class="code-voice"><code class="kt">do</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">try</code> <code class="vc">fileManager</code>.<code class="vc">moveItemAtURL</code>(<code class="vc">fromURL</code>, <code class="vc">toURL</code>: <code class="vc">toURL</code>)</code></li>
+            <li><code class="code-voice">} <code class="kt">catch</code> <code class="kt">let</code> <code class="vc">error</code> <code class="kt">as</code> <code class="n"><!-- a href="" logicalPath="" -->NSError<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="s">&quot;Error: </code>\(<code class="vc">error</code>.<code class="vc">domain</code>)<code class="s">&quot;</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Additionally, you can use <code class="code-voice">catch</code> clauses to match on particular error codes as a convenient way to differentiate possible failure conditions:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">do</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">try</code> <code class="vc">fileManager</code>.<code class="vc">moveItemAtURL</code>(<code class="vc">fromURL</code>, <code class="vc">toURL</code>: <code class="vc">toURL</code>)</code></li>
+            <li><code class="code-voice">} <code class="kt">catch</code> <code class="vc">NSCocoaError</code>.<code class="vc">FileNoSuchFileError</code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="s">&quot;Error: no such file exists&quot;</code>)</code></li>
+            <li><code class="code-voice">} <code class="kt">catch</code> <code class="vc">NSCocoaError</code>.<code class="vc">FileReadUnsupportedSchemeError</code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="s">&quot;Error: unsupported scheme (should be &#39;file://&#39;)&quot;</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID180">&#x200c;</a>
+  <h3 class="section-name">Converting Errors to Optional Values</h3>
+  <p class="para">In Objective-C, you pass <code class="code-voice">NULL</code> for the error parameter when you only care whether there was an error, not what specific error occurred. In Swift, you write <code class="code-voice">try?</code> to change a throwing expression into one that returns an optional value, and then check whether the value is <code class="code-voice">nil</code>.</p><p class="para">For example, the <code class="code-voice">NSFileManager</code> instance method <code class="code-voice">URLForDirectory(_:inDomain:appropriateForURL:create:)</code> returns a URL in the specified search path and domain, or produces an error if an appropriate URL does not exist and cannot be created. In Objective-C, the success or failure of the method can be determined by whether an <code class="code-voice">NSURL</code> object is returned.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="n">NSFileManager</span> <span class="o">*</span><span class="n">fileManager</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFileManager</span> <span class="n">defaultManager</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="n">NSURL</span> <span class="o">*</span><span class="n">tmpURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">fileManager</span> <span class="n">URLForDirectory</span><span class="o">:</span><span class="n">NSCachesDirectory</span> <span class="n">inDomain</span><span class="o">:</span><span class="n">NSUserDomainMask</span> <span class="n">appropriateForURL</span><span class="o">:</span><span class="nb">nil</span> <span class="n">create</span><span class="o">:</span><span class="nb">YES</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">if</span> <span class="p">(</span><span class="n">tmpURL</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">   <span class="c1">// ...</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can do the same in Swift as follows:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">fileManager</code> = <code class="vc">NSFileManager</code>.<code class="vc">defaultManager</code>()</code></li>
+            <li><code class="code-voice"><code class="kt">if</code> <code class="kt">let</code> <code class="vc">tmpURL</code> = <code class="kt">try</code>? <code class="vc">fileManager</code>.<code class="vc">URLForDirectory</code>(.<code class="vc">CachesDirectory</code>, <code class="vc">inDomain</code>: .<code class="vc">UserDomainMask</code>, <code class="vc">appropriateForURL</code>: <code class="kt">nil</code>, <code class="vc">create</code>: <code class="kt">true</code>) {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID175">&#x200c;</a>
+  <h3 class="section-name">Throwing an Error</h3>
+  <p class="para">If an error occurs in an Objective-C method, that error is used to populate the error pointer argument of that method:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="c1">// an error occurred</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">if</span> <span class="p">(</span><span class="n">errorPtr</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">   <span class="o">*</span><span class="n">errorPtr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSError</span> <span class="n">errorWithDomain</span><span class="o">:</span><span class="n">NSURLErrorDomain</span>
+</code></li>
+            <li><code class="code-voice">                                   <span class="nl">code:</span><span class="n">NSURLErrorCannotOpenFile</span>
+</code></li>
+            <li><code class="code-voice">                               <span class="nl">userInfo:</span><span class="nb">nil</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If an error occurs in a Swift method, the error is thrown, and automatically propagated to the caller:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="c">// an error occurred</code></code></li>
+            <li><code class="code-voice"><code class="kt">throw</code> <code class="vc">NSError</code>(<code class="vc">domain</code>: <code class="vc">NSURLErrorDomain</code>, <code class="vc">code</code>: <code class="vc">NSURLErrorCannotOpenFile</code>, <code class="vc">userInfo</code>: <code class="kt">nil</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If Objective-C code calls a Swift method that throws an error, the error is automatically propagated to the error pointer argument of the bridged Objective-C method.</p><p class="para">For example, consider the <code class="code-voice">readFromFileWrapper(_:ofType:)</code> method in <code class="code-voice">NSDocument</code>. In Objective-C, this method’s last parameter is of type <code class="code-voice">NSError **</code>. When overriding this method in a Swift subclass of <code class="code-voice">NSDocument</code>, the method replaces its error parameter and throws instead.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">SerializedDocument</code>: <code class="n"><!-- a href="" logicalPath="" -->NSDocument<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">let</code> <code class="vc">ErrorDomain</code> = <code class="s">&quot;com.example.error.serialized-document&quot;</code></code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">representedObject</code>: [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>] = [:]</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">override</code> <code class="kt">func</code> <code class="vc">readFromFileWrapper</code>(<code class="vc">fileWrapper</code>: <code class="n"><!-- a href="" logicalPath="" -->NSFileWrapper<!-- /a --></code>, <code class="vc">ofType</code> <code class="vc">typeName</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>) <code class="kt">throws</code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">data</code> = <code class="vc">fileWrapper</code>.<code class="vc">regularFileContents</code> <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">            <code class="kt">throw</code> <code class="vc">NSError</code>(<code class="vc">domain</code>: <code class="vc">NSURLErrorDomain</code>, <code class="vc">code</code>: <code class="vc">NSURLErrorCannotOpenFile</code>, <code class="vc">userInfo</code>: <code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice">        }</code></li>
+            <li><code class="code-voice">        </code></li>
+            <li><code class="code-voice">        <code class="kt">if</code> <code class="kt">case</code> <code class="kt">let</code> <code class="vc">JSON</code> <code class="kt">as</code> [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>] = <code class="kt">try</code> <code class="vc">NSJSONSerialization</code>.<code class="vc">JSONObjectWithData</code>(<code class="vc">data</code>, <code class="vc">options</code>: []) {</code></li>
+            <li><code class="code-voice">            <code class="kt">self</code>.<code class="vc">representedObject</code> = <code class="vc">JSON</code></code></li>
+            <li><code class="code-voice">        } <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">            <code class="kt">throw</code> <code class="vc">NSError</code>(<code class="vc">domain</code>: <code class="vc">SerializedDocument</code>.<code class="vc">ErrorDomain</code>, <code class="vc">code</code>: -<code class="m">1</code>, <code class="vc">userInfo</code>: <code class="kt">nil</code>)</code></li>
+            <li><code class="code-voice">        }</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If the method is unable to create an object with the regular file contents of the document, it throws an <code class="code-voice">NSError</code> object. If the method is called from Swift code, the error is propagated to its calling scope. If the method is called from Objective-C code, the error instead populates the error pointer argument.</p><p class="para">In Objective-C, error handling is opt-in, meaning that errors produced by calling a method are ignored unless you provide an error pointer. In Swift, calling a method that throws requires explicit error handling.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Although Swift error handling resembles exception handling in Objective-C, it is entirely separate functionality. If an Objective-C method throws an exception during runtime, Swift triggers a runtime error. There is no way to recover from Objective-C exceptions directly in Swift. Any exception handling behavior must be implemented in Objective-C code used by Swift.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID12">&#x200c;</a>
+  <h3 class="section-name">Key-Value Observing</h3>
+  <p class="para">Key-value observing is a mechanism that allows objects to be notified of changes to specified properties of other objects. You can use key-value observing with a Swift class, as long as the class inherits from the <code class="code-voice">NSObject</code> class. You can use these three steps to implement key-value observing in Swift.</p><ol class="list-number">
+  <li class="item"><p class="para">Add the <code class="code-voice">dynamic</code> modifier to any property you want to observe. For more information on <code class="code-voice">dynamic</code>, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID57" href="InteractingWithObjective-CAPIs.xhtml#TP40014216-CH4-ID57">Requiring Dynamic Dispatch</a>.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MyObjectToObserve</code>: <code class="n"><!-- a href="" logicalPath="" -->NSObject<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">dynamic</code> <code class="kt">var</code> <code class="vc">myDate</code> = <code class="vc">NSDate</code>()</code></li>
+            <li><code class="code-voice">    <code class="kt">func</code> <code class="vc">updateDate</code>() {</code></li>
+            <li><code class="code-voice">        <code class="vc">myDate</code> = <code class="vc">NSDate</code>()</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li><li class="item"><p class="para">Create a global context variable.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">private</code> <code class="kt">var</code> <code class="vc">myContext</code> = <code class="m">0</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li><li class="item"><p class="para">Add an observer for the key-path, override the <code class="code-voice">observeValueForKeyPath:ofObject:change:context:</code> method, and remove the observer in <code class="code-voice">deinit</code>.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MyObserver</code>: <code class="n"><!-- a href="" logicalPath="" -->NSObject<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">objectToObserve</code> = <code class="vc">MyObjectToObserve</code>()</code></li>
+            <li><code class="code-voice">    <code class="kt">override</code> <code class="kt">init</code>() {</code></li>
+            <li><code class="code-voice">        <code class="kt">super</code>.<code class="kt">init</code>()</code></li>
+            <li><code class="code-voice">        <code class="vc">objectToObserve</code>.<code class="vc">addObserver</code>(<code class="kt">self</code>, <code class="vc">forKeyPath</code>: <code class="s">&quot;myDate&quot;</code>, <code class="vc">options</code>: .<code class="vc">New</code>, <code class="vc">context</code>: &amp;<code class="vc">myContext</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">override</code> <code class="kt">func</code> <code class="vc">observeValueForKeyPath</code>(<code class="vc">keyPath</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>?, <code class="vc">ofObject</code> <code class="vc">object</code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>?, <code class="vc">change</code>: [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> : <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]?, <code class="vc">context</code>: <code class="n"><!-- a href="" logicalPath="" -->UnsafeMutablePointer<!-- /a --></code>&lt;<code class="n"><!-- a href="" logicalPath="" -->Void<!-- /a --></code>&gt;) {</code></li>
+            <li><code class="code-voice">        <code class="kt">if</code> <code class="vc">context</code> == &amp;<code class="vc">myContext</code> {</code></li>
+            <li><code class="code-voice">            <code class="kt">if</code> <code class="kt">let</code> <code class="vc">newValue</code> = <code class="vc">change</code>?[<code class="vc">NSKeyValueChangeNewKey</code>] {</code></li>
+            <li><code class="code-voice">                <code class="vc">print</code>(<code class="s">&quot;Date changed: </code>\(<code class="vc">newValue</code>)<code class="s">&quot;</code>)</code></li>
+            <li><code class="code-voice">            }</code></li>
+            <li><code class="code-voice">        } <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">            <code class="kt">super</code>.<code class="vc">observeValueForKeyPath</code>(<code class="vc">keyPath</code>, <code class="vc">ofObject</code>: <code class="vc">object</code>, <code class="vc">change</code>: <code class="vc">change</code>, <code class="vc">context</code>: <code class="vc">context</code>)</code></li>
+            <li><code class="code-voice">        }</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">deinit</code> {</code></li>
+            <li><code class="code-voice">        <code class="vc">objectToObserve</code>.<code class="vc">removeObserver</code>(<code class="kt">self</code>, <code class="vc">forKeyPath</code>: <code class="s">&quot;myDate&quot;</code>, <code class="vc">context</code>: &amp;<code class="vc">myContext</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li>
+</ol>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID181">&#x200c;</a>
+  <h3 class="section-name">Undo</h3>
+  <p class="para">In Cocoa, you register operations with <code class="code-voice">NSUndoManager</code> to allow users to reverse that operation’s effect. You can take advantage of Cocoa’s undo architecture in Swift just as you would in Objective-C.</p><p class="para">Objects in an app’s responder chain—that is, subclasses of <code class="code-voice">NSResponder</code> on OS X and <code class="code-voice">UIResponder</code> on iOS—have a read-only <code class="code-voice">undoManager</code> property that returns an optional <code class="code-voice">NSUndoManager</code> value, which manages the undo stack for the app. Whenever an action is taken by the user, such as editing the text in a control or deleting an item at a selected row, an undo operation can be registered with the undo manager to allow the user to reverse the effect of that operation. An undo operation records the steps necessary to counteract its corresponding operation, such as setting the text of a control back to its original value or adding a deleted item back into a table.</p><p class="para">NSUndoManager supports two ways to register undo operations: a “simple undo&quot;, which performs a selector with a single object argument, and an “invocation-based undo&quot;, which uses an <code class="code-voice">NSInvocation</code> object that takes any number and any type of arguments.</p><p class="para">For example, consider a simple <code class="code-voice">Task</code> model, which is used by a <code class="code-voice">ToDoListController</code> to display a list of tasks to complete:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">Task</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">text</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">completed</code>: <code class="n"><!-- a href="" logicalPath="" -->Bool<!-- /a --></code> = <code class="kt">false</code></code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">init</code>(<code class="vc">text</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>) {</code></li>
+            <li><code class="code-voice">        <code class="kt">self</code>.<code class="vc">text</code> = <code class="vc">text</code></code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">ToDoListController</code>: <code class="n"><!-- a href="" logicalPath="" -->NSViewController<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->NSTableViewDataSource<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->NSTableViewDelegate<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">@IBOutlet</code> <code class="kt">var</code> <code class="vc">tableView</code>: <code class="n"><!-- a href="" logicalPath="" -->NSTableView<!-- /a --></code>!</code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">tasks</code>: [<code class="n"><!-- a href="" logicalPath="" -->Task<!-- /a --></code>] = []</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For properties in Swift, you can create an undo operation in the <code class="code-voice">willSet</code> observer using <code class="code-voice">self</code> as the <code class="code-voice">target</code>, the corresponding Objective-C setter as the <code class="code-voice">selector</code>, and the current value of the property as the <code class="code-voice">object</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">@IBOutlet</code> <code class="kt">var</code> <code class="vc">notesLabel</code>: <code class="n"><!-- a href="" logicalPath="" -->NSTextView<!-- /a --></code>!</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">notes</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>? {</code></li>
+            <li><code class="code-voice"><code class="kt">willSet</code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">undoManager</code>?.<code class="vc">registerUndoWithTarget</code>(<code class="kt">self</code>, <code class="vc">selector</code>: <code class="s">&quot;setNotes:&quot;</code>, <code class="vc">object</code>: <code class="kt">self</code>.<code class="vc">title</code>)</code></li>
+            <li><code class="code-voice">    <code class="vc">undoManager</code>?.<code class="vc">setActionName</code>(<code class="vc">NSLocalizedString</code>(<code class="s">&quot;todo.notes.update&quot;</code>, <code class="vc">comment</code>: <code class="s">&quot;Update Notes&quot;</code>))</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">didSet</code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">notesLabel</code>.<code class="vc">string</code> = <code class="vc">notes</code></code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For methods that take more than one argument, you can create an undo operation using an <code class="code-voice">NSInvocation</code>, which invokes the method with arguments that effectively revert the app to its previous state:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">@IBOutlet</code> <code class="kt">var</code> <code class="vc">remainingLabel</code>: <code class="n"><!-- a href="" logicalPath="" -->NSTextView<!-- /a --></code>!</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">markTask</code>(<code class="vc">task</code>: <code class="n"><!-- a href="" logicalPath="" -->Task<!-- /a --></code>, <code class="vc">asCompleted</code> <code class="vc">completed</code>: <code class="n"><!-- a href="" logicalPath="" -->Bool<!-- /a --></code>) {</code></li>
+            <li><code class="code-voice">    <code class="kt">if</code> <code class="kt">let</code> <code class="vc">target</code> = <code class="vc">undoManager</code>?.<code class="vc">prepareWithInvocationTarget</code>(<code class="kt">self</code>) <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->ToDoListController<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">        <code class="vc">target</code>.<code class="vc">markTask</code>(<code class="vc">task</code>, <code class="vc">asCompleted</code>: !<code class="vc">completed</code>)</code></li>
+            <li><code class="code-voice">        <code class="vc">undoManager</code>?.<code class="vc">setActionName</code>(<code class="vc">NSLocalizedString</code>(<code class="s">&quot;todo.task.mark&quot;</code>, <code class="vc">comment</code>: <code class="s">&quot;Mark As Completed&quot;</code>))</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="vc">task</code>.<code class="vc">completed</code> = <code class="vc">completed</code></code></li>
+            <li><code class="code-voice">    <code class="vc">tableView</code>.<code class="vc">reloadData</code>()</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">let</code> <code class="vc">numberRemaining</code> = <code class="vc">tasks</code>.<code class="vc">filter</code>{ <code class="vc">$0</code>.<code class="vc">completed</code> }.<code class="vc">count</code></code></li>
+            <li><code class="code-voice">    <code class="vc">remainingLabel</code>.<code class="vc">string</code> = <code class="vc">String</code>(<code class="vc">format</code>: <code class="vc">NSLocalizedString</code>(<code class="s">&quot;todo.task.remaining&quot;</code>, <code class="vc">comment</code>: <code class="s">&quot;Tasks Remaining: %d&quot;</code>), <code class="vc">numberRemaining</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">The <code class="code-voice">prepareWithInvocationTarget(_:)</code> method returns a proxy to the specified <code class="code-voice">target</code>. By casting to <code class="code-voice">ToDoListController</code>, this return value can make the corresponding call to <code class="code-voice">markTask(_:asCompleted:)</code> directly.</p><p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/10000010-SW1" target="_self" -->The Undo Architecture Programming Guide<!-- /a -->.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID14">&#x200c;</a>
+  <h3 class="section-name">Target-Action</h3>
+  <p class="para">Target-action is a common Cocoa design pattern in which one object sends a message to another object when a specific event occurs. The target-action model is fundamentally similar in Swift and Objective-C. In Swift, you use the <code class="code-voice">Selector</code> type to refer to Objective-C selectors. For an example of using target-action in Swift code, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID59" href="InteractingWithObjective-CAPIs.xhtml#TP40014216-CH4-ID59">Objective-C Selectors</a>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID177">&#x200c;</a>
+  <h3 class="section-name">Singleton</h3>
+  <p class="para">Singletons provide a globally accessible, shared instance of an object. You can create your own singletons as a way to provide a unified access point to a resource or service that’s shared across an app, such as an audio channel to play sound effects or a network manager to make HTTP requests.</p><p class="para">In Objective-C, you can ensure that only one instance of a singleton object is created by wrapping its initialization in a call the <code class="code-voice">dispatch_once</code> function, which executes a block once and only once for the lifetime of an app:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">sharedInstance</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">    <span class="k">static</span> <span class="kt">id</span> <span class="n">_sharedInstance</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice">    <span class="k">static</span> <span class="kt">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice">    <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">        <span class="n">_sharedInstance</span> <span class="o">=</span> <span class="p">[[</span><span class="n">self</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice">    <span class="p">});</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice">    <span class="k">return</span> <span class="n">_sharedInstance</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, you can simply use a static type property, which is guaranteed to be lazily initialized only once, even when accessed across multiple threads simultaneously:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">Singleton</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">let</code> <code class="vc">sharedInstance</code> = <code class="vc">Singleton</code>()</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If you need to perform additional setup beyond initialization, you can assign the result of the invocation of a closure to the global constant:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">Singleton</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">static</code> <code class="kt">let</code> <code class="vc">sharedInstance</code>: <code class="n"><!-- a href="" logicalPath="" -->Singleton<!-- /a --></code> = {</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">instance</code> = <code class="vc">Singleton</code>()</code></li>
+            <li><code class="code-voice">        <code class="c">// setup code</code></code></li>
+            <li><code class="code-voice">        <code class="kt">return</code> <code class="vc">instance</code></code></li>
+            <li><code class="code-voice">    }()</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH14-ID264" target="_self" -->Type Properties<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID16">&#x200c;</a>
+  <h3 class="section-name">Introspection</h3>
+  <p class="para">In Objective-C, you use the <code class="code-voice">isKindOfClass:</code> method to check whether an object is of a certain class type, and the <code class="code-voice">conformsToProtocol:</code> method to check whether an object conforms to a specified protocol. In Swift, you accomplish this task by using the <code class="code-voice">is</code> operator to check for a type, or the <code class="code-voice">as?</code> operator to downcast to that type.</p><p class="para">You can check whether an instance is of a certain subclass type by using the <code class="code-voice">is</code> operator. The <code class="code-voice">is</code> operator returns <code class="code-voice">true</code> if the instance is of that subclass type, and <code class="code-voice">false</code> if it is not.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">if</code> <code class="vc">object</code> <code class="kt">is</code> <code class="n"><!-- a href="" logicalPath="" -->UIButton<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object is of type UIButton</code></code></li>
+            <li><code class="code-voice">} <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object is not of type UIButton</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can also try and downcast to the subclass type by using the <code class="code-voice">as?</code> operator. The <code class="code-voice">as?</code> operator returns an optional value that can be bound to a constant using an <code class="code-voice">if</code>-<code class="code-voice">let</code> statement.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">if</code> <code class="kt">let</code> <code class="vc">button</code> = <code class="vc">object</code> <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->UIButton<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object is successfully cast to type UIButton and bound to button</code></code></li>
+            <li><code class="code-voice">} <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object could not be cast to type UIButton</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH22" target="_self" -->Type Casting<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p><p class="para">Checking for and casting to a protocol follows exactly the same syntax as checking for and casting to a class. Here is an example of using the <code class="code-voice">as?</code> operator to check for protocol conformance:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">if</code> <code class="kt">let</code> <code class="vc">dataSource</code> = <code class="vc">object</code> <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->UITableViewDataSource<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object conforms to UITableViewDataSource and is bound to dataSource</code></code></li>
+            <li><code class="code-voice">} <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// object not conform to UITableViewDataSource</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Note that after this cast, the <code class="code-voice">dataSource</code> constant is of type <code class="code-voice">UITableViewDataSource</code>, so you can only call methods and access properties defined on the <code class="code-voice">UITableViewDataSource</code> protocol. You must cast it back to another type to perform other operations.</p><p class="para">For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH25" target="_self" -->Protocols<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID182">&#x200c;</a>
+  <h3 class="section-name">Serializing</h3>
+  <p class="para">Serialization allows you to encode and decode objects in your application to and from architecture-independent representations, such as JSON or property lists. These representations can then be written to a file or transmitted to another process locally or over a network.</p><p class="para">In Objective-C, you can use the Foundation framework classes <code class="code-voice">NSJSONSerialiation</code> and <code class="code-voice">NSPropertyListSerialization</code> to initialize objects from a decoded JSON or property list serialization value—usually an object of type <code class="code-voice">NSDictionary&lt;NSString *, id&gt;</code>. You can do the same in Swift, but because Swift enforces type safety, additional type casting is required in order to extract and assign values.</p><p class="para">For example, consider the following <code class="code-voice">Venue</code> structure, with a <code class="code-voice">name</code> property of type <code class="code-voice">String</code>, a <code class="code-voice">coordinate</code> property of type <code class="code-voice">CLLocationCoordinate2D</code>, and a <code class="code-voice">category</code> property of a nested <code class="code-voice">Category</code> enumeration type :</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">Foundation</code></code></li>
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">CoreLocation</code></code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">struct</code> <code class="vc">Venue</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">enum</code> <code class="vc">Category</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">case</code> <code class="vc">Entertainment</code></code></li>
+            <li><code class="code-voice">        <code class="kt">case</code> <code class="vc">Food</code></code></li>
+            <li><code class="code-voice">        <code class="kt">case</code> <code class="vc">Nightlife</code></code></li>
+            <li><code class="code-voice">        <code class="kt">case</code> <code class="vc">Shopping</code></code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">name</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">coordinates</code>: <code class="n"><!-- a href="" logicalPath="" -->CLLocationCoordinate2D<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">category</code>: <code class="n"><!-- a href="" logicalPath="" -->Category<!-- /a --></code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">An app that interacts with <code class="code-voice">Venue</code> instances may communicate with a web server that vends JSON representations of venues, such as:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="">
+        <ol class="code-lines">
+            <li><code class="code-voice">{</code></li>
+            <li><code class="code-voice">   &quot;name&quot;: &quot;Caffe Macs&quot;,</code></li>
+            <li><code class="code-voice">   &quot;coordinates&quot;: {</code></li>
+            <li><code class="code-voice">      &quot;lat&quot;: 37.330576,</code></li>
+            <li><code class="code-voice">      &quot;lng&quot;: -122.029739</code></li>
+            <li><code class="code-voice">   },</code></li>
+            <li><code class="code-voice">   &quot;category&quot;: &quot;Food&quot;</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can provide a failable <code class="code-voice">Venue</code> initializer, which takes an <code class="code-voice">attributes</code> parameter of type <code class="code-voice">[String : AnyObject]</code> corresponding to the value returned from <code class="code-voice">NSJSONSerialiation</code> or <code class="code-voice">NSPropertyListSerialization</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">init</code>?(<code class="vc">attributes</code>: [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> : <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]) {</code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">name</code> = <code class="vc">attributes</code>[<code class="s">&quot;name&quot;</code>] <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>,</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">coordinates</code> = <code class="vc">attributes</code>[<code class="s">&quot;coordinates&quot;</code>] <code class="kt">as</code>? [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->Double<!-- /a --></code>],</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">latitude</code> = <code class="vc">coordinates</code>[<code class="s">&quot;lat&quot;</code>],</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">longitude</code> = <code class="vc">coordinates</code>[<code class="s">&quot;lng&quot;</code>],</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">category</code> = <code class="vc">Category</code>(<code class="vc">rawValue</code>: <code class="vc">attributes</code>[<code class="s">&quot;category&quot;</code>] <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> ?? <code class="s">&quot;Invalid&quot;</code>)</code></li>
+            <li><code class="code-voice">        <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">            <code class="kt">return</code> <code class="kt">nil</code></code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">name</code> = <code class="vc">name</code></code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">coordinates</code> = <code class="vc">CLLocationCoordinate2D</code>(<code class="vc">latitude</code>: <code class="vc">latitude</code>, <code class="vc">longitude</code>: <code class="vc">longitude</code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">category</code> = <code class="vc">category</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">A <code class="code-voice">guard</code> statement consisting of multiple optional binding expressions ensures that the <code class="code-voice">attributes</code> argument provides all of the required information in the expected format. If any one of the optional binding expressions fails to assign a value to a constant, the <code class="code-voice">guard</code> statement immediately stops evaluating its condition, and executes its <code class="code-voice">else</code> branch, which returns <code class="code-voice">nil</code>.</p><p class="para">You can create a <code class="code-voice">Venue</code> from a JSON representation by creating a dictionary of attributes using <code class="code-voice">NSJSONSerialization</code> and then passing that into the corresponding <code class="code-voice">Venue</code> initializer:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">JSON</code> = <code class="s">&quot;{\&quot;name\&quot;: \&quot;Caffe Macs\&quot;,\&quot;coordinates\&quot;: {\&quot;lat\&quot;: 37.330576,\&quot;lng\&quot;: -122.029739},\&quot;category\&quot;: \&quot;Food\&quot;}&quot;</code></code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">data</code> = <code class="vc">JSON</code>.<code class="vc">dataUsingEncoding</code>(<code class="vc">NSUTF8StringEncoding</code>)!</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">attributes</code> = <code class="kt">try</code>! <code class="vc">NSJSONSerialization</code>.<code class="vc">JSONObjectWithData</code>(<code class="vc">data</code>, <code class="vc">options</code>: []) <code class="kt">as</code>! [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">venue</code> = <code class="vc">Venue</code>(<code class="vc">attributes</code>: <code class="vc">attributes</code>)!</code></li>
+            <li><code class="code-voice"><code class="vc">print</code>(<code class="vc">venue</code>.<code class="vc">name</code>)</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;Caffe Macs&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  <section class="section">
+	<a id="TP40014216-CH7-ID183">&#x200c;</a>
+  <h3 class="section-name">Validating Serialized Representations</h3>
+  <p class="para">In the previous example, the <code class="code-voice">Venue</code> initializer optionally returns an instance only if all of the required information is provided. If not, the initializer simply returns <code class="code-voice">nil</code>.</p><p class="para">It is often useful to determine and communicate the specific reason why a given collection of values failed to produce a valid instance. To do this, you can refactor the failable initializer into an initializer that throws:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">enum</code> <code class="vc">ValidationError</code>: <code class="n"><!-- a href="" logicalPath="" -->ErrorType<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Missing</code>(<code class="vc">String</code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">case</code> <code class="vc">Invalid</code>(<code class="vc">String</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">init</code>(<code class="vc">attributes</code>: [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]) <code class="kt">throws</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">name</code> = <code class="vc">attributes</code>[<code class="s">&quot;name&quot;</code>] <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">throw</code> <code class="vc">ValidationError</code>.<code class="vc">Missing</code>(<code class="s">&quot;name&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">coordinates</code> = <code class="vc">attributes</code>[<code class="s">&quot;coordinates&quot;</code>] <code class="kt">as</code>? [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->Double<!-- /a --></code>] <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">throw</code> <code class="vc">ValidationError</code>.<code class="vc">Missing</code>(<code class="s">&quot;coordinates&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">latitude</code> = <code class="vc">coordinates</code>[<code class="s">&quot;lat&quot;</code>],</code></li>
+            <li><code class="code-voice">        <code class="kt">let</code> <code class="vc">longitude</code> = <code class="vc">coordinates</code>[<code class="s">&quot;lng&quot;</code>]</code></li>
+            <li><code class="code-voice">        <code class="kt">else</code>{</code></li>
+            <li><code class="code-voice">            <code class="kt">throw</code> <code class="vc">ValidationError</code>.<code class="vc">Invalid</code>(<code class="s">&quot;coordinates&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">categoryName</code> = <code class="vc">attributes</code>[<code class="s">&quot;category&quot;</code>] <code class="kt">as</code>? <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code> <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">throw</code> <code class="vc">ValidationError</code>.<code class="vc">Missing</code>(<code class="s">&quot;category&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">guard</code> <code class="kt">let</code> <code class="vc">category</code> = <code class="vc">Category</code>(<code class="vc">rawValue</code>: <code class="vc">categoryName</code>) <code class="kt">else</code> {</code></li>
+            <li><code class="code-voice">        <code class="kt">throw</code> <code class="vc">ValidationError</code>.<code class="vc">Invalid</code>(<code class="s">&quot;category&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">name</code> = <code class="vc">name</code></code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">coordinates</code> = <code class="vc">CLLocationCoordinate2D</code>(<code class="vc">latitude</code>: <code class="vc">latitude</code>, <code class="vc">longitude</code>: <code class="vc">longitude</code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">self</code>.<code class="vc">category</code> = <code class="vc">category</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Instead of capturing all of the <code class="code-voice">attributes</code> values at once in a single <code class="code-voice">guard</code> statement, this initializer checks each value individually and throws an error if any particular value is either missing or invalid.</p><p class="para">For instance, if the provided JSON didn’t have a value for the key <code class="code-voice">&quot;name&quot;</code>, the initializer would throw the enumeration value <code class="code-voice">ValidationError.Missing</code> with an associated value corresponding to the <code class="code-voice">&quot;name&quot;</code> field:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="">
+        <ol class="code-lines">
+            <li><code class="code-voice">{</code></li>
+            <li><code class="code-voice">   &quot;coordinates&quot;: {</code></li>
+            <li><code class="code-voice">      &quot;lat&quot;: 37.77492,</code></li>
+            <li><code class="code-voice">      &quot;lng&quot;: -122.419</code></li>
+            <li><code class="code-voice">   },</code></li>
+            <li><code class="code-voice">   &quot;category&quot;: &quot;Shopping&quot;</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">JSON</code> = <code class="s">&quot;{\&quot;coordinates\&quot;: {\&quot;lat\&quot;: 37.7842, \&quot;lng\&quot;: -122.4016}, \&quot;category\&quot;: \&quot;Convention Center\&quot;}&quot;</code></code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">data</code> = <code class="vc">JSON</code>.<code class="vc">dataUsingEncoding</code>(<code class="vc">NSUTF8StringEncoding</code>)!</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">attributes</code> = <code class="kt">try</code>! <code class="vc">NSJSONSerialization</code>.<code class="vc">JSONObjectWithData</code>(<code class="vc">data</code>, <code class="vc">options</code>: []) <code class="kt">as</code>! [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">do</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">let</code> <code class="vc">venue</code> = <code class="kt">try</code> <code class="vc">Venue</code>(<code class="vc">attributes</code>: <code class="vc">attributes</code>)</code></li>
+            <li><code class="code-voice">} <code class="kt">catch</code> <code class="vc">ValidationError</code>.<code class="vc">Missing</code>(<code class="kt">let</code> <code class="vc">field</code>) {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="s">&quot;Missing Field: </code>\(<code class="vc">field</code>)<code class="s">&quot;</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;Missing Field: name&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Or, if the provided JSON specified all of the required fields, but had a value for the <code class="code-voice">&quot;category&quot;</code> key that didn’t correspond with the <code class="code-voice">rawValue</code> of any of the defined <code class="code-voice">Category</code> cases, the initializer would throw the enumeration value <code class="code-voice">ValidationError.Invalid</code> with an associated value corresponding to the <code class="code-voice">&quot;category&quot;</code> field:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="">
+        <ol class="code-lines">
+            <li><code class="code-voice">{</code></li>
+            <li><code class="code-voice">   &quot;name&quot;: &quot;Moscone West&quot;,</code></li>
+            <li><code class="code-voice">   &quot;coordinates&quot;: {</code></li>
+            <li><code class="code-voice">      &quot;lat&quot;: 37.7842,</code></li>
+            <li><code class="code-voice">      &quot;lng&quot;: -122.4016</code></li>
+            <li><code class="code-voice">   },</code></li>
+            <li><code class="code-voice">   &quot;category&quot;: &quot;Convention Center&quot;</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">JSON</code> = <code class="s">&quot;{\&quot;name\&quot;: \&quot;Moscone West\&quot;, \&quot;coordinates\&quot;: {\&quot;lat\&quot;: 37.7842, \&quot;lng\&quot;: -122.4016}, \&quot;category\&quot;: \&quot;Convention Center\&quot;}&quot;</code></code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">data</code> = <code class="vc">JSON</code>.<code class="vc">dataUsingEncoding</code>(<code class="vc">NSUTF8StringEncoding</code>)!</code></li>
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">attributes</code> = <code class="kt">try</code>! <code class="vc">NSJSONSerialization</code>.<code class="vc">JSONObjectWithData</code>(<code class="vc">data</code>, <code class="vc">options</code>: []) <code class="kt">as</code>! [<code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>]</code></li>
+            <li><code class="code-voice"> </code></li>
+            <li><code class="code-voice"><code class="kt">do</code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">let</code> <code class="vc">venue</code> = <code class="kt">try</code> <code class="vc">Venue</code>(<code class="vc">attributes</code>: <code class="vc">attributes</code>)</code></li>
+            <li><code class="code-voice">} <code class="kt">catch</code> <code class="vc">ValidationError</code>.<code class="vc">Invalid</code>(<code class="kt">let</code> <code class="vc">field</code>) {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="s">&quot;Invalid Field: </code>\(<code class="vc">field</code>)<code class="s">&quot;</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;Invalid Field: category&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID160">&#x200c;</a>
+  <h3 class="section-name">API Availability</h3>
+  <p class="para">Some classes and methods are not available to all versions of all platforms that your app targets. To ensure that your app can accommodate any differences in functionality, you check the availability those APIs.</p><p class="para">In Objective-C, you use the <code class="code-voice">respondsToSelector:</code> and <code class="code-voice">instancesRespondToSelector:</code> methods to check for the availability of a class or instance method. Without a check, the method call throws an <code class="code-voice">NSInvalidArgumentException</code> “unrecognized selector sent to instance” exception. For example, the <code class="code-voice">requestWhenInUseAuthorization</code> method is only available to instances of <code class="code-voice">CLLocationManager</code> starting in iOS 8.0 and OS X 10.10:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">if</span> <span class="p">([</span><span class="n">CLLocationManager</span> <span class="n">instancesRespondToSelector</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">requestWhenInUseAuthorization</span><span class="p">)])</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">  <span class="c1">// Method is available for use.</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">  <span class="c1">// Method is not available.</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">}</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">In Swift, attempting to call a method that is not supported on all targeted platform versions causes a compile-time error.</p><p class="para">Here’s the previous example, in Swift:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">locationManager</code> = <code class="vc">CLLocationManager</code>()</code></li>
+            <li><code class="code-voice"><code class="vc">locationManager</code>.<code class="vc">requestWhenInUseAuthorization</code>()</code></li>
+            <li><code class="code-voice"><code class="c">// error: only available on iOS 8.0 or newer</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If the app targets a version of iOS prior to 8.0 or OS X prior to 10.10, <code class="code-voice">requestWhenInUseAuthorization()</code> is unavailable, so the compiler reports an error.</p><p class="para">Swift code can use the availability of APIs as a condition <strong>at run-time</strong>. Availability checks can be used in place of a condition in a control flow statement, such as an <code class="code-voice">if</code>, <code class="code-voice">guard</code>, or <code class="code-voice">while</code> statement.</p><p class="para">Taking the previous example, you can check availability in an <code class="code-voice">if</code> statement to call <code class="code-voice">requestWhenInUseAuthorization()</code> only if the method is available at runtime:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">locationManager</code> = <code class="vc">CLLocationManager</code>()</code></li>
+            <li><code class="code-voice"><code class="kt">if</code> <code class="kt">#available</code>(<code class="kt">iOS</code> <code class="m">8.0</code>, <code class="kt">OSX</code> <code class="m">10.10</code>, *) {</code></li>
+            <li><code class="code-voice">    <code class="vc">locationManager</code>.<code class="vc">requestWhenInUseAuthorization</code>()</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Alternatively, you can check availability in a <code class="code-voice">guard</code> statement, which exits out of scope unless the current target satisfies the specified requirements. This approach simplifies the logic of handling different platform capabilities.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">locationManager</code> = <code class="vc">CLLocationManager</code>()</code></li>
+            <li><code class="code-voice"><code class="kt">guard</code> <code class="kt">#available</code>(<code class="kt">iOS</code> <code class="m">8.0</code>, <code class="kt">OSX</code> <code class="m">10.10</code>, *) <code class="kt">else</code> { <code class="kt">return</code> }</code></li>
+            <li><code class="code-voice"><code class="vc">locationManager</code>.<code class="vc">requestWhenInUseAuthorization</code>()</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Each platform argument consists of one of platform names listed below, followed by corresponding version number. The last argument is an asterisk (<code class="code-voice">*</code>), which is used to handle potential future platforms.</p><p class="para"><em>Platform Names</em>:</p><ul class="list-bullet">
+  <li class="item"><p class="para"><code class="code-voice">iOS</code></p></li><li class="item"><p class="para"><code class="code-voice">iOSApplicationExtension</code></p></li><li class="item"><p class="para"><code class="code-voice">OSX</code></p></li><li class="item"><p class="para"><code class="code-voice">OSXApplicationExtension</code></p></li><li class="item"><p class="para"><code class="code-voice">watchOS</code></p></li><li class="item"><p class="para"><code class="code-voice">watchOSApplicationExtension</code></p></li><li class="item"><p class="para"><code class="code-voice">tvOS</code></p></li><li class="item"><p class="para"><code class="code-voice">tvOSApplicationExtension</code></p></li>
+</ul><p class="para">All of the Cocoa APIs provide availability information, so you can be confident the code you write works as expected on any of the platforms your app targets.</p><p class="para">You can denote the availability of your own APIs by annotating declarations with the <code class="code-voice">@available</code> attribute. The <code class="code-voice">@available</code> attribute uses the same syntax as the <code class="code-voice">#available</code> runtime check, with the platform version requirements provided as comma-delimited arguments.</p><p class="para">For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">@available</code>(<code class="kt">iOS</code> <code class="m">8.0</code>, <code class="kt">OSX</code> <code class="m">10.10</code>, *)</code></li>
+            <li><code class="code-voice"><code class="kt">func</code> <code class="vc">useShinyNewFeature</code>() {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">A method annotated with the <code class="code-voice">@available</code> attribute can safely use APIs available to the specified platform requirements without the use of an explicit availability check.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH7-ID184">&#x200c;</a>
+  <h3 class="section-name">Processing Command-Line Arguments</h3>
+  <p class="para">On OS X, you typically open an app by clicking its icon in the Dock or Launchpad, or by double-clicking its icon from the Finder. However, you can also open an app programmatically and pass command-line arguments from Terminal.</p><p class="para">You can get a list of any command-line arguments that are specified at launch by accessing the <code class="code-voice">Process.arguments</code> type property. This is equivalent to accessing the <code class="code-voice">arguments</code> property on <code class="code-voice">NSProcessInfo.processInfo()</code>.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="">
+        <ol class="code-lines">
+            <li><code class="code-voice">$ /path/to/app --argumentName value</code></li>
+        </ol>
+      </div>
+  </div>
+</section><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">for</code> <code class="vc">argument</code> <code class="kt">in</code> <code class="vc">Process</code>.<code class="vc">arguments</code> {</code></li>
+            <li><code class="code-voice">    <code class="vc">print</code>(<code class="vc">argument</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;/path/to/app&quot;</code></code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;--argumentName&quot;</code></code></li>
+            <li><code class="code-voice"><code class="c">// prints &quot;value&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">The first element in <code class="code-voice">Process.arguments</code> is always a path to the executable. Any command-line arguments that are specified at launch begin at <code class="code-voice">Process.arguments[1]</code>.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

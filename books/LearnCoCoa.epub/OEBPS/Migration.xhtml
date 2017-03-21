@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH12">&#x200c;</a><a id="TP40014216-CH12-ID108">&#x200c;</a>
+    <h2 class="chapter-name">Migrating Your Objective-C Code to Swift</h2>
+      
+      	<section class="section">
+      		<p class="para"><em>Migration</em> provides an opportunity to revisit an existing Objective-C app and improve its architecture, logic, and performance by replacing pieces of it in Swift. For a straightforward, incremental migration of an app, you’ll be using the tools learned earlier—mix and match plus interoperability. Mix-and-match functionality makes it easy to choose which features and functionality to implement in Swift, and which to leave in Objective-C. Interoperability makes it possible to integrate those features back into Objective-C code with no hassle. Use these tools to explore Swift’s extensive functionality and integrate it back into your existing Objective-C app without having to rewrite the entire app in Swift at once.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH12-ID110">&#x200c;</a>
+  <h3 class="section-name">Preparing Your Objective-C Code for Migration</h3>
+  <p class="para">Before you begin migrating your codebase, make sure that your Objective-C and Swift code has optimal compatibility. This means tidying up and modernizing your existing Objective-C codebase. Your existing code should follow modern coding practices to make it easier to interact with Swift seamlessly. For a short list of practices to adopt before moving forward, see <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014150" -->Adopting Modern Objective-C<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH12-ID112">&#x200c;</a>
+  <h3 class="section-name">The Migration Process</h3>
+  <p class="para">The most effective approach for migrating code to Swift is on a per-file basis—that is, one class at a time. Because you can’t subclass Swift classes in Objective-C, it’s best to choose a class in your app that doesn’t have any subclasses. You’ll replace the <code class="code-voice">.m</code> and <code class="code-voice">.h</code> files for that class with a single <code class="code-voice">.swift</code> file. Everything from your implementation and interface goes directly into this single Swift file. You won’t create a header file; Xcode generates a header automatically in case you need to reference it.</p>
+  <section class="section">
+	<a id="TP40014216-CH12-ID114">&#x200c;</a>
+  <h3 class="section-name">Before You Start</h3>
+  <ul class="list-check">
+  <li class="item"><p class="para"> Create a Swift class for your corresponding Objective-C <code class="code-voice">.m</code> and <code class="code-voice">.h</code> files by choosing File &gt; New &gt; File &gt; (iOS, watchOS, tvOS, <em>or</em> OS X) &gt; Source &gt; Swift File. You can use the same or a different name than your Objective-C class. Class prefixes are optional in Swift.</p></li><li class="item"><p class="para">Import relevant system frameworks.</p></li><li class="item"><p class="para">Fill out an Objective-C bridging header if you need to access Objective-C code from the same app target in your Swift file. For instructions, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID126" href="MixandMatch.xhtml#TP40014216-CH10-ID126">Importing Code from Within the Same App Target</a>.</p></li><li class="item"><p class="para">To make your Swift class accessible and usable back in Objective-C, make it a descendant of an Objective-C class. To specify a particular name for the class to use in Objective-C, mark it with <code class="code-voice">@objc(&lt;#name#&gt;)</code>, where <code class="code-voice">&lt;#name#&gt;</code> is the name that your Objective-C code uses to reference the Swift class. For more information on <code class="code-voice">@objc</code>, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID53" href="InteractingWithObjective-CAPIs.xhtml#TP40014216-CH4-ID53">Swift Type Compatibility</a>.</p></li>
+</ul>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH12-ID116">&#x200c;</a>
+  <h3 class="section-name">As You Work</h3>
+  <ul class="list-check">
+  <li class="item"><p class="para"> You can set up your Swift class to integrate Objective-C behavior by subclassing Objective-C classes, adopting Objective-C protocols, and more. For more information, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH5-ID86" href="WritingSwiftClassesWithObjective-CBehavior.xhtml">Writing Swift Classes with Objective-C Behavior</a>.</p></li><li class="item"><p class="para">As you work with Objective-C APIs, you’ll need to know how Swift translates certain Objective-C language features. For more information, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID35" href="InteractingWithObjective-CAPIs.xhtml">Interacting with Objective-C APIs</a>.</p></li><li class="item"><p class="para">When writing Swift code that incorporates Cocoa frameworks, remember that certain types are bridged, which means you can work with Swift types in place of Objective-C types. For more information, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH6-ID61" href="WorkingWithCocoaDataTypes.xhtml">Working with Cocoa Data Types</a>.</p></li><li class="item"><p class="para">As you incorporate Cocoa patterns into your Swift class, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH7-ID6" href="AdoptingCocoaDesignPatterns.xhtml">Adopting Cocoa Design Patterns</a> for information on translating common design patterns.</p></li><li class="item"><p class="para">For considerations on translating your properties from Objective-C to Swift, read <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH13" target="_self" -->Properties<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p></li><li class="item"><p class="para">Use the <code class="code-voice">@objc(&lt;#name#&gt;)</code> attribute to provide Objective-C names for properties and methods when necessary. For example, you can mark a property called <code class="code-voice">enabled</code> to have a getter named <code class="code-voice">isEnabled</code> in Objective-C like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">enabled</code>: <code class="n"><!-- a href="" logicalPath="" -->Bool<!-- /a --></code> {</code></li>
+            <li><code class="code-voice"><code class="kt">@objc</code>(<code class="vc">isEnabled</code>) <code class="kt">get</code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li><li class="item"><p class="para">Denote instance (<code class="code-voice">-</code>) and class (<code class="code-voice">+</code>) methods with <code class="code-voice">func</code> and <code class="code-voice">class func</code>, respectively.</p></li><li class="item"><p class="para">Declare simple macros as global constants, and translate complex macros into functions.</p></li>
+</ul>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH12-ID118">&#x200c;</a>
+  <h3 class="section-name">After You Finish</h3>
+  <ul class="list-check">
+  <li class="item"><p class="para"> Update import statements in your Objective-C code (to <code class="code-voice">#import &quot;ProductModuleName-Swift.h&quot;</code>), as described in <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID126" href="MixandMatch.xhtml#TP40014216-CH10-ID126">Importing Code from Within the Same App Target</a>.</p></li><li class="item"><p class="para">Remove the original Objective-C <code class="code-voice">.m</code> file from the target by deselecting the target membership checkbox. Don’t delete the <code class="code-voice">.m</code> and <code class="code-voice">.h</code> files immediately; use them to troubleshoot.</p></li><li class="item"><p class="para">Update your code to use the Swift class name instead of the Objective-C name if you gave the Swift class a different name.</p></li>
+</ul>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH12-ID120">&#x200c;</a>
+  <h3 class="section-name">Troubleshooting Tips and Reminders</h3>
+  <p class="para">Even though each migration experience is different depending on your existing codebase, there are some general steps and tools to help you troubleshoot your code migration:</p><ul class="list-bullet">
+  <li class="item"><p class="para">Remember that you cannot subclass a Swift class in Objective-C. Therefore, the class you migrate cannot have any Objective-C subclasses in your app.</p></li><li class="item"><p class="para">Once you migrate a class to Swift, you must remove the corresponding <code class="code-voice">.m</code> file from the target before building to avoid a duplicate symbol error.</p></li><li class="item"><p class="para">To be accessible and usable in Objective-C, a Swift class must be a descendant of an Objective-C class or it must be marked <code class="code-voice">@objc</code>.</p></li><li class="item"><p class="para">When you bring Swift code into Objective-C, remember that Objective-C won’t be able to translate certain features that are specific to Swift. For a list, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID136" href="MixandMatch.xhtml#TP40014216-CH10-ID136">Using Swift from Objective-C</a>.</p></li><li class="item"><p class="para">Command-click a Swift class name to see its generated header.</p></li><li class="item"><p class="para">Option-click a symbol to see implicit information about it, like its type, attributes, and documentation comments.</p></li>
+</ul>
+  
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

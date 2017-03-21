@@ -1,0 +1,762 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Code of Conduct</title>
+    <meta content="Kristine Smith" name="Author"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="ToC" id="calibre_toc_28">Chapter 15</h2>
+
+
+<p class="NormalFirst">
+A still-pouting Claire poked her head into the hallway and
+motioned for Jani to follow. They passed through a series of sitting rooms,
+each larger and more ornately furnished than the last, ending up in a <i class="calibre4">salon
+grande</i> with crimson fabric-covered walls and museum-quality furnishings.
+Jani looked at the muraled ceiling and berugged floor. <i class="calibre4">Everything’s freaking
+red—I dub thee the Bloodshot Room</i>.
+</p>
+<p class="Normal">
+“You wait here,” Claire said as she departed, whipping her
+waist-length hair like an animal repelling flies.
+</p>
+<p class="Normal">
+Jani shrugged off her snowsuit jacket, gave up on the pants,
+then flexed her neck and worked her stiff shoulders. An odd languor had settled
+over her, an unsettling contrast to her usual post-augie jitters. <i class="calibre4">At least I
+won’t go bouncing off these goddamn walls</i>. She listened for approaching
+footsteps, then stared blearily at the fragile glass and porcelain contents of
+the cabinets.
+</p>
+<p class="Normal">
+When that palled, she switched her attention to the wall
+decor. She contemplated several holos, their colors calibrated to resemble the
+mutedness of old oils, before stopping in front of the portrait of a young man.
+He wore a plain tunic in Exterior burgundy; his clipped hair shone white-blond.
+Full-lipped, his professional smile held a hint of dry humor. Jani couldn’t see
+the color of his slanted eyes, but a long-forgotten fragment of Commonwealth gossip
+told her they’d be brown.
+</p>
+<p class="Normal">
+“That was my late brother-in-law, David Scriabin, at the age
+of twenty-five.”
+</p>
+<p class="Normal">
+Jani twisted around. Her upper back cramped. She hadn’t even
+heard the door open.
+</p>
+<p class="Normal">
+“He had just been elected First Deputy to Exterior Minister
+al-Muhammed.” Anais Ulanova stood in the doorway, eyeing Jani with cool
+cordiality. Unlike many public figures, she was just as imposing in private.
+Medium height, very thin, she wore a long-sleeved, floor-length black gown of
+stark design. Weighty gold hoops hung from her ears. Her short, dark brown hair
+glistened in the room’s soft light, its swept-back style accentuating her
+aquiline nose and wide-set eyes. Lyssa van Reuter, thirty annealing years on.
+</p>
+<p class="Normal">
+“Your Excellency,” Jani said, with a shallow bow that was as
+much as her balky back and colonial sensibility would allow.
+</p>
+<p class="Normal">
+Ulanova’s dark gaze shifted to the portrait, and softened.
+“He became Minister himself only five years later, the youngest Cabinet member
+in Commonwealth history. That was the year my sister and he married.” She waved
+languidly toward two nearby chairs set at opposite ends of a long, low table,
+on which rested a silver beverage service. “You’d like a refreshment? Coffee,
+perhaps?”
+</p>
+<p class="Normal">
+Jani sat down, her stomach grumbling as the rich aroma of
+truebean reached her. “With all due respect, ma’am, if our positions were
+reversed, I doubt you’d drink anything I offered.”
+</p>
+<p class="Normal">
+“Be rude if you wish, Ms. Tyi,” Ulanova said as she poured.
+“But it is a cold winter’s afternoon, and I need my coffee.” She sat back, cup
+and saucer in hand, her posture impeccable. “Lieutenant Pascal will be joining
+us shortly.” A smile flirted with the corners of her thin-lipped mouth. “Off
+seeing to things he could just as well leave to his staff. He really is the
+most . . . thorough young man.”
+</p>
+<p class="Normal">
+Jani waited until Ulanova raised her cup to drink. “He’s
+fucking Claire, too, you know. He’s snaking you with her just like David
+Scriabin did with your sister.”
+</p>
+<p class="Normal">
+Coffee sloshed, spattering Ulanova’s dress. Fifty years in
+the public arena served her well—the pain that flashed across her face
+disappeared instantly. “I never would have suspected you a wallower in common
+gossip,” she said slowly as she dabbed at her skirt with a linen napkin.
+</p>
+<p class="Normal">
+“Oh, I understand the situation was rather uncommon, even by
+Family standards. You and Scriabin had set the date and picked out the silver,
+next thing you know, you’re a sister-in-law.” Jani tilted her head in the
+direction of the Scriabin portrait. “The resemblance to Lieutenant Pascal is
+startling. Are they related, or do you breed David look-alikes on a farm
+somewhere?”
+</p>
+<p class="Normal">
+“If this is the way you intend to play, Ms. Tyi, please be
+advised I earned my letter in the sport before you were born.”
+</p>
+<p class="Normal">
+“I intend to disclose fully to Minister van Reuter this
+conversation as soon as I return to Interior House, ma’am.”
+</p>
+<p class="Normal">
+“My <i class="calibre4">ex</i>-nephew-in-law is an incompetent drunkard who
+has, in the grand tradition of his family, surrounded himself with a staff
+comprised of children and counter-jumpers. If you think your informing him of
+our meeting will help you in any way, you are doomed to disappointment.”
+</p>
+<p class="Normal">
+“Your concern is duly noted, ma’am. Thank you.”
+</p>
+<p class="Normal">
+“Why did he bring you to Earth?”
+</p>
+<p class="Normal">
+“A long-overdue vacation, ma’am.”
+</p>
+<p class="Normal">
+“Lieutenant Pascal believes otherwise. He was quite taken
+with you, Ms. Tyi. I can’t recall when anyone impressed him more.”
+</p>
+<p class="Normal">
+“My thanks to the lieutenant for the vote of confidence.”
+Jani rubbed her cheek and smothered a yawn. <i class="calibre4">She ordered Lucien to jump me.
+She knows I’m augmented, or made a damned good guess. She wanted me post-augie.
+She wanted me off my game</i>.
+</p>
+<p class="Normal">
+“Are you sure you won’t have coffee, Captain? Or perhaps
+you’d prefer something stronger? You appear drawn.”
+</p>
+<p class="Normal">
+Jani caught the tip of her tongue between her teeth, then
+shook her head. “Captain? I don’t have a rank. I’m not Service.” She forced a
+conciliatory smile. “I’ve only just come off a long-haul, ma’am. I don’t
+recover from those as quickly as I used to.”
+</p>
+<p class="Normal">
+Some emotion flared in Ulanova’s eyes, the last flickers of
+a dying fire. Then, with a complete lack of fuss, she filled a cup from the
+coffee ewer and thrust it at Jani.
+</p>
+<p class="Normal">
+After a pointed pause, Jani accepted the coffee. The cup’s
+holopattern caught the light as she drew it near; minuscule iridescent
+snowflakes seemed to tumble down the smooth white sides. She took a healthy
+swallow of the black, foamy brew. Strong. Sugared. Bracing. Lovely.
+</p>
+<p class="Normal">
+Ulanova’s measured voice slithered past her strange torpor.
+“I can be a powerful ally, Ms. Tyi. The reverse also holds true.”
+</p>
+<p class="Normal">
+“With all due respect, ma’am, why tell me?”
+</p>
+<p class="Normal">
+“Evan brought you here to perform an investigation. All I
+ask is that you inform me of your findings as you do him.”
+</p>
+<p class="Normal">
+“You’re asking me to betray my Minister’s confidence, ma’am.
+What am I worth if I do that?”
+</p>
+<p class="Normal">
+“I’ve never been one to begrudge practicality.” Ulanova raised
+the lid of one of a trio of small dishes and removed a tiny, multicolored
+cakelet. “And coming over to the winning side before the last decisive battle
+seems to me the height of practicality.” The stiff icing crunched like frozen
+snow as she bit down.
+</p>
+<p class="Normal">
+“I wasn’t aware we were at war, ma’am.” Jani finished her
+coffee down to the bitter, grainy dregs.
+</p>
+<p class="Normal">
+“Trust me, Ms. Tyi, when I tell you we have a situation
+developing of even greater concern than the secessionist threat.” Ulanova
+refilled her cup and pushed the cake server toward her side of the table. “Have
+you ever heard the name <i class="calibre4">Jani Kilian</i>?”
+</p>
+<p class="Normal">
+<i class="calibre4">Only a few thousand times</i>. “No, ma’am, it doesn’t
+sound familiar.”
+</p>
+<p class="Normal">
+“Knevçet Shèràa?”
+</p>
+<p class="Normal">
+<i class="calibre4">Poor pronunciation—too much buzz in the “c</i>.” “Is that
+an idomeni phrase?”
+</p>
+<p class="Normal">
+“Rikart Neumann?”
+</p>
+<p class="Normal">
+“Everyone’s heard of the Neumanns, ma’am.”
+</p>
+<p class="Normal">
+“Acton van Reuter,” Ulanova said, a shade too loudly.
+</p>
+<p class="Normal">
+“My minister’s late father.” Jani popped a cakelet into her
+mouth. “The Old Hawk. Died about four years ago. Age of sixty-seven. David
+Scriabin was only sixty-four. NUVA-SCAN patriarchs don’t seem to live very long
+these days, do they, ma’am?”
+</p>
+<p class="Normal">
+Ulanova arched a stenciled eyebrow. “Perhaps the word <i class="calibre4">treason</i>
+may serve to fix your attention, Ms. Tyi. Treason, and premeditated murder.”
+</p>
+<p class="Normal">
+Jani’s jaw stalled in mid-chew. <i class="calibre4">I had my reasons</i>.
+“Ma’am?”
+</p>
+<p class="Normal">
+Before Ulanova could explain further, Lucien entered. He
+covered the distance to their table in a few rapid strides. “Your Excellency,”
+he said, handing her a sheet of parchment.
+</p>
+<p class="Normal">
+As Ulanova studied the document, her expression grew more
+and more somber.
+</p>
+<p class="Normal">
+“Do you recall our recent discussion of Commonwealth
+kidnapping laws, ma’am?” Lucien asked as he dragged a chair tableside.
+</p>
+<p class="Normal">
+Parchment crackled as Ulanova’s grip tightened. “Thank you,
+Lieutenant.”
+</p>
+<p class="Normal">
+“We’ve wasted this lady’s time,” Lucien said, gesturing
+toward Jani, “and entered tricky legal territory in the process.” He served
+himself coffee, then dug into the cakes, popping them into his mouth one after
+the other. “Kilian’s dead. No one could have lived through that explosion.” He
+had combed his hair and shed the snowgear. He now wore a snug turtleneck the
+color of rubies and Service winterweight trousers striped down the side in the
+same rich hue.
+</p>
+<p class="Normal">
+<i class="calibre4">Mainline stripe</i>. Jani swirled her cup. <i class="calibre4">Mine was
+sideline white</i>. She checked his footwear. Sensible boots, like hers, though
+in better shape. Black. Mirror-polished and steel-toed.
+</p>
+<p class="Normal">
+Ulanova handed the paper back to Lucien. “The woman’s ID
+chip was never found,” she said. “Her death is assumption only.”
+</p>
+<p class="Normal">
+Lucien staged another assault on the cakes. “Analysis of the
+wreckage showed that a pulse bomb had been placed directly over the transport’s
+main battery, beneath the front of the passenger compartment.” He glanced at
+Jani. “Anyone sitting in the front of the craft was vaporized. The ID chips the
+recovery crew did find were as badly damaged as any they’d ever seen. It was
+their opinion Kilian’s was obliterated.”
+</p>
+<p class="Normal">
+Ulanova snorted. “That has never happened!”
+</p>
+<p class="Normal">
+“There’s a first time for everything,” Lucien replied.
+</p>
+<p class="Normal">
+<i class="calibre4">Maybe, if I’d been sitting in the front</i>. The memory
+of the transport cabin air’s ozone tang burned Jani’s throat. <i class="calibre4">But I was way
+in the back</i>. Jammed between the rearmost seat and the bulkhead, wrists
+bound to ankles, head between her knees. She could almost feel the rumble of
+the directionals shuddering through her dainty salon chair—
+</p>
+<p class="Normal">
+<i class="calibre4">Pulse bomb</i>?
+</p>
+<p class="Normal">
+“Ms. Tyi is just what she says she is, an Interior field
+agent,” Lucien said. “Kilian’s dead. Murdered along with the rest of the
+Twelfth Rovers.”
+</p>
+<p class="Normal">
+Jani leaned forward slowly and set her cup on the table.
+</p>
+<p class="Normal">
+Ulanova grew thoughtful. “Some would maintain Kilian’s death
+was an execution. My friend Gisela Detmers-Neumann, for one. You’ve heard of <i class="calibre4">her</i>,
+I assume, Ms. Tyi?” Her gaze sharpened as she shouldered on. “But innocent
+people died in that explosion, as well. Rescuers and rescued—loyal Spacers all.
+A great scandal, one to shake the foundations of the Commonwealth, the trust
+between those who administer and those who defend.”
+</p>
+<p class="Normal">
+<i class="calibre4">The explosion wasn’t an accident</i>. It had been
+planned, by someone who couldn’t allow the events that transpired at Knevçet
+Shèràa to become known.
+</p>
+<p class="Normal">
+“I’ve been trying to connect Acton van Reuter to that
+transport explosion for nine years,” Ulanova said. “He died before justice
+could be served directly. But I will accept his son in his stead, Ms. Tyi.
+Someone who could bring me proof Evan knew of his father’s guilt and covered it
+up would earn the Commonwealth’s gratitude as well as mine.”
+</p>
+<p class="Normal">
+Jani grooved her right thumbnail into the lifeline of her
+numb left palm. <i class="calibre4">She called you a loyal Spacer, Borgie</i>. Rose pink carrier
+bled through the abraded synthon, forming a string of tiny, liquid pearls. <i class="calibre4">Isn’t
+that nice of her</i>? “I’m sorry, ma’am,” she said as she massaged away the
+sticky liquid. “I don’t mean to appear thick, but I don’t understand what you
+and Lieutenant Pascal are talking about.”
+</p>
+<p class="Normal">
+Lucien stared straight ahead. Ulanova regarded Jani for a
+long moment, then pushed back the lids of the other two servers. “We also have
+fruit tarts and biscotti, Ms. Tyi,” she said. “Unfortunately, the lieutenant
+has been greedy enough to eat all the cake.” Her sidelong look at Lucien held
+murder. “No surprise there, it seems.” She rose. “We have apparently detained
+you unnecessarily. Allow me to extend my most heartfelt apologies. The
+lieutenant will see to any compensation you feel is merited.” She swept out of
+the room in a swirl of black.
+</p>
+<p class="Normal">
+Jani stared after the departed minister, her stomach
+gurgling its own farewell. Then the sound of muffled laughter claimed her
+attention. She turned to the chuckling Lucien.
+</p>
+<p class="Normal">
+He gave her a thumbs-up. “Good job,” he offered around a
+mouthful of fruit tart. “The quieter she gets, the madder she is.” His
+shoulders shook. “She’s really pissed!”
+</p>
+<p class="Normal">
+“You can both—” Jani stopped as her stomach gurgled again,
+this time more urgently. Cramps rippled through her abdomen. Cold sweat bloomed
+and beaded. “Where’s—” She clamped a hand over her mouth as the saliva flooded.
+</p>
+<p class="Normal">
+“Oh shit!” Lucien grabbed her by the shoulders and herded
+her toward the door. “Not on the rugs—not on the rugs!” He pushed her out into
+the hall. “Second door on the right!”
+</p>
+<p class="Normal">
+Jani stumbled into the bathroom, reaching the sink just in
+time. She kept her eyes closed as she vomited. She groped for the faucet and
+cranked it open, washing away the rancid stench, replacing it with the clean
+smell of flowing water.
+</p>
+<p class="Normal">
+Heavy footsteps closed in from behind. “Are you all right?”
+Jani jerked as an icy lump touched the back of her neck. “Steady on—it’s just a
+coldpack.” As the chill soaked through her shirt, her knees gave way. She
+sagged to the tiled floor, Lucien providing just enough support to keep her
+from cracking her head against the plumbing. Her emptied stomach gave a last
+trembling lurch. She moaned and rested her cheek on the cold floor.
+</p>
+<p class="Normal">
+“Do you need a doctor?”
+</p>
+<p class="Normal">
+Jani opened one eye. <i class="calibre4">What is it about me and men and
+bathrooms</i>? Lucien sat atop the marble vanity, legs swinging from the knee.
+Back—forth—back—forth. The motion nauseated her anew. “No.” She closed her eye
+and tried to feel whether her filming had fissured. “What the hell was it, and
+where?”
+</p>
+<p class="Normal">
+Silence. A sigh. “Ascertane. Glazed inside your coffee cup.”
+The sound of a fastener being worked, a bottle seal being cracked. “I don’t
+understand your reaction. Ascertane’s a mild anti-inhibitory—you’re not
+supposed to know you’ve been drugged. You’re just supposed to feel happy.
+Trusting.” The slide of cloth against counter. Footsteps. “Here. Drink this.”
+</p>
+<p class="Normal">
+Jani opened both eyes. Lucien and his identical twin slowly
+merged into a single, blurry-edged figure holding a small dispo filled with
+yellow liquid. “Stick it in your ear.”
+</p>
+<p class="Normal">
+“It’s for nausea.”
+</p>
+<p class="Normal">
+“I already have that. Thank you.”
+</p>
+<p class="Normal">
+“Look.” Lucien gulped the tiny draft. “Same bottle. Same
+damned cup!” He refilled the dispo, swallowed that as well, refilled it again,
+then placed it on the floor in front of Jani. “Suit yourself,” he said as he
+returned to his perch. “I’m just trying to help.” He shoved the bottle into a
+Service-issue toiletry kit and yanked the fastener closed.
+</p>
+<p class="Normal">
+“Yeah, you’re a real humanitarian.” Jani worked into a
+sitting position, pausing every so often to give her stomach time to catch up.
+Then she picked up the tiny cup and sniffed the bright yellow syrup. The harsh
+lemon odor made her cough.
+</p>
+<p class="Normal">
+Lucien glared at her. “It’s the same stuff we drank by the
+barrel during flight training.”
+</p>
+<p class="Normal">
+“I didn’t have flight training, did I?” Jani drained the
+dispo, gagging as the thick liquid burned her throat.
+</p>
+<p class="Normal">
+“I don’t understand.” Lucien linked his hands around his
+knee. “I’ve administered Ascertane a hundred times—all it does is make you
+blab.” He rocked back. “That nausea stuff works fast. Feel better?”
+</p>
+<p class="Normal">
+Jani swallowed. Her stomach remained steady. “I think so.”
+She rested her head against the wall and watched Lucien watch her. “I told her
+about Claire. Just to see her reaction.”
+</p>
+<p class="Normal">
+His rocking continued without a hitch. “Which was?”
+</p>
+<p class="Normal">
+“Surprise. I think I actually caught her unawares.”
+</p>
+<p class="Normal">
+“So she’ll send Claire away. Won’t be the first time she’s
+sent someone away.” His eyes slitted as he smirked, slanting upward at the
+corners. “Or the last.”
+</p>
+<p class="Normal">
+Jani compared Lucien’s face to David Scriabin’s. His was
+longer, his cheekbones not as high. Close enough in the dark, though. “You
+know, David Scriabin and Anais Ulanova were quite the item until he lost his
+nerve and eloped with her younger, prettier, less ambitious sister. He and
+Anais never quite called it quits, however. A typical Family mess.” She sat up
+straighter. The antinausea brew had functioned as promised. “So, you aren’t her
+first twenty-five-year-old tow-head.” She tossed the coldpack back to Lucien.
+“Or her last.”
+</p>
+<p class="Normal">
+Lucien caught the pack with one hand. Without a word, he
+slid off the vanity, placed the toiletry kit on the rim of the sink, and left.
+</p>
+<p class="Normal">
+Jani took a few “get-ready” breaths and eased to her feet,
+using the wall as a support. She rummaged through the kit, liberating a
+single-use toothbrush and a pouch of oral rinse. “The man’s a born looker-after
+of old ladies.” Jani removed the wrapper from the toothbrush. “Of course, if
+you took him home to meet mother, she’d fight you for him.”
+</p>
+<p class="Normal">
+Lucien was waiting for Jani in the hall, her jacket in hand.
+Instead of his Service winter camou, he had opted for the standard-issue
+snowsuit in an alarming shade of bright blue. The glaring color made him look
+like an overgrown little boy.
+</p>
+<p class="Normal">
+<i class="calibre4">Except around the eyes</i>. Jani looked into the familiar
+chilly brown stare. She allowed him to help her with her jacket, then followed
+him silently. Just before leaving the house, she turned. The kittenish Claire
+watched them from the end of the hall, arms folded, face in the shadows.
+</p>
+<p class="Normal">
+Neither Jani nor Lucien donned their facegear before going
+outside. Instead, in psychic agreement, they made a bare-headed dash for the
+waiting skimmer, piling into seats and pulling shut gullwings, causing the
+vehicle to rock as though wind-buffeted. Jani’s backache had lessened to
+stiffness; the short exposure to the frigid air slapped away the last of her
+sick haze. By the time Lucien ramped onto the Boul, she felt human again.
+</p>
+<p class="Normal">
+<i class="calibre4">Near death makes you appreciate the simple things</i>.
+She studied the Chicago skyline with heightened interest. <i class="calibre4">Near murder gives
+them that extra glow</i>. She savored the buildings of new stone and old glass,
+their angled, diamond-shaped summits and swirling scrollery. This time around,
+she even took note of the Greatest War Memorial, its molecular clock coating
+glowing crimson in the stark winter sun. “Did it take you two long to
+rehearse?” she asked as the capital zipped by. “My questioning.”
+</p>
+<p class="Normal">
+“It wasn’t my idea.” Lucien eased behind a ponderous
+people-mover and backed off the accelerator. Their zip slowed to an easy glide.
+“She flipped as soon as she discovered van Reuter had gone to Whalen himself to
+collect you. That nailed it. As far as she was concerned, you were Jani
+Kilian.”
+</p>
+<p class="Normal">
+“But you didn’t think so?”
+</p>
+<p class="Normal">
+“On the <i class="calibre4">Arapaho</i>?” Lucien shrugged. “You acted like
+someone with something to hide. But then, don’t we all?” He bypassed the ramp
+that would have returned them to the Interior access skimway. “Besides, I
+scanned you in this skimmer—it’s off now—and compared the reading to the ID
+we’d lifted from Kilian’s Service record. She had it all planned.
+Confrontation, forced confession, deal. But the scans didn’t match, and she
+couldn’t proceed without paper proof.” He slowed the skimmer further, until
+other vehicles actually began passing them. “Aren’t you even a little curious
+why this Kilian is so important?”
+</p>
+<p class="Normal">
+Jani watched a distant shuttle descend like a pulse-powered
+beetle. <i class="calibre4">Means to an end. Ulanova wants Evan’s head on any platter she can
+find</i>. “I don’t even know when all this was supposed to have happened.”
+</p>
+<p class="Normal">
+“Eighteen years ago—the last idomeni civil war.” Lucien
+snatched glances at her as he maneuvered off the Boul and into a crowded
+commercial district. “Laumrau versus Vynshà, winner take all. The Laumrau were
+winning until this thing with Kilian happened. All sorts of mess bubbled to the
+surface after she died. Some Family members, led by Rikart Neumann and Acton
+van Reuter, had apparently agreed to throw their support behind the Laum in
+exchange for augmentation technology.”
+</p>
+<p class="Normal">
+<i class="calibre4">It’s for the home world, Kilian. Who cares about a few
+xenogeologists from a colonial consortium no one’s ever fucking heard of</i>!
+Neumann had stood nose to nose with her. His breath, scented from ever-present
+throat lozenges, had wafted around her in cinnamon-tinged puffs. <i class="calibre4">Work with
+me now, you come to Earth with me when it’s over. Cross me, and I’ll snap your
+spine</i>.
+</p>
+<p class="Normal">
+“Problem was, the idomeni had never had another race
+involved in their wars before. Everything had always been very ordered, in as
+much as a war can be ordered. Organized. Very . . . well,
+idomeni.” Lucien steered into an underground lot and edged the skimmer into a
+narrow charge station. “The fact that the Laum had actually courted disorder by
+dealing with humans staggered all the idomeni. The Vynshà had been getting
+ripped up to that point, but they were able to publicize what happened and turn
+it to their advantage. They took the dominant capital of Rauta Shèràa less than
+four months later.”
+</p>
+<p class="Normal">
+Jani followed Lucien out of the garage and onto a moving
+sidewalk. Pushed along by a swelling crowd, they entered a glass-enclosed mall
+with a large skating rink in its center.
+</p>
+<p class="Normal">
+Lucien tugged on her sleeve. “Do you feel up to anything?”
+He flashed a dark red plastic card that proved, at second glance, to be an
+Exterior Ministry expense voucher. “It’s on her.” They wandered over to a snack
+kiosk that, if the posted prices were any indication, did most of its business
+with Cabinet expense accounts.
+</p>
+<p class="Normal">
+In deference to her iffy stomach, Jani opted for an iced
+fruit drink. Lucien protested he had an image to maintain with Exterior
+Contractor Accounts and ordered enough overpriced food to feed them both for
+the day. They carried laden trays to a rinkside table, doffed their coats, and
+settled in. Jani’s drink turned out to be grapefruit-flavored. Very tart; it
+stripped the last of the minty oral rinse from her tongue.
+</p>
+<p class="Normal">
+Then the assorted aromas from Lucien’s side of the table
+reached her. Fried onion. Grilled beef. Melted butter. “What kind of technology
+did Neumann and van Reuter get from the Laum?” Jani asked as she tipped back
+her chair and started breathing through her mouth.
+</p>
+<p class="Normal">
+“Hints on how to upgrade augmentation technology, in a way
+that could be better adapted to personality alteration.” Lucien dug into his
+food like a starved teenager. “I don’t think it ever worked out, though.
+Idomeni brain chemistry is different from ours, and they’ve got that culture of
+theirs as an external force to keep their antisocial personalities in line. The
+humans they tried the augie upgrade on flipped. Twelve sheets to the wind. The
+research petered out years ago.”
+</p>
+<p class="Normal">
+<i class="calibre4">But not before Acton sacrificed his firstborn grandson on
+the R and D altar</i>. Jani crunched ice. “Who did they test the new augie on?”
+</p>
+<p class="Normal">
+“Volunteers, I assume. Research subject stipends can be
+pretty substantial.”
+</p>
+<p class="Normal">
+<i class="calibre4">So you don’t know everything</i>. Some secrets still lay
+buried beneath the sands of Knevçet Shèràa. “And what does Kilian have to do
+with all this?”
+</p>
+<p class="Normal">
+Lucien dredged a forkful of fried potatoes through a dollop
+of mayonnaise. Jani looked away while he chewed. “She was a sideline captain,”
+he said. “Documents examiner. Academy grad, of all things. Reported to
+Neumann.” His tone grew thoughtful. “Anais thinks some kind of double cross
+occurred. Either they argued over division of the spoils, or Neumann tried to
+push Kilian out of the deal altogether. All she’s certain of is that Kilian
+murdered Neumann, along with a few Laum who got in the way. What no one
+realized was, Acton was keeping tabs. He knew he faced prison if any details of
+his collusion with the Laum got out, so he arranged for the elimination of the
+one person who could put him there.”
+</p>
+<p class="Normal">
+<i class="calibre4">But I didn’t know</i>. Neither had any of her real
+soldiers. Jani took tiny sips of her drink, applying it like salve to her
+tender stomach. <i class="calibre4">By the way, Ev, you know my little investigation—your daddy
+is involved. Do you want me to stop now</i>? Dull pain radiated across her
+abdomen. She set her glass down with a clatter.
+</p>
+<p class="Normal">
+Lucien flinched. “What’s the matter?” He tried to smile.
+“Aren’t you having fun? I am.”
+</p>
+<p class="Normal">
+“You have an odd idea of fun, Lieutenant.” Jani turned her
+attention toward the rink skaters. Most were average at best, but one pair
+struck her as particularly good. “So, you and Anais are pretty close?” she
+asked, as the man flipped his partner into the air.
+</p>
+<p class="Normal">
+Lucien donned the look of innocence he’d employed to
+perfection on the <i class="calibre4">Arapaho</i>. “Look, I’m sorry if that bothers you, but
+it’s none of your—”
+</p>
+<p class="Normal">
+“She ever bring work home?” Jani joined other shoppers in
+applause as the partner landed cleanly on one edge and spun immediately into a
+quad-triple combination. The attention she paid to the skating display seemed
+to bother Lucien. He tapped his fork against the rim of his plate, remaining
+silent until she looked at him.
+</p>
+<p class="Normal">
+“Sometimes,” he said.
+</p>
+<p class="Normal">
+“She chairs the Cabinet Court Board of Inquiry?”
+</p>
+<p class="Normal">
+“Uh-huh.”
+</p>
+<p class="Normal">
+“Think you could get me a copy of the Court Summary of
+Investigation of Evan van Reuter?”
+</p>
+<p class="Normal">
+“Why?”
+</p>
+<p class="Normal">
+<i class="calibre4">Because Acton van Reuter tried to kill me to prevent his
+dealings in illegal idomeni technology from being known. He used that
+technology on his grandson. His grandson died</i>. Then Lyssa had herself
+augmented. How much more deeply had she explored what happened to Martin, and
+why? Who had she spooked? <i class="calibre4">This didn’t die with Acton van Reuter</i>. Which
+meant someone else was involved in what had happened at Knevçet Shèràa.
+</p>
+<p class="Normal">
+And that someone had murdered Lyssa.
+</p>
+<p class="Normal">
+“Because,” Jani replied, “the Court Summary contains the
+documents references for all the evidence examined. Once you have a doc
+reference, you can track it down in systems.”
+</p>
+<p class="Normal">
+“You can’t do that without Court-level passwor—”
+</p>
+<p class="Normal">
+“That’s why you’re going to supply me with those, too.”
+</p>
+<p class="Normal">
+Lucien segued from innocence to indignation. “I’m an
+Intelligence officer in the mainline Service. I signed the Commonwealth Secrets
+Act.”
+</p>
+<p class="Normal">
+“Despite those obvious shortcomings, I still think you
+capable of carrying out simple theft.”
+</p>
+<p class="Normal">
+“It’s illeg—”
+</p>
+<p class="Normal">
+“So is kidnapping, as you were so kind to point out. But you
+don’t see me belaboring the point. Not yet, anyway.” <i class="calibre4">Acton van Reuter tried
+to murder me</i>. And slaughtered her real soldiers in the process. <i class="calibre4">Who else
+knew the story</i>? Who had Lyssa flushed from the undergrowth before she went
+on that final bender?
+</p>
+<p class="Normal">
+“The Summary hasn’t been issued yet. It’s still in draft, no
+final Court seal. Not as grave a sin.” Suddenly, Lucien grinned. If you ignored
+his eyes, you’d think it was your lucky day. “If I get it for you, what do I
+get in exchange?”
+</p>
+<p class="Normal">
+“The Commonwealth’s gratitude.”
+</p>
+<p class="Normal">
+“Not yours?” He cupped his chin in his hand and leered
+politely.
+</p>
+<p class="Normal">
+Jani reached across the table and brushed a finger along his
+arm. “Considering your penchant for gadgets, do you by any chance have
+something that could secure a workstation?”
+</p>
+<p class="Normal">
+“I’m sure someone at your level in Interior would have
+secured—”
+</p>
+<p class="Normal">
+“I want to make sure.”
+</p>
+<p class="Normal">
+Lucien’s smile tightened. “Will you please stop interrupting
+me.”
+</p>
+<p class="Normal">
+“It needs to be a portable jig, something I can move from
+machine to machine.”
+</p>
+<p class="Normal">
+“I don’t take orders from you.”
+</p>
+<p class="Normal">
+“No, but you’ll do it, if for no other reason than that
+someday you’ll be able to tell Anais all about it.”
+</p>
+<p class="Normal">
+Dead eyes widened. To call the look “surprised” would have
+been overstating the case. But awareness would do, appreciation that she knew
+Lucien better than he thought, that he didn’t fool all the people all the time.
+</p>
+<p class="Normal">
+“I’ll see what I can do,” he said after a while. “Will there
+be anything else, General?”
+</p>
+<p class="Normal">
+“No, I think that should do it for now.” Jani finished her
+drink. “Thanks for the snack. I’ll be in touch.”
+</p>
+<p class="Normal">
+“Where are you going?” Lucien scrambled for his coat. “I
+thought we’d spend the afternoon together.” Judging from his flustered
+behavior, rejection was an unfamiliar experience. “Like we did on the <i class="calibre4">Arapaho</i>,
+remember?”
+</p>
+<p class="Normal">
+“I have things to do.”
+</p>
+<p class="Normal">
+“How will I contact you?”
+</p>
+<p class="Normal">
+“Not directly. I’ll send a runner for the paper and the jig.
+I don’t think we should be seen together anymore.”
+</p>
+<p class="Normal">
+“Just squeeze me dry and cast me aside, huh?”
+</p>
+<p class="Normal">
+“You got it.” Jani patted his cheek in farewell. Then she
+darted into the midst of the milling shoppers. She heard Lucien call, “Damn it,
+Risa!” but she didn’t look back, and she didn’t slow down. She knew how to lose
+herself in a crowd.
+</p>
+
+</body></html>

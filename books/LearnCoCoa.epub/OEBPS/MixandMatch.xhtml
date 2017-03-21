@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH10">&#x200c;</a><a id="TP40014216-CH10-ID122">&#x200c;</a>
+    <h2 class="chapter-name">Swift and Objective-C in the Same Project</h2>
+      
+      	<section class="section">
+      		<p class="para">Swift’s compatibility with Objective-C lets you create a project that contains files written in either language. You can use this feature, called <em>mix and match</em>, to write apps that have a mixed-language codebase. Using mix and match, you can implement part of your app’s functionality using the latest Swift features and seamlessly incorporate it back into your existing Objective-C codebase.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH10-ID124">&#x200c;</a>
+  <h3 class="section-name">Mix and Match Overview</h3>
+  <p class="para">Objective-C and Swift files can coexist in a single project, whether the project was originally an Objective-C or Swift project. You can simply add a file of the other language directly to an existing project. This natural workflow makes creating mixed-language app and framework targets as straightforward as creating an app or framework target written in a single language.</p><p class="para">The process for working with mixed-language targets differs slightly depending on whether you’re writing an app or a framework. The general import model for working with both languages within the same target is depicted below and described in more detail in the following sections.</p><div class="figure">
+	<span class="caption"></span>
+	<img src="Art/DAG_2x.png" alt="image: ../Art/DAG_2x.png" width="473" height="321" />
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID126">&#x200c;</a>
+  <h3 class="section-name">Importing Code from Within the Same App Target</h3>
+  <p class="para">If you’re writing a mixed-language app, you may need to access your Objective-C code from Swift and your Swift code from Objective-C. The process described in this section applies to non-framework targets.</p>
+  <section class="section">
+	<a id="TP40014216-CH10-ID156">&#x200c;</a>
+  <h3 class="section-name">Importing Objective-C into Swift</h3>
+  <p class="para">To import a set of Objective-C files in the same app target as your Swift code, you rely on an <em>Objective-C bridging header</em> to expose those files to Swift. Xcode offers to create this header file when you add a Swift file to an existing Objective-C app, or an Objective-C file to an existing Swift app.</p><div class="figure">
+	<span class="caption"></span>
+	<img src="Art/bridgingheader_2x.png" alt="image: ../Art/bridgingheader_2x.png" width="592" height="168" />
+</div><p class="para">If you accept, Xcode creates the header file along with the file you were creating, and names it by your product module name followed by adding <code class="code-voice">&quot;-Bridging-Header.h&quot;</code>. (You’ll learn more about the product module name later, in <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID138" href="MixandMatch.xhtml#TP40014216-CH10-ID138">Naming Your Product Module</a>.)</p><p class="para">Alternatively, you can create a bridging header yourself by choosing File &gt; New &gt; File &gt; (iOS, watchOS, tvOS, <em>or</em> OS X) &gt; Source &gt; Header File.</p><p class="para">You’ll need to edit the bridging header file to expose your Objective-C code to your Swift code.</p><p class="para"><strong>To import Objective-C code into Swift from the same target</strong></p><ol class="list-number">
+  <li class="item"><p class="para">In your Objective-C bridging header file, import every Objective-C header you want to expose to Swift. For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="cp">#import &quot;XYZCustomCell.h&quot;</span>
+</code></li>
+            <li><code class="code-voice"><span class="cp">#import &quot;XYZCustomView.h&quot;</span>
+</code></li>
+            <li><code class="code-voice"><span class="cp">#import &quot;XYZCustomViewController.h&quot;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li><li class="item"><p class="para">In Build Settings, in Swift Compiler - Code Generation, make sure the Objective-C Bridging Header build setting under has a path to the bridging header file.</p><p class="para">The path should be relative to your project, similar to the way your Info.plist path is specified in Build Settings. In most cases, you should not need to modify this setting.</p></li>
+</ol><p class="para">Any public Objective-C headers listed in this bridging header file will be visible to Swift. The Objective-C functionality will be available in any Swift file within that target automatically, without any import statements. Use your custom Objective-C code with the same Swift syntax you use with system classes.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">myCell</code> = <code class="vc">XYZCustomCell</code>()</code></li>
+            <li><code class="code-voice"><code class="vc">myCell</code>.<code class="vc">subtitle</code> = <code class="s">&quot;A custom cell&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID157">&#x200c;</a>
+  <h3 class="section-name">Importing Swift into Objective-C</h3>
+  <p class="para">When you import Swift code into Objective-C, you rely on an <em>Xcode-generated header</em> file to expose those files to Objective-C. This automatically generated file is an Objective-C header that declares the Swift interfaces in your target. It can be thought of as an umbrella header for your Swift code. The name of this header is your product module name followed by adding <code class="code-voice">&quot;-Swift.h&quot;</code>. (You’ll learn more about the product module name later, in <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID138" href="MixandMatch.xhtml#TP40014216-CH10-ID138">Naming Your Product Module</a>.)</p><p class="para">By default, the generated header contains interfaces for Swift declarations marked with the <code class="code-voice">public</code> modifier. It also contains those marked with the <code class="code-voice">internal</code> modifier if your app target has an Objective-C bridging header. Declarations marked with the <code class="code-voice">private</code> modifier do not appear in the generated header. Private declarations are not exposed to Objective-C unless they are explicitly marked with <code class="code-voice">@IBAction</code>, <code class="code-voice">@IBOutlet</code>, or <code class="code-voice">@objc</code> as well. If your app target is compiled with testing enabled, a unit test target can access any declaration with the <code class="code-voice">internal</code> modifier as if they were declared with the <code class="code-voice">public</code> modifier by prepending <code class="code-voice">@testable</code> to the product module import statement.</p><p class="para">For more information on access-level modifiers, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH41" target="_self" -->Access Control<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p><p class="para">You don’t need to do anything special to create the generated header file—just import it to use its contents in your Objective-C code. Note that the Swift interfaces in the generated header include references to all of the Objective-C types used in them. If you use your own Objective-C types in your Swift code, make sure to import the Objective-C headers for those types before importing the Swift generated header into the Objective-C <code class="code-voice">.m</code> file you want to access the Swift code from.</p><p class="para"><strong>To import Swift code into Objective-C from the same target</strong></p><ul class="list-bullet">
+  <li class="item"><p class="para">Import the Swift code from that target into any Objective-C <code class="code-voice">.m</code> file within that target using this syntax and substituting the appropriate name:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="cp">#import &quot;ProductModuleName-Swift.h&quot;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li>
+</ul><p class="para">The Swift files in your target will be visible in Objective-C <code class="code-voice">.m</code> files containing this import statement. For information on using Swift from Objective-C code, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID136" href="MixandMatch.xhtml#TP40014216-CH10-ID136">Using Swift from Objective-C</a>.</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Swift</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Objective-C</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para">Swift code</p></td>
+            <td><p class="para">No import statement</p></td>
+            <td><p class="para"><code class="code-voice">#import &quot;ProductModuleName-Swift.h&quot;</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para">Objective-C code</p></td>
+            <td><p class="para">No import statement; Objective-C bridging header required</p></td>
+            <td><p class="para"><code class="code-voice">#import &quot;Header.h&quot;</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID130">&#x200c;</a>
+  <h3 class="section-name">Importing Code from Within the Same Framework Target</h3>
+  <p class="para">If you’re writing a mixed-language framework, you may need to access your Objective-C code from Swift and your Swift code from Objective-C.</p>
+  <section class="section">
+	<a id="TP40014216-CH10-ID171">&#x200c;</a>
+  <h3 class="section-name">Importing Objective-C into Swift</h3>
+  <p class="para">To import a set of Objective-C files in the same framework target as your Swift code, you’ll need to import those files into the Objective-C umbrella header for the framework.</p><p class="para"><strong>To import Objective-C code into Swift from the same framework</strong></p><ol class="list-number">
+  <li class="item"><p class="para">Under Build Settings, in Packaging, make sure the Defines Module setting for that framework target is set to “Yes&quot;.</p></li><li class="item"><p class="para">In your umbrella header file, import every Objective-C header you want to expose to Swift. For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="cp">#import &lt;XYZ/XYZCustomCell.h&gt;</span>
+</code></li>
+            <li><code class="code-voice"><span class="cp">#import &lt;XYZ/XYZCustomView.h&gt;</span>
+</code></li>
+            <li><code class="code-voice"><span class="cp">#import &lt;XYZ/XYZCustomViewController.h&gt;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li>
+</ol><p class="para">Swift will see every header you expose publicly in your umbrella header. The contents of the Objective-C files in that framework will be available in any Swift file within that framework target automatically, without any import statements. Use your custom Objective-C code with the same Swift syntax you use with system classes.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">myOtherCell</code> = <code class="vc">XYZCustomCell</code>()</code></li>
+            <li><code class="code-voice"><code class="vc">myOtherCell</code>.<code class="vc">subtitle</code> = <code class="s">&quot;Another custom cell&quot;</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID172">&#x200c;</a>
+  <h3 class="section-name">Importing Swift into Objective-C</h3>
+  <p class="para">To import a set of Swift files in the same framework target as your Objective-C code, you don’t need to import anything into the umbrella header for the framework. Instead, import the Xcode-generated header file for your Swift code into any Objective-C <code class="code-voice">.m</code> file you want to use your Swift code from.</p><p class="para">Because the generated header for a framework target is part of the framework’s public interface, only declarations marked with the <code class="code-voice">public</code> modifier appear in the generated header for a framework target. You can still use Swift methods and properties that are marked with the <code class="code-voice">internal</code> modifier from within the Objective-C part of your framework, as long they are declared within a class that inherits from an Objective-C class. For more information on access-level modifiers, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH41" target="_self" -->Access Control<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p><p class="para"><strong>To import Swift code into Objective-C from the same framework</strong></p><ol class="list-number">
+  <li class="item"><p class="para">Under Build Settings, in Packaging, make sure the Defines Module setting for that framework target is set to “Yes&quot;.</p></li><li class="item"><p class="para">Import the Swift code from that framework target into any Objective-C <code class="code-voice">.m</code> file within that framework target using this syntax and substituting the appropriate names:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="cp">#import &lt;ProductName/ProductModuleName-Swift.h&gt;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+</li>
+</ol><p class="para">The Swift files in your framework target will be visible in Objective-C <code class="code-voice">.m</code> files containing this import statement. For information on using Swift from Objective-C code, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID136" href="MixandMatch.xhtml#TP40014216-CH10-ID136">Using Swift from Objective-C</a>.</p><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Swift</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Objective-C</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para">Swift code</p></td>
+            <td><p class="para">No import statement</p></td>
+            <td><p class="para"><code class="code-voice">#import &lt;ProductName/ProductModuleName-Swift.h&gt;</code></p></td>
+        </tr>
+        <tr>
+            <td><p class="para">Objective-C code</p></td>
+            <td><p class="para">No import statement; Objective-C umbrella header required</p></td>
+            <td><p class="para"><code class="code-voice">#import &quot;Header.h&quot;</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID134">&#x200c;</a>
+  <h3 class="section-name">Importing External Frameworks</h3>
+  <p class="para">You can import external frameworks that have a pure Objective-C codebase, a pure Swift codebase, or a mixed-language codebase. The process for importing an external framework is the same whether the framework is written in a single language or contains files from both languages. When you import an external framework, make sure the Defines Module build setting for the framework you’re importing is set to “Yes&quot;.</p><p class="para">You can import a framework into any Swift file within a different target using the following syntax:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">FrameworkName</code></code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can import a framework into any Objective-C <code class="code-voice">.m</code> file within a different target using the following syntax:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="err">@</span><span class="n">import</span> <span class="n">FrameworkName</span><span class="p">;</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="tableholder">
+  <!-- <table class="graybox" border="0" cellspacing="0" cellpadding="5"> -->
+  <table class="graybox">
+    <caption class="tablecaption"></caption>
+    <thead>
+        <tr>
+            <th scope="col" class="TableHeading_TableRow_TableCell"></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Swift</p></th>
+            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para">Import into Objective-C</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="para">Any language framework</p></td>
+            <td><p class="para"><code class="code-voice">import FrameworkName</code></p></td>
+            <td><p class="para"><code class="code-voice">@import FrameworkName;</code></p></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID136">&#x200c;</a>
+  <h3 class="section-name">Using Swift from Objective-C</h3>
+  <p class="para">Once you import your Swift code into Objective-C, use regular Objective-C syntax for working with Swift classes.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="n">MySwiftClass</span> <span class="o">*</span><span class="n">swiftObject</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MySwiftClass</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">[</span><span class="n">swiftObject</span> <span class="n">swiftMethod</span><span class="p">];</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">A Swift class or protocol must be marked with the <code class="code-voice">@objc</code> attribute to be accessible and usable in Objective-C. This attribute tells the compiler that this piece of Swift code can be accessed from Objective-C. If your Swift class is a descendant of an Objective-C class, the compiler automatically adds the <code class="code-voice">@objc</code> attribute for you. For more information, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH4-ID53" href="InteractingWithObjective-CAPIs.xhtml#TP40014216-CH4-ID53">Swift Type Compatibility</a>.</p><p class="para">You’ll have access to anything within a class or protocol that’s marked with the <code class="code-voice">@objc</code> attribute as long as it’s compatible with Objective-C. This excludes Swift-only features such as those listed here:</p><ul class="list-bullet">
+  <li class="item"><p class="para">Generics</p></li><li class="item"><p class="para">Tuples</p></li><li class="item"><p class="para">Enumerations defined in Swift without <code class="code-voice">Int</code> raw value type</p></li><li class="item"><p class="para">Structures defined in Swift</p></li><li class="item"><p class="para">Top-level functions defined in Swift</p></li><li class="item"><p class="para">Global variables defined in Swift</p></li><li class="item"><p class="para">Typealiases defined in Swift</p></li><li class="item"><p class="para">Swift-style variadics</p></li><li class="item"><p class="para">Nested types</p></li><li class="item"><p class="para">Curried functions</p></li>
+</ul><p class="para">For example, a method that takes a generic type as an argument or returns a tuple will not be usable from Objective-C.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">You cannot subclass a Swift class in Objective-C.
+    	</p>
+    
+  </aside>
+</div>
+  <section class="section">
+	<a id="TP40014216-CH10-ID158">&#x200c;</a>
+  <h3 class="section-name">Referencing a Swift Class or Protocol in an Objective-C Header</h3>
+  <p class="para">To avoid cyclical references, don’t import Swift code into an Objective-C header (<code class="code-voice">.h</code>) file. Instead, you can forward declare a Swift class or protocol to reference it in an Objective-C interface.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="c1">// MyObjcClass.h</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">@class</span> <span class="nc">MySwiftClass</span>;
+</code></li>
+            <li><code class="code-voice"><span class="k">@protocol</span> <span class="nc">MySwiftProtocol</span>;
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">@interface</span> <span class="nc">MyObjcClass</span> : <span class="nc">NSObject</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">-</span> <span class="p">(</span><span class="n">MySwiftClass</span> <span class="o">*</span><span class="p">)</span><span class="nf">returnSwiftClassInstance</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">-</span> <span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="n">MySwiftProtocol</span><span class="o">&gt;</span><span class="p">)</span><span class="nf">returnInstanceAdoptingSwiftProtocol</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"><span class="c1">// ...</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">@end</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Forward declarations of Swift classes and protocols can only be used as types for method and property declarations.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID159">&#x200c;</a>
+  <h3 class="section-name">Adopting a Swift Protocol in an Objective-C Implementation</h3>
+  <p class="para">An Objective-C class can adopt a Swift protocol in its implementation (<code class="code-voice">.m</code>) file by importing the Xcode-generated header for Swift code and using a class extension.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="c1">// MyObjcClass.m</span>
+</code></li>
+            <li><code class="code-voice"><span class="cp">#import &quot;ProductModuleName-Swift.h&quot;</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">@interface</span> <span class="nc">MyObjcClass</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">MySwiftProtocol</span><span class="o">&gt;</span>
+</code></li>
+            <li><code class="code-voice"><span class="c1">// ...</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">@end</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">@implementation</span> <span class="nc">MyObjcClass</span>
+</code></li>
+            <li><code class="code-voice"><span class="c1">// ...</span>
+</code></li>
+            <li><code class="code-voice"><span class="k">@end</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID162">&#x200c;</a>
+  <h3 class="section-name">Overriding Swift Names for Objective-C Interfaces</h3>
+  <p class="para">The Swift compiler automatically imports Objective-C code as conventional Swift code. It imports Objective-C class factory methods as Swift initializers, and Objective-C enumeration cases truncated names.</p><p class="para">There may be edge cases in your code that are not automatically handled. If you need to change the name imported by Swift of an Objective-C method, enumeration case, or option set value, you can use the <code class="code-voice">NS_SWIFT_NAME</code> macro to customize how a declaration is imported.</p>
+  <section class="section">
+	<a id="TP40014216-CH10-ID167">&#x200c;</a>
+  <h3 class="section-name">Class Factory Methods</h3>
+  <p class="para">If the Swift compiler fails to identify a class factory method, you can use the <code class="code-voice">NS_SWIFT_NAME</code> macro, passing the Swift signature of the initializer to have it imported correctly. For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">recordWithRPM:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">RPM</span> <span class="n">NS_SWIFT_NAME</span><span class="p">(</span><span class="n">init</span><span class="p">(</span><span class="n">RPM</span><span class="o">:</span><span class="p">));</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">If the Swift compiler mistakenly identifies a method as a class factory method, you can use the <code class="code-voice">NS_SWIFT_NAME</code> macro, passing the Swift signature of the method to have it imported correctly. For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">recordWithQuality:</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nv">quality</span> <span class="n">NS_SWIFT_NAME</span><span class="p">(</span><span class="n">record</span><span class="p">(</span><span class="n">quality</span><span class="o">:</span><span class="p">));</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID168">&#x200c;</a>
+  <h3 class="section-name">Enumerations</h3>
+  <p class="para">By default, Swift imports enumerations by truncating enumeration value name prefixes. To customize the name of an enumeration case, you can use the <code class="code-voice">NS_SWIFT_NAME</code> macro, passing the Swift enumeration case name. For example:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">ABCRecordSide</span><span class="p">)</span> <span class="p">{</span>
+</code></li>
+            <li><code class="code-voice">  <span class="n">ABCRecordSideA</span><span class="p">,</span>
+</code></li>
+            <li><code class="code-voice">  <span class="n">ABCRecordSideB</span> <span class="n">NS_SWIFT_NAME</span><span class="p">(</span><span class="s">&quot;FlipSide&quot;</span><span class="p">),</span>
+</code></li>
+            <li><code class="code-voice"><span class="p">};</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID178">&#x200c;</a>
+  <h3 class="section-name">Making Objective-C Interfaces Unavailable in Swift</h3>
+  <p class="para">Some Objective-C interfaces may not be suitable or necessary to be exposed as Swift interfaces. To prevent an Objective-C declaration from being imported by Swift, use the <code class="code-voice">NS_SWIFT_UNAVAILABLE</code> macro, passing a message directing API consumers to any alternatives that may exist.</p><p class="para">For example, an Objective-C class providing a convenience initializer that takes variadic arguments for keys-value pairs may advise a Swift consumer to use a dictionary literal instead:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">collectionWithValues:</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">values</span> <span class="nf">forKeys:</span><span class="p">(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">keys</span> <span class="n">NS_SWIFT_UNAVAILABLE</span><span class="p">(</span><span class="s">&quot;Use a dictionary literal instead&quot;</span><span class="p">);</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Attempting to call the <code class="code-voice">+collectionWithValues:forKeys:</code> method from Swift code will result in a compiler error.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID188">&#x200c;</a>
+  <h3 class="section-name">Refining Objective-C Declarations</h3>
+  <p class="para">You can use the <code class="code-voice">NS_REFINED_FOR_SWIFT</code> macro on an Objective-C method declaration to provide a refined Swift interface in an extension, while keeping the original implementation available to be called from the refined interface. For instance, an Objective-C method that takes one or more pointer arguments could be refined in Swift to return a tuple of values.</p><ul class="list-bullet">
+  <li class="item"><p class="para">Initializer methods are imported by Swift with double underscores (<code class="code-voice">__</code>) prepended to their first external parameter names.</p></li><li class="item"><p class="para">Object subscripting methods are imported by Swift as methods with double underscores (<code class="code-voice">__</code>) prepended to their base names, rather than as a Swift subscript, if either the getter or setter method is marked as <code class="code-voice">NS_REFINED_FOR_SWIFT</code>.</p></li><li class="item"><p class="para">Other methods are imported with with double underscores (<code class="code-voice">__</code>) prepended to their base names.</p></li>
+</ul><p class="para">Given the following Objective-C declarations:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Objective-C">
+        <ol class="code-lines">
+            <li><code class="code-voice"><span class="k">@interface</span> <span class="nc">Color</span> : <span class="nc">NSObject</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getRed:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">CGFloat</span> <span class="o">*</span><span class="p">)</span><span class="nv">red</span>
+</code></li>
+            <li><code class="code-voice">         <span class="nl">green:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">CGFloat</span> <span class="o">*</span><span class="p">)</span><span class="n">green</span>
+</code></li>
+            <li><code class="code-voice">          <span class="nl">blue:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">CGFloat</span> <span class="o">*</span><span class="p">)</span><span class="n">blue</span>
+</code></li>
+            <li><code class="code-voice">         <span class="nl">alpha:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">CGFloat</span> <span class="o">*</span><span class="p">)</span><span class="n">alpha</span> <span class="n">NS_REFINED_FOR_SWIFT</span><span class="p">;</span>
+</code></li>
+            <li><code class="code-voice"> 
+</code></li>
+            <li><code class="code-voice"><span class="k">@end</span>
+</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You can provide a refined Swift interface in an extension like this:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">extension</code> <code class="n"><!-- a href="" logicalPath="" -->Color<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">var</code> <code class="vc">RGBA</code>: (<code class="vc">red</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code>, <code class="vc">green</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code>, <code class="vc">blue</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code>, <code class="vc">alpha</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code>) {</code></li>
+            <li><code class="code-voice">        <code class="kt">var</code> <code class="vc">r</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice">        <code class="kt">var</code> <code class="vc">g</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice">        <code class="kt">var</code> <code class="vc">b</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice">        <code class="kt">var</code> <code class="vc">a</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code> = <code class="m">0.0</code></code></li>
+            <li><code class="code-voice">        <code class="vc">__getRed</code>(&amp;<code class="vc">r</code>, <code class="vc">green</code>: &amp;<code class="vc">g</code>, <code class="vc">blue</code>: &amp;<code class="vc">b</code>, <code class="vc">alpha</code>: &amp;<code class="vc">a</code>)</code></li>
+            <li><code class="code-voice">        <code class="kt">return</code> (<code class="vc">red</code>: <code class="vc">r</code>, <code class="vc">green</code>: <code class="vc">g</code>, <code class="vc">blue</code>: <code class="vc">b</code>, <code class="vc">alpha</code>: <code class="vc">a</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID138">&#x200c;</a>
+  <h3 class="section-name">Naming Your Product Module</h3>
+  <p class="para">The name of the Xcode-generated header for Swift code, and the name of the Objective-C bridging header that Xcode creates for you, are generated from your product module name. By default, your product module name is the same as your product name. However, if your product name has any nonalphanumeric characters, such as a period (<code class="code-voice">.</code>), they are replaced with an underscore (<code class="code-voice">_</code>) in your product module name. If the name begins with a number, the first number is replaced with an underscore.</p><p class="para">You can also provide a custom name for the product module name and Xcode will use this when naming the bridging and generated headers. To do this, change the Product Module Name build setting.</p><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">You cannot override the product module name of a framework.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH10-ID140">&#x200c;</a>
+  <h3 class="section-name">Troubleshooting Tips and Reminders</h3>
+  <ul class="list-bullet">
+  <li class="item"><p class="para">Treat your Swift and Objective-C files as the same collection of code, and watch out for naming collisions.</p></li><li class="item"><p class="para">If you’re working with frameworks, make sure the Defines Module (<code class="code-voice">DEFINES_MODULE</code>) build setting under Packaging is set to “Yes&quot;.</p></li><li class="item"><p class="para">If you’re working with the Objective-C bridging header, make sure the Objective-C Bridging Header (<code class="code-voice">SWIFT_OBJC_BRIDGING_HEADER</code>) build setting under Swift Compiler - Code Generation is set to a path to the bridging header file relative to your project (for example, “MyApp/MyApp-Bridging-Header.h&quot;).</p></li><li class="item"><p class="para">Xcode uses your product module name (<code class="code-voice">PRODUCT_MODULE_NAME</code>)—not your target name (<code class="code-voice">TARGET_NAME</code>)—when naming the Objective-C bridging header and the generated header for your Swift code. For information on product module naming, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID138" href="MixandMatch.xhtml#TP40014216-CH10-ID138">Naming Your Product Module</a>.</p></li><li class="item"><p class="para">To be accessible and usable in Objective-C, a Swift class must be a descendant of an Objective-C class or it must be marked <code class="code-voice">@objc</code>.</p></li><li class="item"><p class="para">When you bring Swift code into Objective-C, remember that Objective-C won’t be able to translate certain features that are specific to Swift. For a list, see <a rel="me" data-id="//apple_ref/doc/uid/TP40014216-CH10-ID136" href="MixandMatch.xhtml#TP40014216-CH10-ID136">Using Swift from Objective-C</a>.</p></li><li class="item"><p class="para">If you use your own Objective-C types in your Swift code, make sure to import the Objective-C headers for those types before importing the Swift generated header into the Objective-C <code class="code-voice">.m</code> file you want to use your Swift code from.</p></li><li class="item"><p class="para">Swift declarations marked with the <code class="code-voice">private</code> modifier do not appear in the generated header. Private declarations are not exposed to Objective-C unless they are explicitly marked with <code class="code-voice">@IBAction</code>, <code class="code-voice">@IBOutlet</code>, or <code class="code-voice">@objc</code> as well.</p></li><li class="item"><p class="para">For app targets, declarations marked with the <code class="code-voice">internal</code> modifier appear in the generated header if the app target has an Objective-C bridging header.</p></li><li class="item"><p class="para">For framework targets, only declarations with the <code class="code-voice">public</code> modifier appear in the generated header. You can still use Swift methods and properties that are marked with the <code class="code-voice">internal</code> modifier from within the Objective-C part of your framework, as long they are declared within a class that inherits from an Objective-C class. For more information on access-level modifiers, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH41" target="_self" -->Access Control<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p></li>
+</ul>
+  
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

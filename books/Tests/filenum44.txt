@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Code of Conduct</title>
+    <meta content="Kristine Smith" name="Author"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h1 class="ToC" id="calibre_toc_9">Acknowledgments</h1>
+
+<p class="NormalFirst">
+A first book is usually the most difficult to write,
+firstly, because you’re still trying to find your sea legs, and secondly,
+because you’ve no assurance whatsoever that what you’ve spent years producing
+will go anywhere other than a box in the cellar.
+</p>
+<p class="Normal">
+I’ve been lucky enough to have had help from many people in
+assisting me through the difficulties. In particular, I’d like to thank
+Katharine Eliska Kimbriel, who helped keep me on track, and my parents, Gordon
+and Charlotte Smith, whose love and support helped keep me going.
+</p>
+
+
+</body></html>

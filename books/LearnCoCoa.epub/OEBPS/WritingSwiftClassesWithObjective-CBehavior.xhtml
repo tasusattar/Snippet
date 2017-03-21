@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+  	<link href="epub.css" media="all" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="svg.js"></script>
+  </head>
+  <body id="conceptual_flow_with_tasks">
+    <div class="content-wrapper">
+      <div id="chapter_container" class='conceptualwithtasks'>
+  <article class="chapter">
+    <a id="TP40014216-CH5">&#x200c;</a><a id="TP40014216-CH5-ID86">&#x200c;</a>
+    <h2 class="chapter-name">Writing Swift Classes with Objective-C Behavior</h2>
+      
+      	<section class="section">
+      		<p class="para">Interoperability lets you define Swift classes that incorporate Objective-C behavior. You can subclass Objective-C classes, adopt Objective-C protocols, and take advantage of other Objective-C functionality when writing a Swift class. This means that you can create classes based on familiar, established behavior in Objective-C and enhance them with Swift’s modern and powerful language features.</p>
+    		</section> 
+
+
+      <section class="section">
+	<a id="TP40014216-CH5-ID88">&#x200c;</a>
+  <h3 class="section-name">Inheriting from Objective-C Classes</h3>
+  <p class="para">In Swift, you can define subclasses of Objective-C classes. To create a Swift class that inherits from an Objective-C class, add a colon (<code class="code-voice">:</code>) after the name of the Swift class, followed by the name of the Objective-C class.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">UIKit</code></code></li>
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MySwiftViewController</code>: <code class="n"><!-- a href="" logicalPath="" -->UIViewController<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// define the class</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">You get all the functionality offered by the superclass in Objective-C. If you provide your own implementations of the superclass’s methods, remember to use the <code class="code-voice">override</code> keyword.</p>
+  <section class="section">
+	<a id="TP40014216-CH5-ID152">&#x200c;</a>
+  <h3 class="section-name">NSCoding</h3>
+  <p class="para">The <code class="code-voice">NSCoding</code> protocol requires that conforming types implement the required initializer <code class="code-voice">init(coder:)</code>. Classes that adopt <code class="code-voice">NSCoding</code> directly must implement this method. Subclasses of classes that adopt <code class="code-voice">NSCoding</code> that have one or more custom initializers or any properties without initial values must also implement this method. Xcode provides the following fix-it to serve as a placeholder implementation:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">required</code> <code class="kt">init</code>(<code class="vc">coder</code> <code class="vc">aDecoder</code>: <code class="n"><!-- a href="" logicalPath="" -->NSCoder<!-- /a --></code>) {</code></li>
+            <li><code class="code-voice">    <code class="vc">fatalError</code>(<code class="s">&quot;init(coder:) has not been implemented&quot;</code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">For objects that are loaded from Storyboards or archived to disk using the <code class="code-voice">NSUserDefaults</code> or <code class="code-voice">NSKeyedArchiver</code> classes, you must provide a full implementation of this initializer. However, you might not need to implement an initializer for types that are expected to or cannot be instantiated in this way.</p>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID90">&#x200c;</a>
+  <h3 class="section-name">Adopting Protocols</h3>
+  <p class="para">Objective-C protocols are imported as Swift protocols, which can be adopted by a class in a comma-separated list following the name of a class’s superclass, if any.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MySwiftViewController</code>: <code class="n"><!-- a href="" logicalPath="" -->UIViewController<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->UITableViewDelegate<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->UITableViewDataSource<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="c">// define the class</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">To declare a type that conforms to a single protocol in Swift code, use the protocol name directly as its type (as compared to <code class="code-voice">id&lt;SomeProtocol&gt;</code> in Objective-C). To declare a type that conforms to multiple protocols in Swift code, use a protocol composition, which takes the form <code class="code-voice">protocol&lt;SomeProtocol, AnotherProtocol&gt;</code> (as compared to <code class="code-voice">id&lt;SomeProtocol, AnotherProtocol&gt;</code> in Objective-C).</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">textFieldDelegate</code>: <code class="n"><!-- a href="" logicalPath="" -->UITextFieldDelegate<!-- /a --></code></code></li>
+            <li><code class="code-voice"><code class="kt">var</code> <code class="vc">tableViewController</code>: <code class="kt">protocol</code>&lt;<code class="n"><!-- a href="" logicalPath="" -->UITableViewDataSource<!-- /a --></code>, <code class="n"><!-- a href="" logicalPath="" -->UITableViewDelegate<!-- /a --></code>&gt;</code></li>
+        </ol>
+      </div>
+  </div>
+</section><div class="note">
+  <aside class="aside">
+    	<p class="aside-title uppercase">Note</p>
+    	<p class="para">Because the namespace of classes and protocols is unified in Swift, the <code class="code-voice">NSObject</code> protocol in Objective-C is remapped to <code class="code-voice">NSObjectProtocol</code> in Swift.
+    	</p>
+    
+  </aside>
+</div>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID92">&#x200c;</a>
+  <h3 class="section-name">Writing Initializers and Deinitializers</h3>
+  <p class="para">The Swift compiler ensures that your initializers do not leave any properties in your class uninitialized to increase the safety and predictability of your code. Additionally, unlike Objective-C, in Swift there is no separate memory allocation method to invoke. You use native Swift initialization syntax even when you are working with Objective-C classes—Swift converts Objective-C initialization methods to Swift initializers. You can read more about implementing your own initializers in <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH18" target="_self" -->Initializers<!-- /a -->.</p><p class="para">When you want to perform additional clean-up before your class is deallocated, you can implement a deninitializer instead of the <code class="code-voice">dealloc</code> method. Swift deinitializers are called automatically, just before instance deallocation happens. Swift automatically calls the superclass deinitializer after invoking your subclass’ deinitializer. When you are working with an Objective-C class or your Swift class inherits from an Objective-C class, Swift calls your class’s superclass <code class="code-voice">dealloc</code> method for you as well. You can read more about implementing your own deinitializers in <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH19" target="_self" -->Deinitializers<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID190">&#x200c;</a>
+  <h3 class="section-name">Using Swift Class Names with Objective-C APIs</h3>
+  <p class="para">Swift classes are namespaced based on the module they are compiled in, even when used from Objective-C code. Unlike Objective-C, where all classes are part of a global namespace–and must not have the same name–Swift classes can be disambiguated based on the module they reside in. For example, the fully qualified name of a Swift class named <code class="code-voice">DataManager</code> in a framework named <code class="code-voice">MyFramework</code> is <code class="code-voice">MyFramework.DataManager</code>. A Swift app target is a module itself, so the fully qualified name of a Swift class named <code class="code-voice">Observer</code> in an app called <code class="code-voice">MyGreatApp</code> is <code class="code-voice">MyGreatApp.Observer</code>.</p><p class="para">In order to preserve namespacing when a Swift class is used in Objective-C code, Swift classes are exposed to the Objective-C runtime with their fully qualified names. Therefore, when you work with APIs that operate on the string representation of a Swift class, you must include the fully qualified name of the class. For example, when you create a document–based Mac app, you provide the name of your <code class="code-voice">NSDocument</code> subclass in your app’s <code class="code-voice">Info.plist</code> file. In Swift, you must use the full name of your document subclass, including the module name derived from the name of your app or framework.</p><p class="para">In the example below, the <code class="code-voice">NSClassFromString</code> function is used to retrieve a reference to a class from its string representation. In order to retrieve a Swift class, the fully qualified name, including the name of the app, is used.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">let</code> <code class="vc">myPersonClass</code>: <code class="n"><!-- a href="" logicalPath="" -->AnyClass<!-- /a --></code>? = <code class="vc">NSClassFromString</code>(<code class="s">&quot;MyGreatApp.Person&quot;</code>)</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID94">&#x200c;</a>
+  <h3 class="section-name">Integrating with Interface Builder</h3>
+  <p class="para">The Swift compiler includes attributes that enable Interface Builder features for your Swift classes. As in Objective-C, you can use outlets, actions, and live rendering in Swift.</p>
+  <section class="section">
+	<a id="TP40014216-CH5-ID96">&#x200c;</a>
+  <h3 class="section-name">Working with Outlets and Actions</h3>
+  <p class="para">Outlets and actions allow you to connect your source code to user interface objects in Interface Builder. To use outlets and actions in Swift, insert <code class="code-voice">@IBOutlet</code> or <code class="code-voice">@IBAction</code> just before the property or method declaration. You use the same <code class="code-voice">@IBOutlet</code> attribute to declare an outlet collection—just specify an array for the type.</p><p class="para">When you declare an outlet in Swift, you should make the type of the outlet an implicitly unwrapped optional. This way, you can let the storyboard connect the outlets at runtime, after initialization. When your class is initialized from a storyboard or <code class="code-voice">xib</code> file, you can assume that the outlet has been connected.</p><p class="para">For example, the following Swift code declares a class with an outlet, an outlet collection, and an action:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MyViewController</code>: <code class="n"><!-- a href="" logicalPath="" -->UIViewController<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">@IBOutlet</code> <code class="kt">weak</code> <code class="kt">var</code> <code class="vc">button</code>: <code class="n"><!-- a href="" logicalPath="" -->UIButton<!-- /a --></code>!</code></li>
+            <li><code class="code-voice">    <code class="kt">@IBOutlet</code> <code class="kt">var</code> <code class="vc">textFields</code>: [<code class="n"><!-- a href="" logicalPath="" -->UITextField<!-- /a --></code>]!</code></li>
+            <li><code class="code-voice">    <code class="kt">@IBAction</code> <code class="kt">func</code> <code class="vc">buttonTapped</code>(<code class="kt">_</code>: <code class="n"><!-- a href="" logicalPath="" -->AnyObject<!-- /a --></code>) {</code></li>
+            <li><code class="code-voice">        <code class="vc">print</code>(<code class="s">&quot;button tapped!&quot;</code>)</code></li>
+            <li><code class="code-voice">    }</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">Because the sender parameter of the <code class="code-voice">buttonTapped</code> method wasn’t used, the parameter name can be omitted.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID98">&#x200c;</a>
+  <h3 class="section-name">Live Rendering</h3>
+  <p class="para">You can use two different attributes—<code class="code-voice">@IBDesignable</code> and <code class="code-voice">@IBInspectable</code>—to enable live, interactive custom view design in Interface Builder. When you create a custom view that inherits from the <code class="code-voice">UIView</code> class or the <code class="code-voice">NSView</code> class, you can add the <code class="code-voice">@IBDesignable</code> attribute just before the class declaration. After you add the custom view to Interface Builder (by setting the custom class of the view in the inspector pane), Interface Builder renders your view in the canvas.</p><p class="para">You can also add the <code class="code-voice">@IBInspectable</code> attribute to properties with types compatible with user defined runtime attributes. After you add your custom view to Interface Builder, you can edit these properties in the inspector.</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">@IBDesignable</code></code></li>
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">MyCustomView</code>: <code class="n"><!-- a href="" logicalPath="" -->UIView<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">@IBInspectable</code> <code class="kt">var</code> <code class="vc">textColor</code>: <code class="n"><!-- a href="" logicalPath="" -->UIColor<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="kt">@IBInspectable</code> <code class="kt">var</code> <code class="vc">iconHeight</code>: <code class="n"><!-- a href="" logicalPath="" -->CGFloat<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="c">// ...</code></code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID100">&#x200c;</a>
+  <h3 class="section-name">Specifying Property Attributes</h3>
+  <p class="para">In Objective-C, properties have a range of potential attributes that specify additional information about a property’s behavior. In Swift, you specify these property attributes in a different way.</p>
+  <section class="section">
+	<a id="TP40014216-CH5-ID153">&#x200c;</a>
+  <h3 class="section-name">Strong and Weak</h3>
+  <p class="para">Swift properties are strong by default. Use the <code class="code-voice">weak</code> keyword to indicate that a property has a weak reference to the object stored as its value. This keyword can be used only for properties that are optional class types. For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH13" target="_self" -->Attributes<!-- /a -->.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID154">&#x200c;</a>
+  <h3 class="section-name">Read/Write and Read-Only</h3>
+  <p class="para">In Swift, there are no <code class="code-voice">readwrite</code> and <code class="code-voice">readonly</code> attributes. When declaring a stored property, use <code class="code-voice">let</code> to make it read-only, and use <code class="code-voice">var</code> to make it read/write. When declaring a computed property, provide a getter only to make it read-only and provide both a getter and setter to make it read/write. For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH13" target="_self" -->Properties<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID155">&#x200c;</a>
+  <h3 class="section-name">Copy Semantics</h3>
+  <p class="para">In Swift, the Objective-C <code class="code-voice">copy</code> property attribute translates to <code class="code-voice">@NSCopying</code>. The type of the property must conform to the <code class="code-voice">NSCopying</code> protocol. For more information, see <!-- a href="" logicalPath="//apple_ref/doc/uid/TP40014097-CH13" target="_self" -->Attributes<!-- /a --> in <em class="u-book"><!-- a href="" target="_self" logicalPath="//apple_ref/doc/uid/TP40014097" -->The Swift Programming Language (Swift 2.1)<!-- /a --></em>.</p>
+  
+</section>
+
+</section>
+<section class="section">
+	<a id="TP40014216-CH5-ID105">&#x200c;</a>
+  <h3 class="section-name">Implementing Core Data Managed Object Subclasses</h3>
+  <p class="para">Core Data provides the underlying storage and implementation of properties in subclasses of the <code class="code-voice">NSManagedObject</code> class. Core Data also provides the implementation of instance methods that you use to add and remove objects from to-many relationships. You use the <code class="code-voice">@NSManaged</code> attribute to inform the Swift compiler that Core Data provides the storage and implementation of a declaration at runtime.</p><p class="para">Add the <code class="code-voice">@NSManaged</code> attribute to each property or method declaration in your managed object subclass that corresponds to an attribute or relationship in your Core Data model. For example, consider a Core Data entity called “Person” with a String attribute “name” and a to-many relationship “friends&quot;:</p><div class="figure">
+	<span class="caption"></span>
+	<img src="Art/coredataeditor_2x.png" alt="image: ../Art/coredataeditor_2x.png" width="622" height="281" />
+</div><p class="para">Here’s the corresponding Swift code for the <code class="code-voice">NSManagedObject</code> subclass, <code class="code-voice">Person</code>:</p><section class="code-listing">
+  
+  <div class="code-sample">
+      <div class="Swift">
+        <ol class="code-lines">
+            <li><code class="code-voice"><code class="kt">import</code> <code class="vc">CoreData</code></code></li>
+            <li><code class="code-voice"><code class="kt">class</code> <code class="vc">Person</code>: <code class="n"><!-- a href="" logicalPath="" -->NSManagedObject<!-- /a --></code> {</code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">var</code> <code class="vc">name</code>: <code class="n"><!-- a href="" logicalPath="" -->String<!-- /a --></code></code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">var</code> <code class="vc">friends</code>: <code class="n"><!-- a href="" logicalPath="" -->NSSet<!-- /a --></code></code></li>
+            <li><code class="code-voice">    </code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">func</code> <code class="vc">addFriendsObject</code>(<code class="vc">friend</code>: <code class="n"><!-- a href="" logicalPath="" -->Person<!-- /a --></code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">func</code> <code class="vc">removeFriendsObject</code>(<code class="vc">friend</code>: <code class="n"><!-- a href="" logicalPath="" -->Person<!-- /a --></code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">func</code> <code class="vc">addFriends</code>(<code class="vc">friends</code>: <code class="n"><!-- a href="" logicalPath="" -->NSSet<!-- /a --></code>)</code></li>
+            <li><code class="code-voice">    <code class="kt">@NSManaged</code> <code class="kt">func</code> <code class="vc">removeFriends</code>(<code class="vc">friends</code>: <code class="n"><!-- a href="" logicalPath="" -->NSSet<!-- /a --></code>)</code></li>
+            <li><code class="code-voice">}</code></li>
+        </ol>
+      </div>
+  </div>
+</section><p class="para">The <code class="code-voice">name</code> and <code class="code-voice">friends</code> properties are both declared with the <code class="code-voice">@NSManaged</code> attribute to indicate that Core Date provides their implementation and storage at runtime. Because the “friends” relationship is to-many, Core Data also provides the implementation of a number of corresponding accessors.</p><p class="para">To configure a Swift subclass of <code class="code-voice">NSManagedObject</code> for use by a Core Data model entity, open the model entity inspector in Xcode, enter the class name into the Class field, and choose “Current Product Module” from the Module field drop-down list.</p><div class="figure">
+	<span class="caption"></span>
+	<img src="Art/coredatanamespace_2x.png" alt="image: ../Art/coredatanamespace_2x.png" width="259" height="162" />
+</div>
+  
+</section>
+
+  </article>
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Code of Conduct</title>
+    <meta content="Kristine Smith" name="Author"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h1 class="ToC" id="calibre_toc_11">About the Author</h1>
+
+<p class="NormalFirst">
+<b class="calibre6">Kristine Smith</b> is the author of the Jani Kilian
+series and a number of short stories, and is a winner of the Campbell Award for
+Best New Writer. She worked as a process development scientist for a large
+pharmaceutical manufacturer for 26 years, but now writes fulltime. She lives in
+northern Illinois. Find out more at her website: <a href="http://www.kristine-smith.com" class="calibre1">www.kristine-smith.com</a>
+</p>
+
+
+
+</body></html>

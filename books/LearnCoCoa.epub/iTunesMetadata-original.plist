@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apple-id</key>
+	<string>tasawarsattar22@gmail.com</string>
+	<key>artistId</key>
+	<integer>405307759</integer>
+	<key>artistName</key>
+	<string>Apple Inc.</string>
+	<key>asset-info</key>
+	<dict>
+		<key>file-size</key>
+		<integer>504734</integer>
+		<key>flavor</key>
+		<string>pluspub</string>
+	</dict>
+	<key>book-info</key>
+	<dict>
+		<key>PageProgression</key>
+		<string>default</string>
+		<key>asset-info</key>
+		<dict>
+			<key>file-size</key>
+			<integer>504734</integer>
+			<key>flavor</key>
+			<string>pluspub</string>
+		</dict>
+		<key>languages</key>
+		<array>
+			<string>en</string>
+		</array>
+		<key>mime-type</key>
+		<string>application/epub+zip</string>
+		<key>package-file-hash</key>
+		<string>76EA4BE14F8D923FB91F6EFBD3085C88</string>
+		<key>publication-version</key>
+		<integer>160917880</integer>
+		<key>publisher-unique-id</key>
+		<string>//apple_ref/doc/uid/</string>
+		<key>unique-id</key>
+		<integer>-2918716485696875815</integer>
+		<key>update-level</key>
+		<integer>2</integer>
+	</dict>
+	<key>cover-writing-mode</key>
+	<string>horizontal</string>
+	<key>desktopSupportLevel</key>
+	<string>supported</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>explicit</key>
+	<integer>0</integer>
+	<key>fileExtension</key>
+	<string>epub</string>
+	<key>genre</key>
+	<string>Programming</string>
+	<key>genreId</key>
+	<integer>10023</integer>
+	<key>isbn</key>
+	<string>9781106041340</string>
+	<key>itemId</key>
+	<integer>888894773</integer>
+	<key>itemName</key>
+	<string>Using Swift with Cocoa and Objective-C (Swift 2.1)</string>
+	<key>kind</key>
+	<string>ebook</string>
+	<key>languages</key>
+	<array>
+		<string>en</string>
+	</array>
+	<key>obeyPageBreaks</key>
+	<integer>1</integer>
+	<key>pageCount</key>
+	<integer>100</integer>
+	<key>primaryLanguage</key>
+	<string>en</string>
+	<key>publisher</key>
+	<string>Apple Inc.</string>
+	<key>purchaseDate</key>
+	<string>2015-12-28T19:00:05Z</string>
+	<key>releaseDate</key>
+	<string>2014-06-02T07:00:00Z</string>
+	<key>s</key>
+	<integer>143455</integer>
+	<key>scroll-axis</key>
+	<string>default</string>
+	<key>seriesAdamId</key>
+	<integer>888896989</integer>
+	<key>seriesSequenceDisplaySuppress</key>
+	<false/>
+	<key>seriesTitle</key>
+	<string>Swift Programming Series</string>
+	<key>shouldDisableOptimizeSpeed</key>
+	<true/>
+	<key>shouldDisableTouchEmulation</key>
+	<true/>
+	<key>sort-name</key>
+	<string>Using Swift with Cocoa and Objective-C (Swift 2.1)</string>
+	<key>vendorId</key>
+	<integer>379015</integer>
+	<key>versionRestrictions</key>
+	<integer>16843008</integer>
+	<key>year</key>
+	<string>2014</string>
+</dict>
+</plist>

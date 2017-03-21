@@ -13,7 +13,7 @@
         <scene sceneID="zSA-mD-yfe">
             <objects>
                 <collectionViewController storyboardIdentifier="collectionView" id="Vwb-eo-ho0" customClass="CollectionViewController" customModule="Snippet" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SK6-t4-U0A">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SK6-t4-U0A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,7 +311,7 @@
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfr-kF-tLk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xfr-kF-tLk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -330,7 +330,7 @@
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="jpN-0L-gzg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="spb-BB-2AU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="spb-BB-2AU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -346,44 +346,50 @@
         <!--View Controller-->
         <scene sceneID="JDy-n4-bPQ">
             <objects>
-                <viewController storyboardIdentifier="Account" id="Ma8-yh-aJT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="Ma8-yh-aJT" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DB2-MW-F4q"/>
                         <viewControllerLayoutGuide type="bottom" id="hqc-DT-12r"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gs9-qQ-Qus">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sIK-EE-10E">
+                                <rect key="frame" x="16" y="341" width="343" height="306"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zar-lX-SgC">
+                                <rect key="frame" x="110" y="58" width="225" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="0.4358938769035533" green="0.37982855365323515" blue="0.20892732420764987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="553"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfd-vP-GOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="1474"/>
+            <point key="canvasLocation" x="1864.8" y="1473.913043478261"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SEI-z0-Gu7">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="O5S-mg-S0f" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Account" id="O5S-mg-S0f" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o3Q-H1-cbX"/>
                         <viewControllerLayoutGuide type="bottom" id="BBB-oV-YVc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G6K-u8-LLf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.4358938769035533" green="0.4358938769035533" blue="0.4358938769035533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="553"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zL-gO-wop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="1474"/>
+            <point key="canvasLocation" x="1121" y="1474"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Bx7-Zf-S6p">
@@ -394,13 +400,11 @@
                         <viewControllerLayoutGuide type="bottom" id="d4p-7l-uHs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QI3-sC-kTo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.32123783632021424" green="0.4358938769035533" blue="0.42031495460239449" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="553"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Htq-Lz-q72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -415,13 +419,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3uU-PT-LWV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4bK-DL-TE0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.44265693029999997" green="0.48155978570000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14145291156773823" green="0.4358938769035533" blue="0.073021177790983119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="553"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Leq-TT-ase" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
