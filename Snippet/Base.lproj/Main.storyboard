@@ -13,7 +13,7 @@
         <scene sceneID="zSA-mD-yfe">
             <objects>
                 <collectionViewController storyboardIdentifier="collectionView" id="Vwb-eo-ho0" customClass="CollectionViewController" customModule="Snippet" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SK6-t4-U0A">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="SK6-t4-U0A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,6 +39,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Collection" id="w39-Su-rR0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="play" id="Rpx-2O-e99">
+                            <connections>
+                                <segue destination="yZw-XA-sC2" kind="presentation" id="A9e-Hj-9eh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Menu" id="DBr-Ge-eXf">
                             <connections>
                                 <action selector="OptionsPopover:" destination="Vwb-eo-ho0" id="H0I-qA-Iz5"/>
@@ -303,6 +308,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eam-K7-2vl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2215.1999999999998" y="678.71064467766121"/>
+        </scene>
+        <!--FocusMode-->
+        <scene sceneID="pdT-aO-IDT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FocusMode" id="yZw-XA-sC2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmk-LH-zLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-144" y="-504"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7X5-4e-AP6">

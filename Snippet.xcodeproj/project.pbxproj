@@ -15,11 +15,15 @@
 		DA684BAB1E7F21AE00F1AD0B /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = DA684BA91E7F21AE00F1AD0B /* Cartfile.resolved */; };
 		DA684BAD1E7F21EA00F1AD0B /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA684BAC1E7F21EA00F1AD0B /* ZipArchive.framework */; };
 		DA6ED1CF1E66385800A17B0C /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED1CE1E66385800A17B0C /* OptionsViewController.swift */; };
-		DA9849921E7BC7B100FA37D9 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9849911E7BC7B100FA37D9 /* FileReader.swift */; };
+		DA9849921E7BC7B100FA37D9 /* Extractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9849911E7BC7B100FA37D9 /* Extractor.swift */; };
 		DAB9FC741E66D44100EE4873 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA01ED411E64C2FD004B4EAD /* Main.storyboard */; };
 		DAB9FC751E66D44500EE4873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA01ED461E64C2FD004B4EAD /* LaunchScreen.storyboard */; };
 		DAB9FC781E66DC1A00EE4873 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FC771E66DC1A00EE4873 /* SettingsViewController.swift */; };
 		DAB9FC7A1E6703BC00EE4873 /* SortOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FC791E6703BC00EE4873 /* SortOptionsView.swift */; };
+		DABE3ABD1E837DE500D244D9 /* FocusMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABE3ABC1E837DE500D244D9 /* FocusMode.storyboard */; };
+		DABE3ABF1E83837200D244D9 /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABE3ABE1E83837200D244D9 /* FocusViewController.swift */; };
+		DABE3AC11E83968200D244D9 /* Snip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABE3AC01E83968200D244D9 /* Snip.swift */; };
+		DABE3AC31E83BE1C00D244D9 /* BookShelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABE3AC21E83BE1C00D244D9 /* BookShelf.swift */; };
 		DAC327AD1E7F043E00109006 /* books in Resources */ = {isa = PBXBuildFile; fileRef = DAC327AC1E7F043E00109006 /* books */; };
 /* End PBXBuildFile section */
 
@@ -37,9 +41,13 @@
 		DA684BA91E7F21AE00F1AD0B /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		DA684BAC1E7F21EA00F1AD0B /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 		DA6ED1CE1E66385800A17B0C /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
-		DA9849911E7BC7B100FA37D9 /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		DA9849911E7BC7B100FA37D9 /* Extractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extractor.swift; sourceTree = "<group>"; };
 		DAB9FC771E66DC1A00EE4873 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DAB9FC791E6703BC00EE4873 /* SortOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortOptionsView.swift; sourceTree = "<group>"; };
+		DABE3ABC1E837DE500D244D9 /* FocusMode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FocusMode.storyboard; sourceTree = "<group>"; };
+		DABE3ABE1E83837200D244D9 /* FocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusViewController.swift; sourceTree = "<group>"; };
+		DABE3AC01E83968200D244D9 /* Snip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snip.swift; sourceTree = "<group>"; };
+		DABE3AC21E83BE1C00D244D9 /* BookShelf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookShelf.swift; sourceTree = "<group>"; };
 		DAC327AC1E7F043E00109006 /* books */ = {isa = PBXFileReference; lastKnownFileType = folder; path = books; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +97,11 @@
 				DA6ED1CE1E66385800A17B0C /* OptionsViewController.swift */,
 				DAB9FC771E66DC1A00EE4873 /* SettingsViewController.swift */,
 				DAB9FC791E6703BC00EE4873 /* SortOptionsView.swift */,
-				DA9849911E7BC7B100FA37D9 /* FileReader.swift */,
+				DA9849911E7BC7B100FA37D9 /* Extractor.swift */,
+				DABE3ABC1E837DE500D244D9 /* FocusMode.storyboard */,
+				DABE3ABE1E83837200D244D9 /* FocusViewController.swift */,
+				DABE3AC01E83968200D244D9 /* Snip.swift */,
+				DABE3AC21E83BE1C00D244D9 /* BookShelf.swift */,
 			);
 			path = Snippet;
 			sourceTree = "<group>";
@@ -167,6 +179,7 @@
 				DAB9FC741E66D44100EE4873 /* Main.storyboard in Resources */,
 				DA26FE611E6812E4000B3943 /* Assets.xcassets in Resources */,
 				DAC327AD1E7F043E00109006 /* books in Resources */,
+				DABE3ABD1E837DE500D244D9 /* FocusMode.storyboard in Resources */,
 				DAB9FC751E66D44500EE4873 /* LaunchScreen.storyboard in Resources */,
 				DA684BAA1E7F21AE00F1AD0B /* Carthage in Resources */,
 			);
@@ -197,12 +210,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA9849921E7BC7B100FA37D9 /* FileReader.swift in Sources */,
+				DA9849921E7BC7B100FA37D9 /* Extractor.swift in Sources */,
 				DA6ED1CF1E66385800A17B0C /* OptionsViewController.swift in Sources */,
 				DA01ED501E655002004B4EAD /* CollectionViewController.swift in Sources */,
+				DABE3ABF1E83837200D244D9 /* FocusViewController.swift in Sources */,
 				DA01ED3E1E64C2FD004B4EAD /* AppDelegate.swift in Sources */,
 				DAB9FC781E66DC1A00EE4873 /* SettingsViewController.swift in Sources */,
 				DAB9FC7A1E6703BC00EE4873 /* SortOptionsView.swift in Sources */,
+				DABE3AC11E83968200D244D9 /* Snip.swift in Sources */,
+				DABE3AC31E83BE1C00D244D9 /* BookShelf.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

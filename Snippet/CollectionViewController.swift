@@ -33,8 +33,8 @@ class CollectionViewController: UICollectionViewController, UIPopoverPresentatio
 //        BlurVisual.effect = nil
 
 
-        let extra = EpubExtractor(fileName: "blah")
-        extra.getEpubInfo()
+//        let extra = EpubExtractor(fileName: "blah")
+//        extra.getEpubInfo()
         
         AddBooksView.layer.cornerRadius = 5 // make the AddBooksView rounded at edges
     }
