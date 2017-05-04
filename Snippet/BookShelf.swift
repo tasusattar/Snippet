@@ -12,6 +12,9 @@ class BookShelf {
     static private var indexToBook = [Int: [Snip]]()
     static private var i = 0
     
+    static private var bookHtmls = [Int: [String]]()
+    static private var j = 0
+    
     static func getIndToSnip() -> [Int : [Snip]]{
         return indexToBook
     }
@@ -28,6 +31,21 @@ class BookShelf {
     
     static func getBookAt(bookIndex: Int) -> [Snip]{
         return BookShelf.indexToBook[bookIndex]!
+    }
+    
+    
+    
+    static func getBookHtmls() -> [Int: [String]]{
+        return bookHtmls
+    }
+    
+    static func addBookHtml(bookHtmls: [String]){
+        BookShelf.bookHtmls[BookShelf.j] = bookHtmls
+        BookShelf.j += 1
+    }
+    
+    static func getBookHtmlAt(bookIndex: Int) -> [String]{
+        return BookShelf.bookHtmls[bookIndex]!
     }
     
 }

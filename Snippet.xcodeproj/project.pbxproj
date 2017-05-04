@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DA01ED3E1E64C2FD004B4EAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA01ED3D1E64C2FD004B4EAD /* AppDelegate.swift */; };
 		DA01ED501E655002004B4EAD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA01ED4F1E655002004B4EAD /* CollectionViewController.swift */; };
+		DA1B69581E9212FF00A73EB8 /* NormalView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1B69571E9212FF00A73EB8 /* NormalView.storyboard */; };
+		DA1B695A1E92F25400A73EB8 /* HtmlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B69591E92F25400A73EB8 /* HtmlViewController.swift */; };
 		DA26FE611E6812E4000B3943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA01ED441E64C2FD004B4EAD /* Assets.xcassets */; };
 		DA684BA71E7F207800F1AD0B /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = DA684BA51E7F207800F1AD0B /* Cartfile */; };
 		DA684BAA1E7F21AE00F1AD0B /* Carthage in Resources */ = {isa = PBXBuildFile; fileRef = DA684BA81E7F21AE00F1AD0B /* Carthage */; };
@@ -35,6 +37,8 @@
 		DA01ED471E64C2FD004B4EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA01ED491E64C2FD004B4EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA01ED4F1E655002004B4EAD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		DA1B69571E9212FF00A73EB8 /* NormalView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NormalView.storyboard; sourceTree = "<group>"; };
+		DA1B69591E92F25400A73EB8 /* HtmlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HtmlViewController.swift; sourceTree = "<group>"; };
 		DA24CA7F1E668491000A0819 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA684BA51E7F207800F1AD0B /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		DA684BA81E7F21AE00F1AD0B /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				DABE3ABE1E83837200D244D9 /* FocusViewController.swift */,
 				DABE3AC01E83968200D244D9 /* Snip.swift */,
 				DABE3AC21E83BE1C00D244D9 /* BookShelf.swift */,
+				DA1B69571E9212FF00A73EB8 /* NormalView.storyboard */,
+				DA1B69591E92F25400A73EB8 /* HtmlViewController.swift */,
 			);
 			path = Snippet;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 				DA26FE611E6812E4000B3943 /* Assets.xcassets in Resources */,
 				DAC327AD1E7F043E00109006 /* books in Resources */,
 				DABE3ABD1E837DE500D244D9 /* FocusMode.storyboard in Resources */,
+				DA1B69581E9212FF00A73EB8 /* NormalView.storyboard in Resources */,
 				DAB9FC751E66D44500EE4873 /* LaunchScreen.storyboard in Resources */,
 				DA684BAA1E7F21AE00F1AD0B /* Carthage in Resources */,
 			);
@@ -213,6 +220,7 @@
 				DA9849921E7BC7B100FA37D9 /* Extractor.swift in Sources */,
 				DA6ED1CF1E66385800A17B0C /* OptionsViewController.swift in Sources */,
 				DA01ED501E655002004B4EAD /* CollectionViewController.swift in Sources */,
+				DA1B695A1E92F25400A73EB8 /* HtmlViewController.swift in Sources */,
 				DABE3ABF1E83837200D244D9 /* FocusViewController.swift in Sources */,
 				DA01ED3E1E64C2FD004B4EAD /* AppDelegate.swift in Sources */,
 				DAB9FC781E66DC1A00EE4873 /* SettingsViewController.swift in Sources */,

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,11 +40,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Collection" id="w39-Su-rR0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="play" id="Rpx-2O-e99">
-                            <connections>
-                                <segue destination="yZw-XA-sC2" kind="presentation" id="A9e-Hj-9eh"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="play" id="Rpx-2O-e99">
+                                <connections>
+                                    <segue destination="yZw-XA-sC2" kind="presentation" id="A9e-Hj-9eh"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Normal" id="IHq-G8-A1a">
+                                <connections>
+                                    <segue destination="IuO-20-8W0" kind="presentation" id="NJb-Yn-UPI"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="Menu" id="DBr-Ge-eXf">
                             <connections>
                                 <action selector="OptionsPopover:" destination="Vwb-eo-ho0" id="H0I-qA-Iz5"/>
@@ -317,6 +325,14 @@
             </objects>
             <point key="canvasLocation" x="-144" y="-504"/>
         </scene>
+        <!--NormalView-->
+        <scene sceneID="2To-Xv-TOW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NormalView" id="IuO-20-8W0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cQ-hO-HXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-500"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7X5-4e-AP6">
             <objects>
@@ -324,7 +340,7 @@
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xfr-kF-tLk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfr-kF-tLk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -343,7 +359,7 @@
                 <navigationController storyboardIdentifier="settingsNav" automaticallyAdjustsScrollViewInsets="NO" id="jpN-0L-gzg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="spb-BB-2AU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="spb-BB-2AU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

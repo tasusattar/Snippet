@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eIr-M9-7ze">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Html View Controller-->
+        <scene sceneID="Wd6-11-YKb">
+            <objects>
+                <viewController id="T7q-g4-4ha" customClass="HtmlViewController" customModule="Snippet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MbZ-kM-MZl"/>
+                        <viewControllerLayoutGuide type="bottom" id="d29-89-b7U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KEl-Rq-I6h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3DO-nn-Ke1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="629"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTY-R2-SBG">
+                                <rect key="frame" x="0.0" y="637" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="PrevPage:" destination="T7q-g4-4ha" eventType="touchUpInside" id="dbG-xd-CAj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-uD-DBV">
+                                <rect key="frame" x="329" y="637" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="NextPage:" destination="T7q-g4-4ha" eventType="touchUpInside" id="5KQ-hX-JYk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LPi-t3-DKA">
+                        <barButtonItem key="leftBarButtonItem" image="Cross" id="4Sr-U3-wjX">
+                            <connections>
+                                <segue destination="mos-Tt-6il" kind="presentation" id="FeB-eU-YVG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="nextButton" destination="jhz-uD-DBV" id="slT-OJ-xF1"/>
+                        <outlet property="prevButton" destination="UTY-R2-SBG" id="SEB-qB-Ce2"/>
+                        <outlet property="webView" destination="3DO-nn-Ke1" id="620-ie-pPO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sbw-aq-BDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096.8" y="98.50074962518741"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="DXQ-zP-uSg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="mos-Tt-6il" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMd-AB-efC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="-412"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IPx-Bu-NQM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eIr-M9-7ze" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Od-Yb-IqI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="T7q-g4-4ha" kind="relationship" relationship="rootViewController" id="pyb-ye-pMb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwa-lV-Ash" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157.59999999999999" y="98.50074962518741"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Cross" width="32" height="32"/>
+    </resources>
+</document>
